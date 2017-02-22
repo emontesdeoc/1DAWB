@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\RaizDeNumero\RaizDeNumero\bin\Debug\RaizDeNumero.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\RaizDeNumero\RaizDeNumero\bin\Debug\RaizDeNumero.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\RaizDeNumero\RaizDeNumero\bin\Debug\RaizDeNumero.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\RaizDeNumero\RaizDeNumero\obj\Debug\RaizDeNumero.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\RaizDeNumero\RaizDeNumero\obj\Debug\RaizDeNumero.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\RaizDeNumero\RaizDeNumero\obj\Debug\RaizDeNumero.pdb

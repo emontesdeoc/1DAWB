@@ -1,0 +1,58 @@
+    #anim {
+        background-image: url("Blinky.png");
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 350px;
+        position: absolute;
+        -webkit-animation: mymove 5s infinite;
+        /* Safari 4.0 - 8.0 */
+        animation: mymove 5s infinite;
+    }
+    
+    @-webkit-keyframes mymove {
+        0% {
+            left: 250px;
+        }
+        49% {
+            left: 0px;
+        }
+        50% {
+            transform: rotateY(180deg);
+            left: 0px;
+        }
+        51% {
+            left: 0px;
+        }
+        98% {
+            left: 250px;
+        }
+        99% {
+            transform: rotateY(0deg);
+            left: 250px;
+        }
+        100% {
+            transform: left: 250px;
+        }
+    }
+    /* Standard syntax */
+    
+    @keyframes mymove {
+        0% {
+            left: 250px; 
+            transform: rotateY(180deg);
+        }
+
+        49% {
+            left: 0px;
+            transform: rotateY(180deg);
+
+        }
+        50%{
+        	left: 0px;
+            transform: rotateY(0deg);
+        }
+        60%{
+        	left: 0px;
+            transform: rotateY(0deg);
+        }
+    }

@@ -1,0 +1,9 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\bin\Debug\ListBox1.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\bin\Debug\ListBox1.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\bin\Debug\ListBox1.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\obj\Debug\ListBox1.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\obj\Debug\ListBox1.Form1.resources
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\obj\Debug\ListBox1.Properties.Resources.resources
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\obj\Debug\ListBox1.csproj.GenerateResource.Cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\obj\Debug\ListBox1.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\ListBox1\ListBox1\obj\Debug\ListBox1.pdb

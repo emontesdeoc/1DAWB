@@ -1,0 +1,37 @@
+#contenedorimg {
+    width: 500px;
+    height: 500px;
+    margin-left: 30%;
+    background-image: url(img.jpeg);
+}
+
+.descripcion {
+    position: relative;
+    font-size: xx-large;
+    top: 92.5%;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    z-index: 10;
+    background-color: rgba(192, 192, 192, 0.5);
+}
+
+.fecha {
+    position: relative;
+    font-size: xx-large;
+    top: 78.5%;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.8);
+    visibility: hidden;
+}
+
+.descripcion:hover {
+    top: 84.5%;
+}
+
+.descripcion:hover + .fecha {
+    visibility: visible;
+    top: 78.5%;
+}

@@ -1,0 +1,12 @@
+D:\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\bin\Debug\Serie.exe.config
+D:\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\bin\Debug\Serie.exe
+D:\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\bin\Debug\Serie.pdb
+D:\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\obj\Debug\Serie.csprojResolveAssemblyReference.cache
+D:\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\obj\Debug\Serie.exe
+D:\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\obj\Debug\Serie.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\bin\Debug\Serie.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\obj\Debug\Serie.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\obj\Debug\Serie.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\bin\Debug\Serie.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\bin\Debug\Serie.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO\Primer trimestre\Ejercicios\Seudocodigo\Serie\Serie\obj\Debug\Serie.csprojResolveAssemblyReference.cache

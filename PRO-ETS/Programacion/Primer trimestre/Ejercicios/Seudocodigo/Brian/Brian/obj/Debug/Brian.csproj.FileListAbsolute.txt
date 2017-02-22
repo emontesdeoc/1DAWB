@@ -1,0 +1,6 @@
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Brian\Brian\bin\Debug\Brian.exe.config
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Brian\Brian\bin\Debug\Brian.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Brian\Brian\bin\Debug\Brian.pdb
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Brian\Brian\obj\Debug\Brian.csprojResolveAssemblyReference.cache
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Brian\Brian\obj\Debug\Brian.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Brian\Brian\obj\Debug\Brian.pdb

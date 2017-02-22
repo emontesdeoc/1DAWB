@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\MoverPunto\MoverPunto\bin\Debug\MoverPunto.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\MoverPunto\MoverPunto\bin\Debug\MoverPunto.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\MoverPunto\MoverPunto\bin\Debug\MoverPunto.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\MoverPunto\MoverPunto\obj\Debug\MoverPunto.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\MoverPunto\MoverPunto\obj\Debug\MoverPunto.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\MoverPunto\MoverPunto\obj\Debug\MoverPunto.pdb

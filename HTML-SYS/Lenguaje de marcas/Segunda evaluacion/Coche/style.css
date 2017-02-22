@@ -1,0 +1,81 @@
+body {
+    overflow: hidden;
+}
+
+#coche {
+    position: absolute;
+    transform: scale(0.3, 0.3);
+    width: 60%;
+    top: 14%;
+    z-index: 9;
+    left: 25%;
+}
+
+#arbol {
+    position: absolute;
+    transform: scale(0.3, 0.3);
+    width: 60%;
+    top: 106px;
+    animation: arbol 5s linear infinite;
+}
+
+#rueda1 {
+    left: 48.8%;
+    position: absolute;
+    width: 3%;
+    transform: scale(0.4, 0.4);
+    top: 37.5%;
+    border-radius: 50%;
+    animation: rotate 2s linear infinite normal;
+    z-index: 9;
+}
+
+#rueda2 {
+    left: 58%;
+    position: absolute;
+    width: 3%;
+    transform: scale(0.4, 0.4);
+    top: 37.5%;
+    border-radius: 50%;
+    animation: rotate 2s linear infinite normal;
+    z-index: 9;
+}
+
+#suelo {
+    position: absolute;
+    width: 101%;
+    background-color: red;
+    height: 200px;
+    top: 328px;
+    z-index: 11;
+    margin: 0px 0px 0px -12px;
+}
+
+#arbol {
+    position: absolute;
+    /* transform: scale(0.3, 0.3); */
+    width: 17%;
+    top: 31px;
+    z-index: 10;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes arbol {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(600%);
+    }
+}

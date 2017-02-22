@@ -1,0 +1,6 @@
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\factorial\factorial\bin\Debug\factorial.exe.config
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\factorial\factorial\obj\Debug\factorial.csprojResolveAssemblyReference.cache
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\factorial\factorial\bin\Debug\factorial.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\factorial\factorial\bin\Debug\factorial.pdb
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\factorial\factorial\obj\Debug\factorial.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\factorial\factorial\obj\Debug\factorial.pdb

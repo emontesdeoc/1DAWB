@@ -1,0 +1,9 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\bin\Debug\PrimerWindowsForm.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\bin\Debug\PrimerWindowsForm.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\bin\Debug\PrimerWindowsForm.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\obj\Debug\PrimerWindowsForm.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\obj\Debug\PrimerWindowsForm.Form1.resources
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\obj\Debug\PrimerWindowsForm.Properties.Resources.resources
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\obj\Debug\PrimerWindowsForm.csproj.GenerateResource.Cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\obj\Debug\PrimerWindowsForm.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\PrimerWindowsForm\PrimerWindowsForm\obj\Debug\PrimerWindowsForm.pdb

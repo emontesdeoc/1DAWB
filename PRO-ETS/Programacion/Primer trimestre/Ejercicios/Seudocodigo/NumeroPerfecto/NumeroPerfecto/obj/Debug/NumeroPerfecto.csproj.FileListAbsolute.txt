@@ -1,0 +1,6 @@
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\NumeroPerfecto\NumeroPerfecto\bin\Debug\NumeroPerfecto.exe.config
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\NumeroPerfecto\NumeroPerfecto\bin\Debug\NumeroPerfecto.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\NumeroPerfecto\NumeroPerfecto\bin\Debug\NumeroPerfecto.pdb
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\NumeroPerfecto\NumeroPerfecto\obj\Debug\NumeroPerfecto.csprojResolveAssemblyReference.cache
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\NumeroPerfecto\NumeroPerfecto\obj\Debug\NumeroPerfecto.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\NumeroPerfecto\NumeroPerfecto\obj\Debug\NumeroPerfecto.pdb

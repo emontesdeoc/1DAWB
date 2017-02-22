@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Examen\Examen\bin\Debug\Examen.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Examen\Examen\bin\Debug\Examen.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Examen\Examen\bin\Debug\Examen.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Examen\Examen\obj\Debug\Examen.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Examen\Examen\obj\Debug\Examen.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Examen\Examen\obj\Debug\Examen.pdb

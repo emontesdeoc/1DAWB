@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Snake\Snake\bin\Debug\Snake.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Snake\Snake\bin\Debug\Snake.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Snake\Snake\bin\Debug\Snake.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Snake\Snake\obj\Debug\Snake.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Snake\Snake\obj\Debug\Snake.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Snake\Snake\obj\Debug\Snake.pdb

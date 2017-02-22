@@ -1,0 +1,11 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\bin\Debug\Forms3.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\bin\Debug\Forms3.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\bin\Debug\Forms3.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\bin\Debug\MetroFramework.dll
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\obj\Debug\Forms3.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\obj\Debug\Forms3.Form1.resources
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\obj\Debug\Forms3.Properties.Resources.resources
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\obj\Debug\Forms3.csproj.GenerateResource.Cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\obj\Debug\Forms3.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Segundo trimestre\Ejercicios\Forms3\Forms3\obj\Debug\Forms3.pdb

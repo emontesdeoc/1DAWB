@@ -1,0 +1,28 @@
+.caratula {
+    background-image: url(caratula.jpg);
+    background-repeat: no-repeat;
+    width: auto;
+    height: 225px;
+    margin-left: 40%;
+    top: 50px;
+    z-index: 10;
+    position: relative;
+}
+
+.disco {
+    background-image: url(vinilo.jpg);
+    background-repeat: no-repeat;
+    width: auto;
+    height: 225px;
+    margin-left: 40%;
+    bottom: 175px;
+    z-index: 9;
+    position: relative;
+    -webkit-transition: all 0.5s linear;
+    transform-origin: 15% 50%;
+}
+
+.caratula:hover + .disco {
+    margin-left: 50%;
+    -webkit-transform: rotate(360deg);
+}

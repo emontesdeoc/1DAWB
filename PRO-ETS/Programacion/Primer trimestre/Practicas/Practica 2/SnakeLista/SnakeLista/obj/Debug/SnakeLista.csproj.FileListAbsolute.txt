@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\SnakeLista\SnakeLista\bin\Debug\SnakeLista.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\SnakeLista\SnakeLista\bin\Debug\SnakeLista.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\SnakeLista\SnakeLista\bin\Debug\SnakeLista.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\SnakeLista\SnakeLista\obj\Debug\SnakeLista.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\SnakeLista\SnakeLista\obj\Debug\SnakeLista.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\SnakeLista\SnakeLista\obj\Debug\SnakeLista.pdb

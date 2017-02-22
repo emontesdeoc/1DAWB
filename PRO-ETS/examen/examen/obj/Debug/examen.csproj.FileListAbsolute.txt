@@ -1,0 +1,9 @@
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\bin\Debug\examen.exe.config
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\bin\Debug\examen.exe
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\bin\Debug\examen.pdb
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\obj\Debug\examen.csprojResolveAssemblyReference.cache
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\obj\Debug\examen.Form1.resources
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\obj\Debug\examen.Properties.Resources.resources
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\obj\Debug\examen.csproj.GenerateResource.Cache
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\obj\Debug\examen.exe
+c:\users\emi-laptop\documents\visual studio 2017\Projects\examen\examen\obj\Debug\examen.pdb

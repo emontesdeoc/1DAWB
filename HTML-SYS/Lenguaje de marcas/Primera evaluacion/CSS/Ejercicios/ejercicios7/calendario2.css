@@ -1,0 +1,33 @@
+body{
+	background-color: #95E1FF;
+	font-family: sans-serif;
+
+}
+.nov14{
+	background-color: lightyellow;
+	border-style: solid;
+	border-width: 1px;
+	width: 300px;
+}
+table{
+		border-spacing: 5px;
+		border-collapse: collapse;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 5px;
+		border-left:  1px solid blue;
+		border-right: 1px solid blue;
+	}
+
+table caption{
+	text-align: right;
+	margin-top: 8px;
+	font-weight: bold;
+}
+td {
+
+	padding-left: 20px;
+	border-left:  1px solid blue;
+	border-right: 1px solid blue;
+	text-align: center;
+}

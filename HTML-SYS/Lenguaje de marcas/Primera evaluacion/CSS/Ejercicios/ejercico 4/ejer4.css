@@ -1,0 +1,94 @@
+body {
+    background-color: ffc99;
+}
+
+.cabecera {
+    background-color: green;
+    text-align: right;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+h1 {
+    background-color: pink;
+    font-size: xx-large;
+    text-decoration;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 0;
+}
+
+.intro {
+    border-right: 2px dotted green;
+    border-left: 2px dotted green;
+    margin-left: 40px;
+    text-align: center;
+    margin-left: 2px;
+    text-indent: 2em;
+}
+
+.organismo {
+    background-color: black;
+    color: white;
+    padding: 0px 8px;
+}
+
+.par h2 {
+    background-color: brown;
+    margin-top: 0;
+    color: white;
+    text-indent: 0;
+    padding-left: 5px !important;
+
+}
+
+.par {
+    background-color: pink;
+    text-indent: 2em;
+    margin-left: 240px;
+    margin-right: 25px;
+    border: solid brown;
+}
+
+p {
+    padding-left: 10px;
+}
+
+.proyecto {
+    font-family: cursive;
+    font-style: oblique;
+    border-bottom: 2px dashed white;
+    font-weight: bold;
+}
+
+.impar {
+    background-color: 33ff33;
+    border: 5px solid;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 240px;
+    text-indent: 2em;
+}
+
+.impar h2 {
+    background-color: 006663;
+    margin-top: 0;
+    color: white;
+    padding-left: 5px !important;
+   
+
+}
+
+.persona {
+    font-family: sans-serif;
+    font-weight: bold;
+    line-height: underline;
+    text-decoration: underline;
+}
+
+address {
+    border-top: 10px double red;
+    background-color: pink;
+    font-family: oblique;
+}

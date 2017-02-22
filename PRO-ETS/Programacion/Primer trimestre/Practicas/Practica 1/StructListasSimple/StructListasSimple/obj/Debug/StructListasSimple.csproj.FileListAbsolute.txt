@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StructListasSimple\StructListasSimple\bin\Debug\StructListasSimple.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StructListasSimple\StructListasSimple\bin\Debug\StructListasSimple.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StructListasSimple\StructListasSimple\bin\Debug\StructListasSimple.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StructListasSimple\StructListasSimple\obj\Debug\StructListasSimple.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StructListasSimple\StructListasSimple\obj\Debug\StructListasSimple.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StructListasSimple\StructListasSimple\obj\Debug\StructListasSimple.pdb

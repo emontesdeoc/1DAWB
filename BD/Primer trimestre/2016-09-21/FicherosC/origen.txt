@@ -1,0 +1,8 @@
+este es el texto
+que contiene el archivo
+de prueba
+que es origen.txt
+Añado otra línea más
+esta linea es de emi
+asdasdasd
+YACO

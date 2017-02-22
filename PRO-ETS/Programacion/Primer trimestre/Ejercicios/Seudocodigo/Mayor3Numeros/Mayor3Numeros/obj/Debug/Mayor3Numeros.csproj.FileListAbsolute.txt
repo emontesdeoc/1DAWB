@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Mayor3Numeros\Mayor3Numeros\bin\Debug\Mayor3Numeros.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Mayor3Numeros\Mayor3Numeros\bin\Debug\Mayor3Numeros.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Mayor3Numeros\Mayor3Numeros\bin\Debug\Mayor3Numeros.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Mayor3Numeros\Mayor3Numeros\obj\Debug\Mayor3Numeros.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Mayor3Numeros\Mayor3Numeros\obj\Debug\Mayor3Numeros.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\Mayor3Numeros\Mayor3Numeros\obj\Debug\Mayor3Numeros.pdb

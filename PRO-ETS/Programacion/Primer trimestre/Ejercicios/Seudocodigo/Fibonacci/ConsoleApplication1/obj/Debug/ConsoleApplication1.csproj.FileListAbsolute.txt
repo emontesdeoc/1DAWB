@@ -1,0 +1,18 @@
+c:\users\emi-laptop\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+c:\users\emi-laptop\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\emi-laptop\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\emi-laptop\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+c:\users\emi-laptop\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+c:\users\emi-laptop\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB\Programacion\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Git\1DAWB-PRO-ETS\Primer trimestre\Ejercicios\Seudocodigo\fibonacci\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache

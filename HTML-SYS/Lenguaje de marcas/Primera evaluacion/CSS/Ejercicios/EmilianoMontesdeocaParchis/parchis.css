@@ -1,0 +1,30 @@
+.amarillo {
+background-color: yellow;
+}
+
+.verde {
+background-color: green;
+
+
+}
+
+.azul{
+
+background-color: blue;
+
+}
+
+.rojo{
+background-color: red;
+
+
+}
+table{
+
+border: 5px solid blue;
+}
+
+td{
+	width: 20px;
+	height: 20px;
+}

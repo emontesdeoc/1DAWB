@@ -1,0 +1,6 @@
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StrictListasActualizado\StrictListasActualizado\bin\Debug\StrictListasActualizado.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StrictListasActualizado\StrictListasActualizado\bin\Debug\StrictListasActualizado.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StrictListasActualizado\StrictListasActualizado\bin\Debug\StrictListasActualizado.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StrictListasActualizado\StrictListasActualizado\obj\Debug\StrictListasActualizado.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StrictListasActualizado\StrictListasActualizado\obj\Debug\StrictListasActualizado.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 1\StrictListasActualizado\StrictListasActualizado\obj\Debug\StrictListasActualizado.pdb

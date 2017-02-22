@@ -1,0 +1,141 @@
+.header {
+    background-color: lightgray;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+form {
+    padding: 5px 5px 5px 5px
+}
+
+body {
+    font-family: Arial;
+}
+
+
+/* form 1*/
+
+#form1 fieldset {
+    border: 1px gray solid;
+    background-color: lightgray;
+}
+
+#form1 legend {
+    background-color: white;
+    border: 1px solid lightgray;
+}
+
+.asterisco {
+    color: blue;
+    text-decoration: underline;
+}
+
+#form1 {}
+
+.inputmediano {
+    width: 300px;
+}
+
+.inputlargo {
+    width: 450px;
+}
+
+.inputcorto {
+    width: 100px;
+}
+
+.inputmediano2 {
+    width: 250px;
+}
+
+#inputCP {
+    width: 70px;
+}
+
+#inputtelefono {
+    width: 85px;
+}
+
+
+/* form 2*/
+
+#form2 fieldset {
+    border: 1px grey solid;
+    background-color: Gold;
+}
+
+#form2 legend {
+    background-color: white;
+    border: 1px solid Gold;
+}
+
+#form2 ul {
+    list-style: none
+}
+
+
+/* form 3*/
+
+#form3 fieldset {
+    border: 1px grey solid;
+    background-color: CornflowerBlue;
+}
+
+#form3 legend {
+    background-color: white;
+    border: 2px solid CornflowerBlue;
+}
+
+
+/* form 4*/
+
+#form4 fieldset {
+    border: 1px grey solid;
+    background-color: MediumOrchid;
+}
+
+#form4 legend {
+    background-color: white;
+    border: 2px solid MediumOrchid;
+}
+
+
+/* form 5*/
+
+#form5 fieldset {
+    border: 1px grey solid;
+    background-color: Sienna;
+}
+
+#form5 legend {
+    background-color: white;
+    border: 2px solid Sienna;
+}
+
+#form2 {}
+
+#registroentrada {
+    width: 100px;
+    height: 100px;
+    background: white;
+    margin-left: 90%;
+    border: 1px solid black;
+    font-size: 10px;
+    text-align: center;
+}
+
+
+/* footer */
+
+#footer {
+    border: 2px blue dashed;
+    padding: 5px 5px 5px 5px;
+    width: 97%;
+    margin-left: 10px;
+}
+
+#h2footer {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+}

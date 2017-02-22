@@ -1,0 +1,49 @@
+ul {
+    list-style-type: none
+}
+
+ul ul {
+    position: absolute;
+    top: 9em;
+}
+
+ul ul li {
+    width: 100px;
+    display: none;
+    position: relative;
+    margin-left: 60px;
+    z-index: 0;
+    
+}
+
+ul li {
+    width: 100px;
+    height: 40px;
+    z-index: 10;
+
+}
+
+li {
+    background-color: green;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 40px;
+
+}
+
+ul li:nth-child(3):hover li {
+    display: list-item;
+}
+
+li:hover > a {
+	background-color: black;
+	color: white;
+    
+}
+li:hover {
+	background-color: black;
+    
+}
+a{
+	text-decoration: none;
+}

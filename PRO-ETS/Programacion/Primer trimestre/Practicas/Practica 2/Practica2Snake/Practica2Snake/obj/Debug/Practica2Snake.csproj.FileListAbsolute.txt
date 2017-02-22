@@ -1,0 +1,18 @@
+A:\Git\PRO-ETS\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.exe.config
+A:\Git\PRO-ETS\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.exe
+A:\Git\PRO-ETS\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.pdb
+A:\Git\PRO-ETS\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.csprojResolveAssemblyReference.cache
+A:\Git\PRO-ETS\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.exe
+A:\Git\PRO-ETS\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.pdb
+C:\Users\Emi-Laptop\Desktop\Git\SNAKE\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\SNAKE\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.exe
+C:\Users\Emi-Laptop\Desktop\Git\SNAKE\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.pdb
+C:\Users\Emi-Laptop\Desktop\Git\SNAKE\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.exe
+C:\Users\Emi-Laptop\Desktop\Git\SNAKE\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.pdb
+C:\Users\Emi-Laptop\Desktop\Git\SNAKE\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.exe.config
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Practica2Snake\Practica2Snake\bin\Debug\Practica2Snake.pdb
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.csprojResolveAssemblyReference.cache
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.exe
+C:\Users\Emi-Laptop\Desktop\Git\1DAWB-PRO-ETS\Primer trimestre\Practicas\Practica 2\Practica2Snake\Practica2Snake\obj\Debug\Practica2Snake.pdb

@@ -1,0 +1,95 @@
+
+
+#background {
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	margin: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	background: url(wallpaper.jpg);
+	background-repeat: no-repeat;
+	 background-size: cover;
+}
+
+#pez_1 {
+		top: 600px;
+	height: 10%;
+	position: absolute;
+
+	transform: rotateY(180deg);
+	animation: m 5s linear infinite;
+}
+
+#pez_2 {
+		top: 300px;
+	height: 20%;
+	position: absolute;
+
+	transform: rotateY(180deg);
+	animation: m 10s linear infinite;
+}
+#pholder {
+	width: 70%;
+	height: 10%;
+	margin: 25px auto;
+	overflow: hidden;
+	position: relative;
+}
+
+p {
+	position: absolute;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 42px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	line-height: 75px;
+	text-align: center;
+	animation: m2 10s linear infinite;
+	
+}
+
+@keyframes m {
+	0% {
+		left: 1%;
+	}
+	
+	25% {
+		left: 80%;
+		transform: rotateY(180deg);
+	}
+	
+	50% {
+		left: 80%;
+		transform: rotateY(360deg);
+	}
+	
+	75% {
+		left: 1%;
+		transform: rotateY(360deg);
+	}
+	
+	100% {
+		left: 1%;
+	}
+}
+@keyframes m2 {
+	0% {
+		transform: translateX(-80%);
+	}
+	
+	50% {
+		transform: translateX(0);
+	}
+	
+	100% {
+		transform: translateX(80%);
+	}
+}
