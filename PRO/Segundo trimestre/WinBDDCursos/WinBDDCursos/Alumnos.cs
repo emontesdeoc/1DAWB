@@ -169,6 +169,7 @@ namespace WinBDDCursos
         public void Borra()
         {
             sqlDeleteComandoAlumno.Parameters["@COD_ALU"].Value = COD_ALU;
+            sqlDeleteComandoAlumno.Parameters["@COD_CUR"].Value = COD_CUR;
             sqlDeleteComandoAlumno.ExecuteNonQuery();
             tablaAlumnos.Rows.RemoveAt(posicion);
             posicion--;

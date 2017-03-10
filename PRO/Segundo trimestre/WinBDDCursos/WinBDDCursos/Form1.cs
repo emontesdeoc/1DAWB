@@ -230,7 +230,7 @@ namespace WinBDDCursos
 
         private void dataGridView_alumnos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
             int fila = e.RowIndex;
             int c = e.ColumnIndex;
             if (e.ColumnIndex == 5)
@@ -266,6 +266,12 @@ namespace WinBDDCursos
                     }
                 }
 
+            }
+            if (e.ColumnIndex == 6)
+            {
+                alumno.COD_ALU = dataGridView_alumnos.Rows[e.RowIndex].Cells[0].Value.ToString();
+                alumno.COD_CUR = dataGridView_alumnos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                alumno.Borra();
             }
 
         }
