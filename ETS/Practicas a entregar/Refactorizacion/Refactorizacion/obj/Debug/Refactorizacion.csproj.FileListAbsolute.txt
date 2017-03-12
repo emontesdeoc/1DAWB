@@ -1,0 +1,6 @@
+c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\bin\Debug\Refactorizacion.exe.config
+c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\bin\Debug\Refactorizacion.exe
+c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\bin\Debug\Refactorizacion.pdb
+c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\obj\Debug\Refactorizacion.csprojResolveAssemblyReference.cache
+c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\obj\Debug\Refactorizacion.exe
+c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\obj\Debug\Refactorizacion.pdb

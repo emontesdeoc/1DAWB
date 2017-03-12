@@ -148,7 +148,7 @@ namespace WinBDDCursos
                 nuevaFila["COD_ALU"] = COD_ALU;
                 nuevaFila["COD_CUR"] = COD_CUR;
                 nuevaFila["DNI"] = DNI;
-                nuevaFila["APELLIDOSS"] = APELLIDOS;
+                nuevaFila["APELLIDOS"] = APELLIDOS;
                 nuevaFila["NOMBRE"] = NOMBRE;
                 tablaAlumnos.Rows.Add(nuevaFila);
                 posicion = tablaAlumnos.Rows.Count - 1;

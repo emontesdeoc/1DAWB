@@ -61,6 +61,7 @@
     <Compile Include="FormAlumno.Designer.cs">
       <DependentUpon>FormAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

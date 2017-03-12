@@ -21,6 +21,7 @@ namespace WinBDDCursos
         {
             InitializeComponent();
             nuevo = 0;
+            panel1.Visible = false;
         }
 
 
@@ -228,9 +229,11 @@ namespace WinBDDCursos
 
         }
 
+
+
         private void dataGridView_alumnos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             int fila = e.RowIndex;
             int c = e.ColumnIndex;
             if (e.ColumnIndex == 5)
@@ -243,7 +246,7 @@ namespace WinBDDCursos
                 f.Controls["textBox3"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[2].Value.ToString();
                 f.Controls["textBox4"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[3].Value.ToString();
                 f.Controls["textBox5"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                
+
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     try
@@ -269,10 +272,123 @@ namespace WinBDDCursos
             }
             if (e.ColumnIndex == 6)
             {
-                alumno.COD_ALU = dataGridView_alumnos.Rows[e.RowIndex].Cells[0].Value.ToString();
-                alumno.COD_CUR = dataGridView_alumnos.Rows[e.RowIndex].Cells[1].Value.ToString();
-                alumno.Borra();
+
+                FormAlumno f = new FormAlumno();
+                f.Controls["textBox1"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[0].Value.ToString();
+                f.Controls["textBox1"].Enabled = false;
+                f.Controls["textBox2"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                f.Controls["textBox2"].Enabled = false;
+                f.Controls["textBox3"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                f.Controls["textBox3"].Enabled = false;
+                f.Controls["textBox4"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                f.Controls["textBox4"].Enabled = false;
+                f.Controls["textBox5"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                f.Controls["textBox5"].Enabled = false;
+
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        alumno.COD_ALU = dataGridView_alumnos.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        alumno.COD_CUR = dataGridView_alumnos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        alumno.Borra();
+                    }
+                    catch (Exception a)
+                    {
+
+                        MessageBox.Show(a.Message);
+                    }
+                }
+
             }
+
+        }
+
+        private void nuevoAlumno_button_Click(object sender, EventArgs e)
+        {
+            FormAlumno f = new FormAlumno();
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    alumno.graba(f.Controls["textbox1"].Text.ToString(),
+                        f.Controls["textbox2"].Text.ToString(),
+                        f.Controls["textBox3"].Text.ToString(),
+                        f.Controls["textBox4"].Text.ToString(),
+                        f.Controls["textBox5"].Text.ToString(),
+                        1);
+
+                    dataGridView_alumnos.Update();
+                }
+                catch (Exception a)
+                {
+
+                    MessageBox.Show(a.Message);
+                }
+            }
+
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_cursos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_loadcursos_Click(object sender, EventArgs e)
+        {
+            Cursos a = new Cursos(BDD.sqlconexion, BDD.datasetBDD);
+
+            comboBox_cursos.DataSource = a.Tabla();
+            comboBox_cursos.DisplayMember = "DESCRIPCION";
+            comboBox_cursos.ValueMember = "COD_CUR";
+
+        }
+
+        private void comboBox_cursos_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+            string f = "COD_CUR = '" + curso.tablaCursos.Rows[comboBox_cursos.SelectedIndex][0].ToString() + "'";
+
+            DataView dv;
+            dv = new DataView(alumno.Tabla(), f, "DNI Desc", DataViewRowState.CurrentRows);
+            datagrid_cursos.DataSource = dv;
+
+            //datagrid_cursos.DataSource = alumno.Tabla();
+
+
+
+            datagrid_cursos.ReadOnly = true;
+            datagrid_cursos.AllowUserToAddRows = false;
+            datagrid_cursos.AllowUserToDeleteRows = false;
+           
+            datagrid_cursos.Columns[1].Visible = false;
+            datagrid_cursos.Columns[2].Visible = false;
+            datagrid_cursos.Refresh();
+
+        }
+
+        private void datagrid_cursos_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+
+            Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
+            //n.COD_ALU = curso.tablaCursos.Rows[dataGridView_alumnos.SelectedIndex][0].ToString();
+            n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
+            n.CargaNotaByCodAlu();
+            
+            txtbox_nota1.Text = n.NOTA1.ToString();
+            txtbox_nota2.Text = n.NOTA2.ToString();
+            txtbox_nota3.Text = n.NOTA3.ToString();
+            txtbox_media.Text = n.MEDIA.ToString();
+
 
         }
     }

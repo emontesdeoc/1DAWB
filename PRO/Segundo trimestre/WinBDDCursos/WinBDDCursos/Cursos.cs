@@ -117,7 +117,17 @@ namespace WinBDDCursos
                 sqlUpdateComandoCurso.Parameters["@HORAS"].Value = Horas;
                 sqlUpdateComandoCurso.Parameters["@TUTOR"].Value = Tutor;
                 sqlUpdateComandoCurso.ExecuteNonQuery();
-                modiDataset();
+                //modiDataset();
+
+                DataRow DFila;
+                DFila = tablaCursos.Rows.Find(Cod_Cur);
+                DFila["COD_CUR"] = Cod_Cur;
+                DFila["DESCRIPCION"] = Descripcion;
+                DFila["HORAS"] = Horas;
+                DFila["TUTOR"] = Tutor;
+                tablaCursos.AcceptChanges();
+
+
             }
             else
             {
@@ -155,6 +165,11 @@ namespace WinBDDCursos
             if (posicion < 0)
                 posicion = 0;
             CargaCurso();
+        }
+
+        public DataTable Tabla()
+        {
+            return tablaCursos;
         }
     }
 }
