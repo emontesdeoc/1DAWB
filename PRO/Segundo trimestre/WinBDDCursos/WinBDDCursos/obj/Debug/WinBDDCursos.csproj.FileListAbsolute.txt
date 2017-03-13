@@ -26,3 +26,13 @@ C:\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCur
 C:\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.csproj.GenerateResource.Cache
 C:\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.exe
 C:\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.pdb
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\bin\Debug\WinBDDCursos.exe.config
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\bin\Debug\WinBDDCursos.exe
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\bin\Debug\WinBDDCursos.pdb
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.csprojResolveAssemblyReference.cache
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.Form1.resources
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.FormAlumno.resources
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.Properties.Resources.resources
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.csproj.GenerateResource.Cache
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.exe
+C:\Users\Emi\Desktop\Git\1DAWB\PRO\Segundo trimestre\WinBDDCursos\WinBDDCursos\obj\Debug\WinBDDCursos.pdb

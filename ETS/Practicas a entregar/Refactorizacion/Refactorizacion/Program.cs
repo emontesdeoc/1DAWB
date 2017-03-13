@@ -8,67 +8,58 @@ namespace Refactorizacion
 {
     class Program
     {
+        const double pi = 3.1415;
+
         static void Main(string[] args)
         {
-
             Calculos();
 
         }
 
         static void Calculos()
         {
-            int op = MostrarMenu();
+
+            int a;
             do
             {
-                int num1;
-                double resu;
-
-                switch (op)
+                switch (a = MostrarMenu())
                 {
                     case 1:
-                        resu = funcion1();
-                        TextoResultado(resu.ToString());
+                        TextoResultado(Funcion1().ToString());
+                        Console.ReadLine();
                         break;
                     case 2:
                         Console.Write("\nIntroduzca num1: ");
-                        num1 = Convert.ToInt32(Console.ReadLine());
-                        resu = funcion2(num1);
-                        TextoResultado(resu.ToString());
+                        TextoResultado(Funcion2(Convert.ToInt32(Console.ReadLine())).ToString());
+                        Console.ReadLine();
                         break;
                     case 3:
-                        resu = (3.1415 * 2 - 1) / 3.1415;
-                        TextoResultado(resu.ToString());
-                        resu = (3.1415 * 3 - 1) / 3.1415;
-                        TextoResultado(resu.ToString());
-                        resu = (3.1415 * 4 - 1) / 3.1415;
-                        TextoResultado(resu.ToString());
+                        for (int i = 2; i <= 4; i++)
+                        {
+                            TextoResultado(((pi * i - 1) / pi).ToString());
+                        }
+                        Console.ReadLine();
                         break;
                 }
-            } while (MostrarMenu() != 0);
+            } while (a != 0);
 
         }
 
-        static double funcion1()
+        static double Funcion1()
         {
-            double resu;
-            resu = 3.1415 + 3.1415;
-            return (resu);
+            return (pi * 2);
         }
 
-        static int funcion2(int num1)
+        static int Funcion2(int num1)
         {
-            if (num1 < 0)
-                for (int i = 0; i < 5; i++)
-                    num1 = num1 - i;
-            else if (num1 >= 0 && num1 <= 4)
-                for (int i = 0; i < 5; i++)
-                    num1 = num1 - i;
-            else if (num1 >= 5 && num1 <= 7)
-                for (int i = 0; i < 5; i++)
-                    num1 = num1 - i;
+            int aux = num1;
+            if (aux < 8)
+                for (int i = 0; i <= 5; i++)
+                    aux = aux - i;
             else
-                num1 = num1 * 2;
-            return (num1);
+                aux = aux * 2;
+
+            return (aux);
         }
 
         static void TextoResultado(string txt)
@@ -82,13 +73,11 @@ namespace Refactorizacion
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Resu: {0}", txt);
-            Console.ReadLine();
+
         }
 
         static int MostrarMenu()
         {
-            int a = 0;
-
             Console.Clear();
             Console.WriteLine("1.- Funcion1");
             Console.WriteLine("2.- Funcion2");
@@ -96,9 +85,7 @@ namespace Refactorizacion
             Console.WriteLine("0.- Salir");
             Console.Write("Opción: ");
 
-            a = Convert.ToInt32(Console.ReadLine());
-
-            return a;
+            return Convert.ToInt32(Console.ReadLine());
 
         }
     }

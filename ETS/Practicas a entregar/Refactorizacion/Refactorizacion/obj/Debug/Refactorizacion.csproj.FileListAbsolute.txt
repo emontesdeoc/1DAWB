@@ -4,3 +4,9 @@ c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\bin\De
 c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\obj\Debug\Refactorizacion.csprojResolveAssemblyReference.cache
 c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\obj\Debug\Refactorizacion.exe
 c:\users\emi-laptop\documents\visual studio 2017\Projects\Refactorizacion\obj\Debug\Refactorizacion.pdb
+C:\Users\Emi\Desktop\Git\1DAWB\ETS\Practicas a entregar\Refactorizacion\Refactorizacion\obj\Debug\Refactorizacion.csprojResolveAssemblyReference.cache
+C:\Users\Emi\Desktop\Git\1DAWB\ETS\Practicas a entregar\Refactorizacion\Refactorizacion\obj\Debug\Refactorizacion.exe
+C:\Users\Emi\Desktop\Git\1DAWB\ETS\Practicas a entregar\Refactorizacion\Refactorizacion\obj\Debug\Refactorizacion.pdb
+C:\Users\Emi\Desktop\Git\1DAWB\ETS\Practicas a entregar\Refactorizacion\Refactorizacion\bin\Debug\Refactorizacion.exe.config
+C:\Users\Emi\Desktop\Git\1DAWB\ETS\Practicas a entregar\Refactorizacion\Refactorizacion\bin\Debug\Refactorizacion.exe
+C:\Users\Emi\Desktop\Git\1DAWB\ETS\Practicas a entregar\Refactorizacion\Refactorizacion\bin\Debug\Refactorizacion.pdb

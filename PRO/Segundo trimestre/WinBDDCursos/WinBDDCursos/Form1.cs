@@ -368,28 +368,172 @@ namespace WinBDDCursos
             datagrid_cursos.ReadOnly = true;
             datagrid_cursos.AllowUserToAddRows = false;
             datagrid_cursos.AllowUserToDeleteRows = false;
-           
+
             datagrid_cursos.Columns[1].Visible = false;
             datagrid_cursos.Columns[2].Visible = false;
+
             datagrid_cursos.Refresh();
 
         }
 
         private void datagrid_cursos_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
 
+            //panel1.Visible = true;
+
+            //Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
+            //n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
+
+            //string f = "COD_ALU = '" + n.COD_ALU + "'";
+
+
+
+            //DataView dv;
+            //dv = new DataView(n.Tabla());
+            //dv.RowFilter = f;
+
+            //if (dv.Count == 0)
+            //{
+            //    txtbox_nota1.Text = "0";
+            //    txtbox_nota2.Text = "0";
+            //    txtbox_nota3.Text = "0";
+            //    txtbox_media.Text = "0";
+            //}
+            //else
+            //{
+            //    txtbox_nota1.Text = dv[0]["NOTA1"].ToString();
+            //    txtbox_nota2.Text = dv[0]["NOTA2"].ToString();
+            //    txtbox_nota3.Text = dv[0]["NOTA3"].ToString();
+            //    txtbox_media.Text = dv[0]["MEDIA"].ToString();
+            //}
+
+
+        }
+
+        private void btn_CreaNotas_Click(object sender, EventArgs e)
+        {
+            txtbox_nota1.Text = "0";
+            txtbox_nota2.Text = "0";
+            txtbox_nota3.Text = "0";
+            txtbox_media.Text = "0";
+
+        }
+
+        private void btn_calcmedia_Click(object sender, EventArgs e)
+        {
+            txtbox_media.Text = ((Convert.ToInt32(txtbox_nota1.Text) + Convert.ToInt32(txtbox_nota2.Text) + Convert.ToInt32(txtbox_nota3.Text)) / 3).ToString();
+        }
+
+        private void btn_grabarnota_Click(object sender, EventArgs e)
+        {
             Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
-            //n.COD_ALU = curso.tablaCursos.Rows[dataGridView_alumnos.SelectedIndex][0].ToString();
+
             n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
-            n.CargaNotaByCodAlu();
-            
-            txtbox_nota1.Text = n.NOTA1.ToString();
-            txtbox_nota2.Text = n.NOTA2.ToString();
-            txtbox_nota3.Text = n.NOTA3.ToString();
-            txtbox_media.Text = n.MEDIA.ToString();
+            //n.CargaNotaByCodAlu();
+
+            string f = "COD_ALU = '" + n.COD_ALU + "'";
+
+            DataView dv;
+            dv = new DataView(n.Tabla());
+            dv.RowFilter = f;
+
+            if (dv.Count == 0 && txtbox_nota1.Text != "" && txtbox_nota2.Text != "" && txtbox_nota3.Text != "" && txtbox_media.Text != "")
+            {
+                n.graba(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 1);
+                MessageBox.Show("Nota añadida.", "Notas");
+            }
+            else if (dv.Count > 0 && txtbox_nota1.Text != "" && txtbox_nota2.Text != "" && txtbox_nota3.Text != "" && txtbox_media.Text != "")
+            {
+                n.graba(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 0);
+                MessageBox.Show("Nota actualizada.", "Notas");
+            }
+            else
+            {
+                MessageBox.Show("Campos erroneos", "Notas");
+
+            }
+
+        }
+
+        private void datagrid_cursos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == -1)
+            {
+                panel1.Visible = true;
+
+                Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
+                n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
+
+                string f = "COD_ALU = '" + n.COD_ALU + "'";
 
 
+
+                DataView dv;
+                dv = new DataView(n.Tabla());
+                dv.RowFilter = f;
+
+                if (dv.Count == 0)
+                {
+                    txtbox_nota1.Text = "0";
+                    txtbox_nota2.Text = "0";
+                    txtbox_nota3.Text = "0";
+                    txtbox_media.Text = "0";
+                }
+                else
+                {
+                    txtbox_nota1.Text = dv[0]["NOTA1"].ToString();
+                    txtbox_nota2.Text = dv[0]["NOTA2"].ToString();
+                    txtbox_nota3.Text = dv[0]["NOTA3"].ToString();
+                    txtbox_media.Text = dv[0]["MEDIA"].ToString();
+                }
+
+            }
+
+        }
+
+        private void txtbox_nota1_Validating(object sender, CancelEventArgs e)
+        {
+            int parsedValue;
+            if (!int.TryParse(txtbox_nota1.Text, out parsedValue))
+            {
+                MessageBox.Show("Aqui solo numeros!");
+                txtbox_nota1.Focus();
+                return;
+            }
+        }
+
+        private void txtbox_nota2_Validating(object sender, CancelEventArgs e)
+        {
+            int parsedValue;
+            if (!int.TryParse(txtbox_nota2.Text, out parsedValue))
+            {
+                MessageBox.Show("Aqui solo numeros!");
+                txtbox_nota2.Focus();
+                return;
+            }
+        }
+
+        private void txtbox_nota3_TextChanged(object sender, EventArgs e)
+        {
+            int parsedValue;
+            if (!int.TryParse(txtbox_nota3.Text, out parsedValue))
+            {
+                MessageBox.Show("Aqui solo numeros!");
+                txtbox_nota3.Focus();
+                return;
+            }
+        }
+
+        private void txtbox_media_TextChanged(object sender, EventArgs e)
+        {
+            int parsedValue;
+            if (!int.TryParse(txtbox_media.Text, out parsedValue))
+            {
+                MessageBox.Show("Aqui solo numeros!");
+                txtbox_media.Focus();
+                return;
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ namespace WinBDDCursos
             sqlInsertComandoNotas = new SqlCommand();
             sqlInsertComandoNotas.Connection = sqlconexion;
             sqlInsertComandoNotas.CommandText = "INSERT INTO NOTAS (COD_ALU, COD_CUR, NOTA1, NOTA2, NOTA3, MEDIA) VALUES ";
-            sqlInsertComandoNotas.CommandText += "(@COD_ALU, @COD_CUR, @NOTA1, @NOTA2, @NOTA3)";
+            sqlInsertComandoNotas.CommandText += "(@COD_ALU, @COD_CUR, @NOTA1, @NOTA2, @NOTA3, @MEDIA)";
             sqlInsertComandoNotas.Parameters.Add(new SqlParameter("@COD_ALU", SqlDbType.VarChar, 10, "COD_ALU"));
             sqlInsertComandoNotas.Parameters.Add(new SqlParameter("@COD_CUR", SqlDbType.VarChar, 10, "DESCRIPCION"));
             sqlInsertComandoNotas.Parameters.Add(new SqlParameter("@NOTA1", SqlDbType.Int, 10, "NOTA1"));
