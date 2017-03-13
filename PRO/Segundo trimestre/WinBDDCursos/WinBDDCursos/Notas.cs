@@ -69,7 +69,12 @@ namespace WinBDDCursos
             sqlDeleteComandoNotas.Parameters.Add(new SqlParameter("@COD_CUR", SqlDbType.VarChar, 10, "COD_CUR"));
             adaptadorNotas.DeleteCommand = sqlDeleteComandoNotas;
 
+            
+            
+
             adaptadorNotas.Fill(datasetBDD, "NOTAS");
+
+            
             tablaNotas = datasetBDD.Tables["NOTAS"];
             try
             {
@@ -91,6 +96,16 @@ namespace WinBDDCursos
             NOTA2 = Convert.ToInt32(tablaNotas.Rows[posicion]["NOTA2"]);
             NOTA3 = Convert.ToInt32(tablaNotas.Rows[posicion]["NOTA3"]);
             MEDIA = Convert.ToInt32(tablaNotas.Rows[posicion]["MEDIA"]);
+        }
+
+        public void CargaNota(int i)
+        {
+            COD_ALU = tablaNotas.Rows[i]["COD_ALU"].ToString();
+            COD_CUR = tablaNotas.Rows[i]["COD_CUR"].ToString();
+            NOTA1 = Convert.ToInt32(tablaNotas.Rows[i]["NOTA1"]);
+            NOTA2 = Convert.ToInt32(tablaNotas.Rows[i]["NOTA2"]);
+            NOTA3 = Convert.ToInt32(tablaNotas.Rows[i]["NOTA3"]);
+            MEDIA = Convert.ToInt32(tablaNotas.Rows[i]["MEDIA"]);
         }
 
         public void CargaNotaByCodAlu()
@@ -216,6 +231,7 @@ namespace WinBDDCursos
             sqlDeleteComandoNotas.Connection = sqlconexion;
             sqlDeleteComandoNotas.CommandText = "DELETE FROM NOTAS";
             adaptadorNotas.DeleteCommand = sqlDeleteComandoNotas;
+            tablaNotas.Rows.Clear();
             sqlDeleteComandoNotas.ExecuteNonQuery();
         }
     }
