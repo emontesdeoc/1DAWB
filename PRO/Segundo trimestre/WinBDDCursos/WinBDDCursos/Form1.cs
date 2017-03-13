@@ -361,14 +361,12 @@ namespace WinBDDCursos
             dv = new DataView(alumno.Tabla(), f, "DNI Desc", DataViewRowState.CurrentRows);
             datagrid_cursos.DataSource = dv;
 
-            //datagrid_cursos.DataSource = alumno.Tabla();
-
-
-
+            //Estilo datagridview cursos
             datagrid_cursos.ReadOnly = true;
             datagrid_cursos.AllowUserToAddRows = false;
             datagrid_cursos.AllowUserToDeleteRows = false;
 
+            datagrid_cursos.Columns[0].Visible = false;
             datagrid_cursos.Columns[1].Visible = false;
             datagrid_cursos.Columns[2].Visible = false;
 
@@ -379,39 +377,32 @@ namespace WinBDDCursos
         private void datagrid_cursos_Click(object sender, EventArgs e)
         {
 
-            //panel1.Visible = true;
-
-            //Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
-            //n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
-
-            //string f = "COD_ALU = '" + n.COD_ALU + "'";
-
-
-
-            //DataView dv;
-            //dv = new DataView(n.Tabla());
-            //dv.RowFilter = f;
-
-            //if (dv.Count == 0)
-            //{
-            //    txtbox_nota1.Text = "0";
-            //    txtbox_nota2.Text = "0";
-            //    txtbox_nota3.Text = "0";
-            //    txtbox_media.Text = "0";
-            //}
-            //else
-            //{
-            //    txtbox_nota1.Text = dv[0]["NOTA1"].ToString();
-            //    txtbox_nota2.Text = dv[0]["NOTA2"].ToString();
-            //    txtbox_nota3.Text = dv[0]["NOTA3"].ToString();
-            //    txtbox_media.Text = dv[0]["MEDIA"].ToString();
-            //}
-
 
         }
 
         private void btn_CreaNotas_Click(object sender, EventArgs e)
         {
+
+            //Primera parte, borrar tabla
+            Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
+
+            n.DeleteNotasTabla();
+            //Segunda parte, obtener alumnos
+
+            DataView dv;
+            dv = new DataView(alumno.Tabla());
+
+            //Tercera parte, crear notas
+
+            for (int i = 0; i < dv.Count; i++)
+            {
+                n.graba(dv[i][0].ToString(), dv[i][1].ToString(), 0, 0, 0, 0, 1);
+            }
+
+            MessageBox.Show("Notas generadas.", "Notas");
+
+            //Limpia valores textbox
+
             txtbox_nota1.Text = "0";
             txtbox_nota2.Text = "0";
             txtbox_nota3.Text = "0";
@@ -428,20 +419,26 @@ namespace WinBDDCursos
         {
             Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
 
+            //Coge el cod alu del datagridview
+
             n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
-            //n.CargaNotaByCodAlu();
 
-            string f = "COD_ALU = '" + n.COD_ALU + "'";
 
+            //Nueva vista para la table de notas
             DataView dv;
             dv = new DataView(n.Tabla());
-            dv.RowFilter = f;
 
+            //Filtra y devuelve 1
+            dv.RowFilter = "COD_ALU = '" + n.COD_ALU + "'";
+
+
+            //Si vista.count = 0 no hay nada, crea nota
             if (dv.Count == 0 && txtbox_nota1.Text != "" && txtbox_nota2.Text != "" && txtbox_nota3.Text != "" && txtbox_media.Text != "")
             {
                 n.graba(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 1);
                 MessageBox.Show("Nota añadida.", "Notas");
             }
+            //Si vista.count > 0 hay nota, actualiza nota
             else if (dv.Count > 0 && txtbox_nota1.Text != "" && txtbox_nota2.Text != "" && txtbox_nota3.Text != "" && txtbox_media.Text != "")
             {
                 n.graba(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 0);
@@ -460,25 +457,28 @@ namespace WinBDDCursos
 
             if (e.ColumnIndex == -1)
             {
+                //Habilita panel
                 panel1.Visible = true;
 
                 Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
+
+                //Pilla el cod alu del datagridview
                 n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
 
                 string f = "COD_ALU = '" + n.COD_ALU + "'";
 
-
-
+                //Crea vista
                 DataView dv;
                 dv = new DataView(n.Tabla());
+                //Filtra vista de notas, devuelve 1 alumno
                 dv.RowFilter = f;
 
                 if (dv.Count == 0)
                 {
-                    txtbox_nota1.Text = "0";
-                    txtbox_nota2.Text = "0";
-                    txtbox_nota3.Text = "0";
-                    txtbox_media.Text = "0";
+                    txtbox_nota1.Text = "";
+                    txtbox_nota2.Text = "";
+                    txtbox_nota3.Text = "";
+                    txtbox_media.Text = "";
                 }
                 else
                 {
@@ -533,6 +533,38 @@ namespace WinBDDCursos
                 MessageBox.Show("Aqui solo numeros!");
                 txtbox_media.Focus();
                 return;
+            }
+        }
+
+        private void textBox_codalu_filter_TextChanged(object sender, EventArgs e)
+        {
+            Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
+
+            string f = "MEDIA >= " + 6 + "";
+
+            DataView dv;
+            dv = new DataView(n.Tabla());
+            dv.RowFilter = f;
+
+            foreach (DataGridViewRow dtRow in datagrid_cursos.Rows)
+            {
+                for (int i = 0; i < dv.Count; i++)
+                {
+                    string a = dv[i]["MEDIA"].ToString();
+
+                    if (Convert.ToInt32(dv[0]["MEDIA"].ToString()) < Convert.ToInt32(6))
+                    {
+                        datagrid_cursos.Rows.Remove(dtRow);
+
+                    }
+                    else
+                    {
+                        //datagrid_cursos.Rows.Remove(dtRow);
+                    }
+
+                }
+
+                datagrid_cursos.Refresh();
             }
         }
     }

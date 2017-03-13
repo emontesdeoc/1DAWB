@@ -52,7 +52,7 @@ namespace WinBDDCursos
 
             sqlUpdateComandoNotas = new SqlCommand();
             sqlUpdateComandoNotas.Connection = sqlconexion;
-            sqlUpdateComandoNotas.CommandText = "UPDATE NOTAS SET COD_ALU = @COD_ALU, COD_CUR = @COD_CUR, NOTA1 = @NOTA1, NOTA2 = @NOTA2, NOTA3 = @NOTA2, MEDIA = @MEDIA ";
+            sqlUpdateComandoNotas.CommandText = "UPDATE NOTAS SET COD_ALU = @COD_ALU, COD_CUR = @COD_CUR, NOTA1 = @NOTA1, NOTA2 = @NOTA2, NOTA3 = @NOTA3, MEDIA = @MEDIA ";
             sqlUpdateComandoNotas.CommandText += "WHERE COD_ALU = @COD_ALU";
             sqlUpdateComandoNotas.Parameters.Add(new SqlParameter("@COD_ALU", SqlDbType.VarChar, 10, "COD_ALU"));
             sqlUpdateComandoNotas.Parameters.Add(new SqlParameter("@COD_CUR", SqlDbType.VarChar, 10, "DESCRIPCION"));
@@ -71,7 +71,16 @@ namespace WinBDDCursos
 
             adaptadorNotas.Fill(datasetBDD, "NOTAS");
             tablaNotas = datasetBDD.Tables["NOTAS"];
-            CargaNota();
+            try
+            {
+                CargaNota();
+            }
+            catch (Exception)
+            {
+
+
+            }
+
         }
 
         public void CargaNota()
@@ -199,6 +208,15 @@ namespace WinBDDCursos
         public DataTable Tabla()
         {
             return tablaNotas;
+        }
+
+        public void DeleteNotasTabla()
+        {
+            sqlDeleteComandoNotas = new SqlCommand();
+            sqlDeleteComandoNotas.Connection = sqlconexion;
+            sqlDeleteComandoNotas.CommandText = "DELETE FROM NOTAS";
+            adaptadorNotas.DeleteCommand = sqlDeleteComandoNotas;
+            sqlDeleteComandoNotas.ExecuteNonQuery();
         }
     }
 }
