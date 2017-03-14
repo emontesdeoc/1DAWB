@@ -133,6 +133,7 @@ namespace WinBDDCursos
             adaptadorNotas.Fill(datasetBDD, "NOTAS");
             // Asignando el la tabla del dataset a tablaNotas para que sea mas facil su uso ( solo direcciona ).
             tablaNotas = datasetBDD.Tables["NOTAS"];
+            tablaNotas.Constraints.Add("key1", tablaNotas.Columns[0], true);
             try
             {
                 //Carga las notas, esta en un try catch porque si devuelve 0, porque la tabla de notas no tiene nada, se arregla
@@ -196,6 +197,8 @@ namespace WinBDDCursos
             //Si la variable nuev es 0, significa que actualiza
             if (nuevo == 0)
             {
+
+
                 sqlUpdateComandoNotas.Parameters["@COD_ALU"].Value = this.COD_ALU;
                 sqlUpdateComandoNotas.Parameters["@COD_CUR"].Value = this.COD_CUR;
                 sqlUpdateComandoNotas.Parameters["@NOTA1"].Value = this.NOTA1;
@@ -206,8 +209,17 @@ namespace WinBDDCursos
                 {
                     //ExecuteNonQuery ejecuta el comando SQL en la base de datos
                     sqlUpdateComandoNotas.ExecuteNonQuery();
+
+                    DataRow Dfila = tablaNotas.Rows.Find(COD_ALU);
+                    Dfila["COD_ALU"] = COD_ALU;
+                    Dfila["COD_CUR"] = COD_CUR;
+                    Dfila["NOTA1"] = NOTA1;
+                    Dfila["NOTA2"] = NOTA2;
+                    Dfila["NOTA3"] = NOTA3;
+                    Dfila["MEDIA"] = MEDIA;
+                    tablaNotas.AcceptChanges();
                     //modifica el dataset
-                    modiDataset();
+                    //modiDataset();
                 }
                 catch (SqlException e)
                 {
@@ -251,6 +263,7 @@ namespace WinBDDCursos
         /// </summary>
         public void modiDataset()
         {
+
             tablaNotas.Rows[posicion][0] = COD_ALU;
             tablaNotas.Rows[posicion][1] = COD_CUR;
             tablaNotas.Rows[posicion][2] = NOTA1;
@@ -259,6 +272,8 @@ namespace WinBDDCursos
             tablaNotas.Rows[posicion][5] = MEDIA;
             tablaNotas.Rows[posicion].AcceptChanges();
         }
+
+
 
         /// <summary>
         /// Metodo que devuelve la tabla
