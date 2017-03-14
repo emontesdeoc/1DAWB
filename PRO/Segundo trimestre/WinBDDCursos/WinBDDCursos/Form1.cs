@@ -23,11 +23,13 @@ namespace WinBDDCursos
             InitializeComponent();
             nuevo = 0;
             panel1.Visible = false;
+            textBox_codalu_filter.Visible = false;
         }
 
 
         private void buttonABREBDD_Click(object sender, EventArgs e)
         {
+            ///Intenta conectar con la base de datos
             try
             {
                 BDD = new BDD_Conexion();
@@ -46,12 +48,17 @@ namespace WinBDDCursos
                 MessageBox.Show("Error de conexión");
                 return;
             }
+            ///Instanciamos los cursos, alumnos y notas
             curso = new Cursos(BDD.sqlconexion, BDD.datasetBDD);
             alumno = new Alumnos(BDD.sqlconexion, BDD.datasetBDD);
             n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
+            ///Rellena el curso
             rellenaCurso();
         }
 
+        /// <summary>
+        /// Metodo que rellena los cursos
+        /// </summary>
         void rellenaCurso()
         {
             textBoxCOD_CUR.Text = curso.Cod_Cur;
@@ -60,35 +67,65 @@ namespace WinBDDCursos
             textBoxTUTOR_CUR.Text = curso.Tutor;
         }
 
+        /// <summary>
+        /// Cierra la conexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCIERRA_BDD_Click(object sender, EventArgs e)
         {
             BDD.cerrarConexion();
         }
 
+        /// <summary>
+        /// Boton que muestra el primer curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonPRIMER_CUR_Click(object sender, EventArgs e)
         {
             curso.primero();
             rellenaCurso();
         }
 
+        /// <summary>
+        /// Boton que muestra el curso anterior
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonANTERIOR_CUR_Click(object sender, EventArgs e)
         {
             curso.anterior();
             rellenaCurso();
         }
 
+        /// <summary>
+        /// Metdo que muestra el curso siguiente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSIG_CUR_Click(object sender, EventArgs e)
         {
             curso.siguiente();
             rellenaCurso();
         }
 
+        /// <summary>
+        /// Metodo que muestra el ultimo curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonULTIMO_CUR_Click(object sender, EventArgs e)
         {
             curso.ultimo();
             rellenaCurso();
         }
 
+        /// <summary>
+        /// Crea un nuevo curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             nuevo = 1;
@@ -98,6 +135,11 @@ namespace WinBDDCursos
             textBoxTUTOR_CUR.Clear();
         }
 
+        /// <summary>
+        /// Graba un nuevo curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGraba_Click(object sender, EventArgs e)
         {
             if (textBoxCOD_CUR.Text.Length == 0)
@@ -132,14 +174,26 @@ namespace WinBDDCursos
             nuevo = 0;
         }
 
+        /// <summary>
+        /// Borra el curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonBorra_Click(object sender, EventArgs e)
         {
             curso.Borra();
             buttonSIG_CUR.PerformClick();
         }
 
+
+        /// <summary>
+        /// Carga los alumnos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cargaAlumnos_button_Click(object sender, EventArgs e)
         {
+            ///Datasource es la tabla de alumnos
             dataGridView_alumnos.DataSource = alumno.tablaAlumnos;
             dataGridView_alumnos.ReadOnly = true;
             dataGridView_alumnos.AllowUserToAddRows = false;
@@ -147,6 +201,9 @@ namespace WinBDDCursos
             ((Button)sender).Enabled = false;
         }
 
+        /// <summary>
+        /// Metodo que carga las columnas de datagridview y crea los botones
+        /// </summary>
         private void cargaColumnasAlumno()
         {
 
@@ -226,20 +283,20 @@ namespace WinBDDCursos
             cargaColumnasAlumno();
         }
 
-        private void dataGridView_alumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
-
+        /// <summary>
+        /// Metodo que edita o borra los alumnos en el datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView_alumnos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
             int fila = e.RowIndex;
             int c = e.ColumnIndex;
+            ///Utilizamos e.columindex para determinar donde se ha pulsado
             if (e.ColumnIndex == 5)
             {
+                ///Crea un nuevo formulario para editar
                 FormAlumno f = new FormAlumno();
                 f.Controls["textBox1"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[0].Value.ToString();
                 f.Controls["textBox1"].Enabled = false;
@@ -258,7 +315,7 @@ namespace WinBDDCursos
                             f.Controls["textBox3"].Text.ToString(),
                             f.Controls["textBox4"].Text.ToString(),
                             f.Controls["textBox5"].Text.ToString(),
-                            0);
+                            0, fila);
 
                         dataGridView_alumnos.Rows[e.RowIndex].Cells[2].Value = f.Controls["textBox3"].Text;
                         dataGridView_alumnos.Rows[e.RowIndex].Cells[3].Value = f.Controls["textBox4"].Text;
@@ -274,7 +331,7 @@ namespace WinBDDCursos
             }
             if (e.ColumnIndex == 6)
             {
-
+                ///Crea un nuevo formulario para eliminar
                 FormAlumno f = new FormAlumno();
                 f.Controls["textBox1"].Text = dataGridView_alumnos.Rows[e.RowIndex].Cells[0].Value.ToString();
                 f.Controls["textBox1"].Enabled = false;
@@ -307,6 +364,11 @@ namespace WinBDDCursos
 
         }
 
+        /// <summary>
+        /// Crea un nuevo alumno, muestra un nuevo formulario donde se ingresan los datos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nuevoAlumno_button_Click(object sender, EventArgs e)
         {
             FormAlumno f = new FormAlumno();
@@ -320,7 +382,7 @@ namespace WinBDDCursos
                         f.Controls["textBox3"].Text.ToString(),
                         f.Controls["textBox4"].Text.ToString(),
                         f.Controls["textBox5"].Text.ToString(),
-                        1);
+                        1, 0);
 
                     dataGridView_alumnos.Update();
                 }
@@ -334,16 +396,11 @@ namespace WinBDDCursos
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox_cursos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Carga en el combobox los cursos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_loadcursos_Click(object sender, EventArgs e)
         {
             //Cursos a = new Cursos(BDD.sqlconexion, BDD.datasetBDD);
@@ -354,6 +411,11 @@ namespace WinBDDCursos
 
         }
 
+        /// <summary>
+        /// Metodo que muestra en el datagridview los alumnos del curso seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox_cursos_SelectedValueChanged(object sender, EventArgs e)
         {
 
@@ -374,12 +436,12 @@ namespace WinBDDCursos
 
         }
 
-        private void datagrid_cursos_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
+        /// <summary>
+        /// Crea notas borra toda la tabla, llamando a un metodo que borra todo de la tabla nota, y lueo por cada alumno crea sus notas
+        /// todas a 0 incluyendo la media
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_CreaNotas_Click(object sender, EventArgs e)
         {
 
@@ -404,7 +466,7 @@ namespace WinBDDCursos
             for (int i = 0; i < dv.Count; i++)
             {
                 //Agrega notas por cantidad de alumnos, saltando de fila y obteniendo la columna de COD_CUR y COD_ALU
-                n.graba(dv[i][0].ToString(), dv[i][1].ToString(), 0, 0, 0, 0, 1);
+                n.GrabarAlumno(dv[i][0].ToString(), dv[i][1].ToString(), 0, 0, 0, 0, 1);
             }
 
             //Muestra messagebox
@@ -420,11 +482,22 @@ namespace WinBDDCursos
 
         }
 
+        /// <summary>
+        /// Calcula la media con los textboxes del panel de nueva nota
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_calcmedia_Click(object sender, EventArgs e)
         {
             txtbox_media.Text = ((Convert.ToInt32(txtbox_nota1.Text) + Convert.ToInt32(txtbox_nota2.Text) + Convert.ToInt32(txtbox_nota3.Text)) / 3).ToString();
         }
 
+        /// <summary>
+        /// Graba la nota, dependiendo si hay que actualizar o crear directamente, actualmente solo actualiza ya que todos los alumnos
+        /// tienen nota 0 en sus campos, pero en el caso de que no hubiera nota, las crearia.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_grabarnota_Click(object sender, EventArgs e)
         {
             //Notas n = new Notas(BDD.sqlconexion, BDD.datasetBDD);
@@ -444,7 +517,7 @@ namespace WinBDDCursos
             if (dv.Count == 0 && txtbox_nota1.Text != "" && txtbox_nota2.Text != "" && txtbox_nota3.Text != "" && txtbox_media.Text != "")
             {
                 //Graba la nota
-                n.graba(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 1);
+                n.GrabarAlumno(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 1);
                 //Muestra message box
                 MessageBox.Show("Nota añadida.", "Notas");
             }
@@ -452,7 +525,7 @@ namespace WinBDDCursos
             else if (dv.Count > 0 && txtbox_nota1.Text != "" && txtbox_nota2.Text != "" && txtbox_nota3.Text != "" && txtbox_media.Text != "")
             {
                 //Actualiza la nota
-                n.graba(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 0);
+                n.GrabarAlumno(datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString(), datagrid_cursos.SelectedRows[0].Cells[1].Value.ToString(), Convert.ToInt32(txtbox_nota1.Text), Convert.ToInt32(txtbox_nota2.Text), Convert.ToInt32(txtbox_nota3.Text), Convert.ToInt32(txtbox_media.Text), 0);
                 //Muestra message box
                 MessageBox.Show("Nota actualizada.", "Notas");
             }
@@ -478,19 +551,11 @@ namespace WinBDDCursos
                 //Habilita panel
                 panel1.Visible = true;
 
-                //Pilla el cod alu del datagridview
-
-                //n.COD_ALU = datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString();
-
                 //Crea vista
                 DataView dv;
                 dv = new DataView(n.Tabla());
                 //Filtra vista de notas, devuelve 1 alumno
                 dv.RowFilter = "COD_ALU = '" + datagrid_cursos.SelectedRows[0].Cells[0].Value.ToString() + "'";
-
-                //n.CargaNota(i);
-
-                //string a = n.NOTA1.ToString();
 
                 //Si la vista es 0, no existe
                 if (dv.Count == 0)
@@ -513,27 +578,11 @@ namespace WinBDDCursos
 
         }
 
-        private void txtbox_nota1_Validating(object sender, CancelEventArgs e)
-        {
-        }
-
-        private void txtbox_nota2_Validating(object sender, CancelEventArgs e)
-        {
-        }
-
-        private void txtbox_nota3_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txtbox_media_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Reinicia el datagrid con una nueva vista, luego de haber hecho cambios en la tablaCursos.
+        /// </summary>
         private void RestartDataGridAlumnos()
         {
-
-
             string f = "COD_CUR = '" + curso.tablaCursos.Rows[comboBox_cursos.SelectedIndex][0].ToString() + "'";
 
             DataView dv;
@@ -543,7 +592,7 @@ namespace WinBDDCursos
         }
 
         /// <summary>
-        /// TO DO
+        /// Experimental ########################
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

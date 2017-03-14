@@ -329,7 +329,6 @@
             this.dataGridView_alumnos.Size = new System.Drawing.Size(636, 374);
             this.dataGridView_alumnos.TabIndex = 2;
             this.dataGridView_alumnos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_alumnos_CellClick);
-            this.dataGridView_alumnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_alumnos_CellContentClick);
             // 
             // nuevoAlumno_button
             // 
@@ -400,7 +399,6 @@
             this.datagrid_cursos.Size = new System.Drawing.Size(339, 223);
             this.datagrid_cursos.TabIndex = 4;
             this.datagrid_cursos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_cursos_CellClick);
-            this.datagrid_cursos.Click += new System.EventHandler(this.datagrid_cursos_Click);
             // 
             // panel1
             // 
@@ -428,7 +426,6 @@
             this.txtbox_media.Name = "txtbox_media";
             this.txtbox_media.Size = new System.Drawing.Size(132, 22);
             this.txtbox_media.TabIndex = 10;
-            this.txtbox_media.TextChanged += new System.EventHandler(this.txtbox_media_TextChanged);
             // 
             // txtbox_nota3
             // 
@@ -437,7 +434,6 @@
             this.txtbox_nota3.Name = "txtbox_nota3";
             this.txtbox_nota3.Size = new System.Drawing.Size(132, 22);
             this.txtbox_nota3.TabIndex = 9;
-            this.txtbox_nota3.TextChanged += new System.EventHandler(this.txtbox_nota3_TextChanged);
             // 
             // txtbox_nota2
             // 
@@ -546,7 +542,6 @@
             this.comboBox_cursos.Name = "comboBox_cursos";
             this.comboBox_cursos.Size = new System.Drawing.Size(160, 24);
             this.comboBox_cursos.TabIndex = 1;
-            this.comboBox_cursos.SelectedIndexChanged += new System.EventHandler(this.comboBox_cursos_SelectedIndexChanged);
             this.comboBox_cursos.SelectedValueChanged += new System.EventHandler(this.comboBox_cursos_SelectedValueChanged);
             // 
             // label5
@@ -558,7 +553,6 @@
             this.label5.Size = new System.Drawing.Size(45, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "Curso";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Form1
             // 

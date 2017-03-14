@@ -10,34 +10,90 @@ namespace WinBDDCursos
 {
     class Notas
     {
+        /// <summary>
+        /// Codigo de alumno
+        /// </summary>
         public string COD_ALU;
+        /// <summary>
+        /// Codigo de curso
+        /// </summary>
         public string COD_CUR;
+        /// <summary>
+        /// Nota 1 del alumno
+        /// </summary>
         public int NOTA1;
+        /// <summary>
+        /// Nota 2 del alumno
+        /// </summary>
         public int NOTA2;
+        /// <summary>
+        /// Nota 3 del alumno
+        /// </summary>
         public int NOTA3;
+        /// <summary>
+        /// Media del alumno
+        /// </summary>
         public int MEDIA;
+
+        /// <summary>
+        /// Conexion a la base de datos
+        /// </summary>
         public SqlConnection sqlconexion;
+        /// <summary>
+        /// Dataset creado en la clase BDD
+        /// </summary>
         public DataSet datasetBDD;
+        /// <summary>
+        /// Comando Select
+        /// </summary>
         public SqlCommand sqlSelectComandoNotas;
+        /// <summary>
+        /// Comando Insert
+        /// </summary>
         public SqlCommand sqlInsertComandoNotas;
+        /// <summary>
+        /// Comando Update
+        /// </summary>
         public SqlCommand sqlUpdateComandoNotas;
+        /// <summary>
+        /// Comando Delete
+        /// </summary>
         public SqlCommand sqlDeleteComandoNotas;
+        /// <summary>
+        /// Adaptador
+        /// </summary>
         public SqlDataAdapter adaptadorNotas;
+        /// <summary>
+        /// Datatable que devuelve la tabla de notas
+        /// </summary>
         public DataTable tablaNotas { get; set; }
+        /// <summary>
+        /// Posicion, inutil para esta clase
+        /// </summary>
         int posicion;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="sqlconexion1">Conexion a BD</param>
+        /// <param name="ds1">Dataset</param>
         public Notas(SqlConnection sqlconexion1, DataSet ds1)
         {
+            //Posision 0, heredado de la copia de la clase Curso, no sirve para esta parte de la practica
             posicion = 0;
+            /// Instanciando variables de conexion y dataset
             adaptadorNotas = new SqlDataAdapter();
             sqlconexion = sqlconexion1;
             datasetBDD = ds1;
 
+            ///Creando el comando Select y añadiedolo al adaptador de notas
             sqlSelectComandoNotas = new SqlCommand();
             sqlSelectComandoNotas.Connection = sqlconexion;
             sqlSelectComandoNotas.CommandText = "SELECT COD_ALU, COD_CUR, NOTA1, NOTA2, NOTA3, MEDIA FROM NOTAS";
             adaptadorNotas.SelectCommand = sqlSelectComandoNotas;
 
+
+            //Creando el comando Insert y añadiendolo al adaptador de notas
             sqlInsertComandoNotas = new SqlCommand();
             sqlInsertComandoNotas.Connection = sqlconexion;
             sqlInsertComandoNotas.CommandText = "INSERT INTO NOTAS (COD_ALU, COD_CUR, NOTA1, NOTA2, NOTA3, MEDIA) VALUES ";
@@ -50,6 +106,8 @@ namespace WinBDDCursos
             sqlInsertComandoNotas.Parameters.Add(new SqlParameter("@MEDIA", SqlDbType.Int, 10, "MEDIA"));
             adaptadorNotas.InsertCommand = sqlInsertComandoNotas;
 
+
+            //Creando el comando Update y añadiendolo al adaptador de notas
             sqlUpdateComandoNotas = new SqlCommand();
             sqlUpdateComandoNotas.Connection = sqlconexion;
             sqlUpdateComandoNotas.CommandText = "UPDATE NOTAS SET COD_ALU = @COD_ALU, COD_CUR = @COD_CUR, NOTA1 = @NOTA1, NOTA2 = @NOTA2, NOTA3 = @NOTA3, MEDIA = @MEDIA ";
@@ -62,6 +120,8 @@ namespace WinBDDCursos
             sqlUpdateComandoNotas.Parameters.Add(new SqlParameter("@MEDIA", SqlDbType.Int, 10, "MEDIA"));
             adaptadorNotas.UpdateCommand = sqlUpdateComandoNotas;
 
+
+            //Creando el comando Delete y añadiendolo al adaptador de notas
             sqlDeleteComandoNotas = new SqlCommand();
             sqlDeleteComandoNotas.Connection = sqlconexion;
             sqlDeleteComandoNotas.CommandText = "DELETE FROM NOTAS WHERE COD_ALU = @COD_ALU AND COD_CUR = @COD_CUR";
@@ -69,25 +129,24 @@ namespace WinBDDCursos
             sqlDeleteComandoNotas.Parameters.Add(new SqlParameter("@COD_CUR", SqlDbType.VarChar, 10, "COD_CUR"));
             adaptadorNotas.DeleteCommand = sqlDeleteComandoNotas;
 
-            
-            
-
+            // Rellenando el adaptador con la tabla NOTAS del dataset
             adaptadorNotas.Fill(datasetBDD, "NOTAS");
-
-            
+            // Asignando el la tabla del dataset a tablaNotas para que sea mas facil su uso ( solo direcciona ).
             tablaNotas = datasetBDD.Tables["NOTAS"];
             try
             {
+                //Carga las notas, esta en un try catch porque si devuelve 0, porque la tabla de notas no tiene nada, se arregla
+                //cuando se pulsa el boton Nueva Notas que rellena toda la tabla de notas.
                 CargaNota();
             }
             catch (Exception)
             {
-
-
             }
-
         }
 
+        /// <summary>
+        /// Metodo que carga las notas para el alumno con posicion 0, este metodo no es muy util ya que siempre devuelve la misma nota
+        /// </summary>
         public void CargaNota()
         {
             COD_ALU = tablaNotas.Rows[posicion]["COD_ALU"].ToString();
@@ -98,6 +157,10 @@ namespace WinBDDCursos
             MEDIA = Convert.ToInt32(tablaNotas.Rows[posicion]["MEDIA"]);
         }
 
+        /// <summary>
+        /// Metodo que carga la nota de un alumno pasandole una fila exacta.
+        /// </summary>
+        /// <param name="i">Fila</param>
         public void CargaNota(int i)
         {
             COD_ALU = tablaNotas.Rows[i]["COD_ALU"].ToString();
@@ -108,64 +171,42 @@ namespace WinBDDCursos
             MEDIA = Convert.ToInt32(tablaNotas.Rows[i]["MEDIA"]);
         }
 
-        public void CargaNotaByCodAlu()
+
+        /// <summary>
+        /// Metodo que graba o actualiza la tabla de notas
+        /// </summary>
+        /// <param name="COD_ALU">Codigo de alumno</param>
+        /// <param name="COD_CUR">Codigo de curso</param>
+        /// <param name="NOTA1">Nota 1 de alumno</param>
+        /// <param name="NOTA2">Nota 2 de alumno</param>
+        /// <param name="NOTA3">Nota 3 de alumno</param>
+        /// <param name="MEDIA">Media de alumno</param>
+        /// <param name="nuevo">Entero que determina si es nuevo o no</param>
+        public void GrabarAlumno(string COD_ALU, string COD_CUR, int NOTA1, int NOTA2, int NOTA3, int MEDIA, int nuevo)
         {
-            NOTA1 = Convert.ToInt32(tablaNotas.Rows[posicion]["NOTA1"]);
-            NOTA2 = Convert.ToInt32(tablaNotas.Rows[posicion]["NOTA2"]);
-            NOTA3 = Convert.ToInt32(tablaNotas.Rows[posicion]["NOTA3"]);
-            MEDIA = Convert.ToInt32(tablaNotas.Rows[posicion]["MEDIA"]);
-        }
 
+            //Asigna valores introducidos al objeto nota.
+            this.COD_ALU = COD_ALU;
+            this.COD_CUR = COD_CUR;
+            this.NOTA1 = NOTA1;
+            this.NOTA2 = NOTA2;
+            this.NOTA3 = NOTA3;
+            this.MEDIA = MEDIA;
 
-
-        public void siguiente()
-        {
-            posicion++;
-            if (posicion >= tablaNotas.Rows.Count)
-                posicion--;
-            CargaNota();
-        }
-
-        public void anterior()
-        {
-            posicion--;
-            if (posicion < 0)
-                posicion++;
-            CargaNota();
-        }
-
-        public void primero()
-        {
-            posicion = 0;
-            CargaNota();
-        }
-
-        public void ultimo()
-        {
-            posicion = tablaNotas.Rows.Count - 1;
-            CargaNota();
-        }
-
-        public void graba(string calu, string ccur, int cNOTA1, int cNOTA2, int cNOTA3, int cMEDIA, int nuevo)
-        {
-            COD_ALU = calu;
-            COD_CUR = ccur;
-            NOTA1 = cNOTA1;
-            NOTA2 = cNOTA2;
-            NOTA3 = cNOTA3;
-            MEDIA = cMEDIA;
-
+            //Si la variable nuev es 0, significa que actualiza
             if (nuevo == 0)
             {
-                sqlUpdateComandoNotas.Parameters["@COD_ALU"].Value = COD_ALU;
-                sqlUpdateComandoNotas.Parameters["@COD_CUR"].Value = COD_CUR;
-                sqlUpdateComandoNotas.Parameters["@NOTA1"].Value = NOTA1;
-                sqlUpdateComandoNotas.Parameters["@NOTA2"].Value = NOTA2;
-                sqlUpdateComandoNotas.Parameters["@NOTA3"].Value = NOTA3;
-                sqlUpdateComandoNotas.Parameters["@MEDIA"].Value = MEDIA;
+                sqlUpdateComandoNotas.Parameters["@COD_ALU"].Value = this.COD_ALU;
+                sqlUpdateComandoNotas.Parameters["@COD_CUR"].Value = this.COD_CUR;
+                sqlUpdateComandoNotas.Parameters["@NOTA1"].Value = this.NOTA1;
+                sqlUpdateComandoNotas.Parameters["@NOTA2"].Value = this.NOTA2;
+                sqlUpdateComandoNotas.Parameters["@NOTA3"].Value = this.NOTA3;
+                sqlUpdateComandoNotas.Parameters["@MEDIA"].Value = this.MEDIA;
                 try
                 {
+                    //ExecuteNonQuery ejecuta el comando SQL en la base de datos
                     sqlUpdateComandoNotas.ExecuteNonQuery();
+                    //modifica el dataset
                     modiDataset();
                 }
                 catch (SqlException e)
@@ -177,14 +218,18 @@ namespace WinBDDCursos
             }
             else
             {
-                sqlInsertComandoNotas.Parameters["@COD_ALU"].Value = COD_ALU;
-                sqlInsertComandoNotas.Parameters["@COD_CUR"].Value = COD_CUR;
-                sqlInsertComandoNotas.Parameters["@NOTA1"].Value = NOTA1;
-                sqlInsertComandoNotas.Parameters["@NOTA2"].Value = NOTA2;
-                sqlInsertComandoNotas.Parameters["@NOTA3"].Value = NOTA3;
-                sqlInsertComandoNotas.Parameters["@MEDIA"].Value = MEDIA;
+                //Si la variasble nuevo no es 0, significa que es nuevo
+                sqlInsertComandoNotas.Parameters["@COD_ALU"].Value = this.COD_ALU;
+                sqlInsertComandoNotas.Parameters["@COD_CUR"].Value = this.COD_CUR;
+                sqlInsertComandoNotas.Parameters["@NOTA1"].Value = this.NOTA1;
+                sqlInsertComandoNotas.Parameters["@NOTA2"].Value = this.NOTA2;
+                sqlInsertComandoNotas.Parameters["@NOTA3"].Value = this.NOTA3;
+                sqlInsertComandoNotas.Parameters["@MEDIA"].Value = this.MEDIA;
 
+                //Ejecuta el comando Insert en la base de datos
                 sqlInsertComandoNotas.ExecuteNonQuery();
+
+                //Hay que crear una nueva fila en el DATASET
                 DataRow nuevaFila = tablaNotas.NewRow();
                 nuevaFila["COD_ALU"] = COD_ALU;
                 nuevaFila["COD_CUR"] = COD_CUR;
@@ -192,12 +237,18 @@ namespace WinBDDCursos
                 nuevaFila["NOTA2"] = NOTA2;
                 nuevaFila["NOTA3"] = NOTA3;
                 nuevaFila["MEDIA"] = MEDIA;
+                //Añade la fila creada al dataset de tablaNotas
                 tablaNotas.Rows.Add(nuevaFila);
+                //Asigna la posicion a la ultima de la tabla de notas
                 posicion = tablaNotas.Rows.Count - 1;
+                //Modifica el dataset
                 modiDataset();
             }
         }
 
+        /// <summary>
+        /// Modifica el dataset
+        /// </summary>
         public void modiDataset()
         {
             tablaNotas.Rows[posicion][0] = COD_ALU;
@@ -209,22 +260,18 @@ namespace WinBDDCursos
             tablaNotas.Rows[posicion].AcceptChanges();
         }
 
-        public void Borra()
-        {
-            sqlDeleteComandoNotas.Parameters["@COD_ALU"].Value = COD_ALU;
-            sqlDeleteComandoNotas.Parameters["@COD_CUR"].Value = COD_CUR;
-            sqlDeleteComandoNotas.ExecuteNonQuery();
-            tablaNotas.Rows.RemoveAt(posicion);
-            posicion--;
-            if (posicion < 0)
-                posicion = 0;
-            CargaNota();
-        }
+        /// <summary>
+        /// Metodo que devuelve la tabla
+        /// </summary>
+        /// <returns>Devuelve datatable de tablaNotas</returns>
         public DataTable Tabla()
         {
             return tablaNotas;
         }
 
+        /// <summary>
+        /// Metodo que borra todo de la tabla notas y actualiza el dataset
+        /// </summary>
         public void DeleteNotasTabla()
         {
             sqlDeleteComandoNotas = new SqlCommand();
