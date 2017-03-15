@@ -17,6 +17,7 @@ namespace WinBDDCursos
         {
             sqlconexion = new SqlConnection();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            //builder.DataSource = @"EMI-LAPTOP\SQLEXPRESS";
             builder.DataSource = @"EMI-DESKTOP";
             builder.InitialCatalog = "Ocupacional";
             builder.IntegratedSecurity = true;

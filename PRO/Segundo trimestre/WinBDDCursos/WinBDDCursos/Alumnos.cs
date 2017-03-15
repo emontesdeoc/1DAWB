@@ -80,35 +80,7 @@ namespace WinBDDCursos
             NOMBRE = tablaAlumnos.Rows[posicion]["NOMBRE"].ToString();
         }
 
-        public void siguiente()
-        {
-            posicion++;
-            if (posicion >= tablaAlumnos.Rows.Count)
-                posicion--;
-            CargaAlumno();
-        }
-
-        public void anterior()
-        {
-            posicion--;
-            if (posicion < 0)
-                posicion++;
-            CargaAlumno();
-        }
-
-        public void primero()
-        {
-            posicion = 0;
-            CargaAlumno();
-        }
-
-        public void ultimo()
-        {
-            posicion = tablaAlumnos.Rows.Count - 1;
-            CargaAlumno();
-        }
-
-        public void graba(string calu, string ccur, string cdni, string capellidos, string cnombre, int nuevo)
+        public void graba(string calu, string ccur, string cdni, string capellidos, string cnombre, int nuevo, int posi)
         {
             COD_ALU = calu;
             COD_CUR = ccur;
@@ -126,7 +98,9 @@ namespace WinBDDCursos
                 try
                 {
                     sqlUpdateComandoAlumno.ExecuteNonQuery();
-                    modiDataset();
+                    modiDataset(posi);
+
+
                 }
                 catch (SqlException e)
                 {
@@ -165,6 +139,17 @@ namespace WinBDDCursos
             tablaAlumnos.Rows[posicion][4] = NOMBRE;
             tablaAlumnos.Rows[posicion].AcceptChanges();
         }
+
+        public void modiDataset(int i)
+        {
+            tablaAlumnos.Rows[i][0] = COD_ALU;
+            tablaAlumnos.Rows[i][1] = COD_CUR;
+            tablaAlumnos.Rows[i][2] = DNI;
+            tablaAlumnos.Rows[i][3] = APELLIDOS;
+            tablaAlumnos.Rows[i][4] = NOMBRE;
+            tablaAlumnos.Rows[i].AcceptChanges();
+        }
+
 
         public void Borra()
         {
