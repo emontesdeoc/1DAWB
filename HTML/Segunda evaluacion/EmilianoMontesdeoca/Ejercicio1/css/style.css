@@ -1,0 +1,166 @@
+img {
+    position: absolute;
+}
+
+h2 {
+    font-family: 'Comic Sans MS';
+    margin-left: 20%;
+}
+
+#container {
+    width: 60%;
+    margin: 0 auto;
+    z-index: -4;
+}
+
+#left {
+    width: 312px;
+    height: 100px;
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+}
+
+#right {
+    width: 314px;
+    height: 100px;
+    position: absolute;
+    background-color: white;
+    margin-left: 79.5%;
+    z-index: 10;
+}
+
+#background {
+    box-shadow: grey -1px 1px 4px 2px;
+    z-index: 0;
+}
+
+#sun {
+    margin-left: 50%;
+    margin-top: 10px;
+    z-index: 3;
+    -webkit-animation-duration: 20s;
+    animation-duration: 20s;
+    animation-delay: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: anim-sun;
+    animation-name: anim-sun;
+}
+
+#cloud {
+    margin-left: 60%;
+    margin-top: 10px;
+    opacity: 1;
+    -webkit-animation-duration: 14s;
+    animation-duration: 14s;
+    animation-delay: 8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: anim-nube;
+    animation-name: anim-nube;
+    z-index: 4;
+}
+
+#accion {
+    margin-left: 26%;
+    margin-top: 15%;
+    opacity: 0;
+    -webkit-animation-duration: 10s;
+    animation-duration: 2s;
+    animation-delay: 6s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: anim-num;
+    animation-name: anim-num;
+    z-index: 3;
+}
+
+#tres {
+    margin-left: 30%;
+    margin-top: 16%;
+    opacity: 0;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: anim-num;
+    animation-name: anim-num;
+    z-index: 3;
+}
+
+#dos {
+    margin-left: 30%;
+    margin-top: 16%;
+    opacity: 0;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: anim-num;
+    animation-name: anim-num;
+    z-index: 3;
+}
+
+#uno {
+    margin-left: 30%;
+    margin-top: 16%;
+    opacity: 0;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    animation-delay: 4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: anim-num;
+    animation-name: anim-num;
+    z-index: 3;
+}
+
+@-webkit-keyframes anim-num {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes anim-nube {
+    0% {
+        margin-left: 60%;
+    }
+    25% {
+        margin-left: 25%;
+    }
+    50% {
+        margin-left: 25%;
+    }
+    75% {
+        margin-left: 25%;
+    }
+    100% {
+        margin-left: -15%;
+    }
+}
+
+@-webkit-keyframes anim-sun {
+    0% {
+        opacity: 0.5;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
