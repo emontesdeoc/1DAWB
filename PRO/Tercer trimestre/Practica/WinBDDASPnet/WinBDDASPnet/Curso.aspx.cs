@@ -40,7 +40,7 @@ namespace WinBDDASPnet
         protected void btnUltimoCurso_Click(object sender, EventArgs e)
         {
 
-            i = CambioCurso(1000);
+            i = CambioCurso(int.MaxValue);
         }
 
         private int CambioCurso(int newI)

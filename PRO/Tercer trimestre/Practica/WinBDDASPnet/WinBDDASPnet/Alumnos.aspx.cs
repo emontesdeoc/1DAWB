@@ -29,6 +29,7 @@ namespace WinBDDASPnet
         }
         protected void testdropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             using (ModelOcupacional model = new ModelOcupacional())
             {
 
@@ -39,7 +40,16 @@ namespace WinBDDASPnet
                 testgridview.DataSource = valumnos.ToList();
                 testgridview.DataBind();
 
+                GridView1.AutoGenerateColumns = false;
+                GridView1.DataSource = valumnos.ToList();
+                GridView1.DataBind();
+
             }
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
         }
     }
 }
