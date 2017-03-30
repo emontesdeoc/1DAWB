@@ -19,7 +19,8 @@ namespace WinBDDASPnet
 
                     var vcursos = from p in model.CURSOS
                                   select new { codcur = p.COD_CUR, desc = p.DESCRIPCION };
-
+                    ListItem l = new ListItem("", "-1");
+                    testdropdown.Items.Add(l);
                     foreach (var v in vcursos)
                     {
                         ListItem litem = new ListItem(v.desc, v.codcur);
@@ -30,19 +31,29 @@ namespace WinBDDASPnet
         }
         protected void testdropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            using (ModelOcupacional model = new ModelOcupacional())
+            if (testdropdown.SelectedValue != "-1")
             {
 
-                var valumnos = from p in model.ALUMNOS
-                               where p.COD_CUR == testdropdown.SelectedValue.ToString()
-                               select p;
 
-                testgridview.DataSource = valumnos.ToList();
-                testgridview.DataBind();
+                using (ModelOcupacional model = new ModelOcupacional())
+                {
 
-                GridView1.AutoGenerateColumns = false;
-                GridView1.DataSource = valumnos.ToList();
+                    var valumnos = from p in model.ALUMNOS
+                                   where p.COD_CUR == testdropdown.SelectedValue.ToString()
+                                   select p;
+
+                    //testgridview.DataSource = valumnos.ToList();
+                    //testgridview.DataBind();
+
+                    GridView1.AutoGenerateColumns = false;
+                    GridView1.DataSource = valumnos.ToList();
+                    GridView1.DataBind();
+
+                }
+            }
+            else
+            {
+                GridView1.DataSource = null;
                 GridView1.DataBind();
 
             }

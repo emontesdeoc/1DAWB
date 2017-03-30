@@ -50,7 +50,7 @@
                 <br />
                 <br />
                 <asp:Label runat="server" ID="labelDNI" Text="DNI"></asp:Label>
-                <asp:TextBox runat="server" ID="textboxDNI" E></asp:TextBox>
+                <asp:TextBox runat="server" ID="textboxDNI" ></asp:TextBox>
                 <br />
                 <br />
 
