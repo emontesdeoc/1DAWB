@@ -11,6 +11,7 @@ namespace WinBDDASPnet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            DivModificarAlumno.Visible = false;
             if (!IsPostBack)
             {
                 using (ModelOcupacional model = new ModelOcupacional())
@@ -49,7 +50,91 @@ namespace WinBDDASPnet
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            labelCodAlu.Text = e.CommandArgument.ToString();
 
+            if (e.CommandName == "Modificar")
+            {
+                using (ModelOcupacional model = new ModelOcupacional())
+                {
+
+                    var valumnos = from p in model.ALUMNOS
+                                   where p.COD_ALU == e.CommandArgument.ToString()
+                                   select p;
+
+                    textboxCodAlu.Text = valumnos.First().COD_ALU;
+                    textboxCodCur.Text = valumnos.First().COD_CUR;
+                    textboxDNI.Text = valumnos.First().DNI;
+                    textboxApellidos.Text = valumnos.First().APELLIDOS;
+                    textboxNombre.Text = valumnos.First().NOMBRE;
+
+                    DivModificarAlumno.Visible = true;
+                    btn_BorrarAlumno_confirmar.Visible = false;
+                    btn_ModificarAlumno_confirmar.Visible = true;
+
+                }
+            }
+
+
+            if (e.CommandName == "Borrar")
+            {
+                using (ModelOcupacional model = new ModelOcupacional())
+                {
+
+                    var valumnos = from p in model.ALUMNOS
+                                   where p.COD_ALU == e.CommandArgument.ToString()
+                                   select p;
+
+                    textboxCodAlu.Text = valumnos.First().COD_ALU;
+                    textboxCodCur.Text = valumnos.First().COD_CUR;
+                    textboxDNI.Text = valumnos.First().DNI;
+                    textboxApellidos.Text = valumnos.First().APELLIDOS;
+                    textboxNombre.Text = valumnos.First().NOMBRE;
+
+                    DivModificarAlumno.Visible = true;
+                    btn_BorrarAlumno_confirmar.Visible = true;
+                    btn_ModificarAlumno_confirmar.Visible = false;
+
+                }
+            }
+
+
+
+        }
+
+        protected void btn_BorrarAlumno_confirmar_Click(object sender, EventArgs e)
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+
+                var valumnos = from p in model.ALUMNOS
+                               where p.COD_ALU == textboxCodAlu.Text
+                               select p;
+
+                model.ALUMNOS.Remove(valumnos.First());
+                model.SaveChanges();
+
+            }
+        }
+
+        protected void btn_ModificarAlumno_confirmar_Click(object sender, EventArgs e)
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+
+                var valumnos = (from p in model.ALUMNOS
+                                where p.COD_ALU == textboxCodAlu.Text
+                                select p).First();
+
+
+
+                ALUMNO a = new ALUMNO() { APELLIDOS = textboxApellidos.Text, NOMBRE = textboxNombre.Text, DNI = textboxDNI.Text, COD_ALU = textboxCodAlu.Text, COD_CUR = textboxCodCur.Text };
+
+                model.ALUMNOS.Remove(valumnos);
+
+                model.ALUMNOS.Add(a);
+                model.SaveChanges();
+
+            }
         }
     }
 }
