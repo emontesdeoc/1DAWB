@@ -1,3 +1,7 @@
+--Emiliano Montesdeoca del Puerto
+--1DAWB
+--CIFP Cesar Manrique
+
 --1. Crear la Base de datos en la carpeta C:\SQLDatos con tamaño inicial 5M, tamaño mayor
 --20 M e incrementos 4M.
 CREATE DATABASE SQLbasic ON (
@@ -59,13 +63,14 @@ ALTER COLUMN nombre VARCHAR(30) NOT NULL;
 GO
 
 --d. valor único apellidos y nombre
---create unique clustered index ix_apellidonombre
---on empleados(apellido,nombre)
---with drop_existing;
---go
+ALTER TABLE empleados ADD CONSTRAINT uq_apellidonombre UNIQUE (
+	apellidos
+	,nombre
+	);
+GO
+
 --e. validar que fechanacimiento sea menor que la fecha actual
-ALTER TABLE empleados ADD CONSTRAINT ck_fechanaimiento 
-CHECK (datepart(year, fechanacimiento) < datepart(year,getdate()))
+ALTER TABLE empleados ADD CONSTRAINT ck_fechanaimiento CHECK (datepart(year, fechanacimiento) < datepart(year, getdate()))
 
 --f. validar que cantidad de hijos no sea negativa ni mayor que 20
 ALTER TABLE empleados ADD CONSTRAINT ck_cantidadhijos CHECK (
