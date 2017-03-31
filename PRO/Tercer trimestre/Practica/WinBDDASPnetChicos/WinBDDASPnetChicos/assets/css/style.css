@@ -1,11 +1,14 @@
 ﻿#containercursos {
     background-color: white;
-    padding: 30px;
-    margin-top: 80px;
+    padding: 5px 30px 20px 30px;
 }
 
 body {
     background: #005C97;
     background: -webkit-linear-gradient(to left, #005C97, #363795);
     background: linear-gradient(to left, #005C97, #363795);
+}
+
+.select {
+    display: inline;
 }
