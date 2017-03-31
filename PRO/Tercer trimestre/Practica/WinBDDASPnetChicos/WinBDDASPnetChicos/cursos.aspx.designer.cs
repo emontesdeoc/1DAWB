@@ -148,6 +148,15 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Nuevocurso;
         
         /// <summary>
+        /// Control notification_nuevo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label notification_nuevo;
+        
+        /// <summary>
         /// Control nuevo_Textbox_codcur.
         /// </summary>
         /// <remarks>
@@ -272,6 +281,15 @@ namespace WinBDDASPnetChicos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Borrarcurso;
+        
+        /// <summary>
+        /// Control notification_label_borrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label notification_label_borrar;
         
         /// <summary>
         /// Control dropdown_cursos_borrar.

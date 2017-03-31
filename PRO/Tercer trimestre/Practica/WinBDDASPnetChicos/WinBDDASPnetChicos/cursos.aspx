@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Cursos</title>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
@@ -16,21 +16,26 @@
     <ul id="slide-out" class="side-nav">
         <li>
             <div class="userView">
-                <a href="#!name"><span class="black-text name" style="margin-bottom: 40px; font-size: 34px;">WinBDDASP.net</span></a>
+                <span class="black-text name" style="margin-bottom: 40px; font-size: 34px;">WinBDDASP.net</span>
             </div>
         </li>
         <li>
             <div class="divider"></div>
         </li>
-        <li><a class="waves-effect" href="#!">Cursos</a></li>
-        <li><a class="waves-effect" href="#!">Alumnos</a></li>
-        <li><a class="waves-effect" href="#!">Notas</a></li>
+        <li><a class="waves-effect" href="~/cursos.aspx">Cursos</a></li>
+        <li><a class="waves-effect" href="~/alumnos.aspx">Alumnos</a></li>
+        <li><a class="waves-effect" href="#">Notas</a></li>
     </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-
 
     <form id="form1" runat="server">
         <div class="container" style="width: 50%">
+
+            <h1 style="text-align: center; color: white;">Cursos</h1>
+            <div style="text-align: center;">
+                <a href="#" data-activates="slide-out" class="waves-effect waves-light btn button-collapse">Menu</a>
+            </div>
+            <br />
+            <br />
             <div class="row">
                 <div class="col s12">
                     <ul class="tabs">
@@ -69,6 +74,9 @@
                 <div id="Nuevocurso" runat="server" class="col s12">
                     <div id="containercursos">
                         <div class="form-group input-field">
+                            <asp:Label runat="server" ID="notification_nuevo"></asp:Label>
+                        </div>
+                        <div class="form-group input-field">
                             <asp:TextBox runat="server" ID="nuevo_Textbox_codcur" CssClass="form-control validate"></asp:TextBox>
                             <label for="nuevo_Textbox_codcur">Codigo curso</label>
                         </div>
@@ -84,7 +92,7 @@
                             <asp:TextBox runat="server" ID="nuevo_Textbox_Tutor" CssClass="form-control validate"></asp:TextBox>
                             <label for="nuevo_Textbox_Tutor">Tutor</label>
                         </div>
-                        <div class="form-group" style="text-align: center;">
+                        <div class="form-group input-field" style="text-align: center;">
                             <asp:Button runat="server" ID="btn_Guardar" Text="Guardar" OnClick="btn_Guardar_Click" CssClass="waves-effect waves-light btn" />
                             <asp:Button runat="server" ID="btn_Cancelar" Text="Cancelar" OnClick="btn_Cancelar_Click" CssClass="waves-effect waves-light btn" />
                         </div>
@@ -123,6 +131,9 @@
                 </div>
                 <div id="Borrarcurso" runat="server" class="col s12">
                     <div id="containercursos">
+                        <div class="form-group input-field">
+                            <asp:Label runat="server" ID="notification_label_borrar"></asp:Label>
+                        </div>
                         <div class="form-group input-field select">
                             <label>Seleccione el curso</label>
                             <br />
@@ -158,6 +169,7 @@
             </div>
         </div>
     </form>
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script>
