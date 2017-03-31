@@ -61,5 +61,48 @@ namespace WinBDDASPnetChicos
 
             return newID;
         }
+
+        protected void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var vcursos = (from c in model.CURSOS
+                               where c.COD_CUR == txtboxCodCur.Text
+                               select c).ToList();
+
+                if (vcursos.Count == 1)
+                {
+                    vcursos[0].DESCRIPCION = TextBoxDescripcion.Text;
+                    vcursos[0].HORAS = Convert.ToInt32(TextBoxHoras.Text);
+                    vcursos[0].TUTOR = TextBoxTutor.Text;
+                }
+                else
+                {
+                    CURSOS newcurso = new CURSOS();
+                    newcurso.COD_CUR = txtboxCodCur.Text;
+                    newcurso.DESCRIPCION = TextBoxDescripcion.Text;
+                    newcurso.HORAS = Convert.ToInt32(TextBoxHoras.Text);
+                    newcurso.TUTOR = TextBoxTutor.Text;
+
+                    vcursos.Add(newcurso);
+                }
+                model.SaveChanges();
+            }
+        }
+
+        protected void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            id = CambioCurso(id);
+
+        }
+
+        protected void btn_Nuevo_Click(object sender, EventArgs e)
+        {
+            txtboxCodCur.Text = "";
+            TextBoxDescripcion.Text = "";
+            TextBoxHoras.Text = "";
+            TextBoxTutor.Text = "";
+        }
     }
 }
