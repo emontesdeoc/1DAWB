@@ -35,6 +35,7 @@ namespace WinBDDASPnetChicos
                 gridview_alumnos.DataSource = valumnos;
                 gridview_alumnos.DataBind();
             }
+            CambioPestañas(1);
         }
 
         protected void gridview_alumnos_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -47,10 +48,10 @@ namespace WinBDDASPnetChicos
                                    where a.COD_ALU == e.CommandArgument.ToString()
                                    select a).First();
 
-                    nuevo_textbox_apellido_alumno.Text = valumno.APELLIDOS;
-                    nuevo_textbox_codalu_alumno.Text = valumno.COD_ALU;
-                    nuevo_textbox_nombre_alumno.Text = valumno.NOMBRE;
-                    nuevo_textbox_DNI_alumno.Text = valumno.DNI;
+                    modificar_textbox_apellido.Text = valumno.APELLIDOS;
+                    modificar_textbox_codalu.Text = valumno.COD_ALU;
+                    modificar_textbox_nombre.Text = valumno.NOMBRE;
+                    modificar_textbox_DNI.Text = valumno.DNI;
                     CambioPestañas(2);
                 }
 
@@ -77,9 +78,47 @@ namespace WinBDDASPnetChicos
 
         #region MODIFICAR ALUMNO
 
+
+        protected void btn_modificaralumno_Click(object sender, EventArgs e)
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                foreach (var c in model.ALUMNOS.ToList())
+                {
+                    if (c.COD_ALU == modificar_textbox_codalu.Text)
+                    {
+                        c.DNI = modificar_textbox_DNI.Text;
+                        c.APELLIDOS = modificar_textbox_apellido.Text;
+                        c.NOMBRE = modificar_textbox_nombre.Text;
+                    }
+                }
+                model.SaveChanges();
+                //contenedormodificar.Visible = false;
+            }
+        }
+
+
         #endregion
 
         #region NUEVO ALUMNO
+
+        protected void btn_nuevoalumno_Click(object sender, EventArgs e)
+        {
+
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                ALUMNOS newalumno = new ALUMNOS()
+                {
+                    APELLIDOS = nuevo_textbox_apellido.Text,
+                    NOMBRE = nuevo_textbox_nombre.Text,
+                    DNI = nuevo_textbox_dni.Text,
+                    COD_CUR = dropdown_nuevo_alumno.SelectedValue.ToString(),
+                    COD_ALU = nuevo_textbox_codalu.Text
+                };
+                model.ALUMNOS.Add(newalumno);
+            }
+
+        }
 
         #endregion
 
@@ -166,29 +205,12 @@ namespace WinBDDASPnetChicos
 
         #endregion
 
-        protected void btn_modificaralumno_Click(object sender, EventArgs e)
+        protected void nuevo_btn_alumno_Click(object sender, EventArgs e)
         {
-
-            using (ModelOcupacional model = new ModelOcupacional())
-            {
-                var valumno = (from a in model.ALUMNOS
-                               select a).ToList();
-
-                foreach (var c in valumno)
-                {
-                    if (c.COD_ALU == TextBoxCodAlu.Text)
-                    {
-                        c.APELLIDOS = txtboxNewApellido.Text;
-                    }
-                }
-
-                model.SaveChanges();
-                contenedormodificar.Visible = false;
-            }
 
         }
 
-        protected void nuevo_btn_alumno_Click(object sender, EventArgs e)
+        protected void modificar_btn_alumno_Click(object sender, EventArgs e)
         {
 
         }

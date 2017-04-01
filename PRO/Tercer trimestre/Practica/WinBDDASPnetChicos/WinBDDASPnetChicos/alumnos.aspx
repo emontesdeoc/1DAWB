@@ -45,6 +45,7 @@
                         <li class="tab col s3"><a href="#Borrarcurso" runat="server" id="li_borrarcursos">Borrar curso</a></li>
                     </ul>
                 </div>
+                <%-- VER ALUMNOS --%>
                 <div id="Vercursos" runat="server" class="col s12">
                     <div id="containercursos">
                         <div class="form-group input-field select">
@@ -82,6 +83,7 @@
 
                     </div>
                 </div>
+                <%-- NUEVO ALUMNO --%>
                 <div id="Nuevocurso" runat="server" class="col s12">
                     <div id="containercursos">
                         <div runat="server" id="contenedormodificar">
@@ -92,44 +94,82 @@
                                 <asp:DropDownList runat="server" ID="dropdown_nuevo_alumno" CssClass="select"></asp:DropDownList>
                                 <br />
                             </div>
-                            <asp:Label runat="server" ID="labelCodAlu" Text="Codigo alumno"></asp:Label>
-                            <asp:TextBox runat="server" ID="TextBoxCodAlu"></asp:TextBox>
-                            <br />
-                            <asp:Label runat="server" ID="labelNewAlumnos" Text="Apellido"></asp:Label>
-                            <asp:TextBox runat="server" ID="txtboxNewApellido"></asp:TextBox>
-                            <br />
-                            <asp:Button runat="server" ID="btn_modificaralumno" Text="modificar" OnClick="btn_modificaralumno_Click" />
+                            <div class="form-group input-field select">
+                                <asp:TextBox runat="server" ID="nuevo_textbox_codalu"></asp:TextBox>
+                                <label for="nuevo_textbox_codalu">Codigo alumno</label>
+                            </div>
+                            <div class="form-group input-field ">
+                                <asp:TextBox runat="server" ID="nuevo_textbox_dni"></asp:TextBox>
+                                <label for="nuevo_textbox_dni">DNI</label>
+                            </div>
+                            <div class="form-group input-field ">
+                                <asp:TextBox runat="server" ID="nuevo_textbox_apellido"></asp:TextBox>
+                                <label for="nuevo_textbox_apellido">Apellido</label>
+                            </div>
+                            <div class="form-group input-field ">
+                                <asp:TextBox runat="server" ID="nuevo_textbox_nombre"></asp:TextBox>
+                                <label for="nuevo_textbox_nombre">Nombre</label>
+                            </div>
+                            <div class="form-group input-field" style="text-align: center;">
+                                <asp:Button runat="server" ID="btn_nuevoalumno" Text="Crear" OnClick="btn_nuevoalumno_Click" CssClass="waves-effect waves-light btn" />
+                            </div>
                         </div>
                     </div>
                 </div>
+                <%-- MODIFICAR ALUMNO --%>
                 <div id="Guardarcurso" runat="server" class="col s12">
                     <div id="containercursos">
 
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_codalu_alumno" CssClass="form-control validate"></asp:TextBox>
-                            <label for="nuevo_textbox_codalu_alumno">Codigo de alumno</label>
+                            <asp:TextBox runat="server" ID="modificar_textbox_codalu" CssClass="form-control validate"></asp:TextBox>
+                            <label for="modificar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_nombre_alumno" CssClass="form-control validate"></asp:TextBox>
-                            <label for="nuevo_textbox_nombre_alumno">Nombre</label>
+                            <asp:TextBox runat="server" ID="modificar_textbox_nombre" CssClass="form-control validate"></asp:TextBox>
+                            <label for="modificar_textbox_nombre">Nombre</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_apellido_alumno" CssClass="form-control validate"></asp:TextBox>
-                            <label for="nuevo_textbox_apellido_alumno">Apellido</label>
+                            <asp:TextBox runat="server" ID="modificar_textbox_apellido" CssClass="form-control validate"></asp:TextBox>
+                            <label for="modificar_textbox_apellido">Apellido</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_DNI_alumno" CssClass="form-control validate"></asp:TextBox>
-                            <label for="nuevo_textbox_DNI_alumno">DNI</label>
+                            <asp:TextBox runat="server" ID="modificar_textbox_DNI" CssClass="form-control validate"></asp:TextBox>
+                            <label for="modificar_textbox_DNI">DNI</label>
                         </div>
                         <div class="form-group" style="text-align: center;">
-                            <asp:Button runat="server" ID="nuevo_btn_alumno" Text="Guardar" OnClick="nuevo_btn_alumno_Click" CssClass="waves-effect waves-light btn" />
+                            <asp:Button runat="server" ID="modificar_btn_alumno" Text="Guardar" OnClick="btn_modificaralumno_Click" CssClass="waves-effect waves-light btn" />
                         </div>
 
                     </div>
 
                 </div>
+
+                <%-- BORRAR ALUMNO --%>
                 <div id="Borrarcurso" runat="server" class="col s12">
                     <div id="containercursos">
+                        <div class="form-group input-field select">
+                            <asp:TextBox runat="server" ID="borrar_textbox_codalu" Enabled="false"></asp:TextBox>
+                            <label for="borrar_textbox_codalu">Codigo alumno</label>
+                        </div>
+                        <div class="form-group input-field select">
+                            <asp:TextBox runat="server" ID="borrar_textbox_codcur" Enabled="false"></asp:TextBox>
+                            <label for="borrar_textbox_codcur">Codigo curso</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="borrar_textbox_dni" Enabled="false"></asp:TextBox>
+                            <label for="borrar_textbox_dni">DNI</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="borrar_textbox_apellido" Enabled="false"></asp:TextBox>
+                            <label for="borrar_textbox_apellido">Apellido</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="borrar_textbox_nombre" Enabled="false"></asp:TextBox>
+                            <label for="borrar_textbox_nombre">Nombre</label>
+                        </div>
+                        <div class="form-group input-field" style="text-align: center;">
+                            <asp:Button runat="server" ID="Button1" Text="Crear" OnClick="btn_nuevoalumno_Click" CssClass="waves-effect waves-light btn" />
+                        </div>
                     </div>
                 </div>
             </div>
