@@ -265,12 +265,21 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.WebControls.TextBox borrar_textbox_nombre;
         
         /// <summary>
-        /// Control Button1.
+        /// Control chkbox_borrar_alumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.CheckBox chkbox_borrar_alumno;
+        
+        /// <summary>
+        /// Control borrar_button.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button borrar_button;
     }
 }

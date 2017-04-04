@@ -78,6 +78,7 @@
     <Content Include="assets\css\style.css" />
     <Content Include="assets\js\materialize.js" />
     <Content Include="assets\js\materialize.min.js" />
+    <Content Include="notas.aspx" />
     <Content Include="packages.config" />
     <Content Include="assets\fonts\roboto\Roboto-Bold.eot" />
     <Content Include="assets\fonts\roboto\Roboto-Bold.ttf" />
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="CURSOS.cs" />
     <Compile Include="ModelOcupacional.cs" />
+    <Compile Include="notas.aspx.cs">
+      <DependentUpon>notas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="notas.aspx.designer.cs">
+      <DependentUpon>notas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NOTAS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

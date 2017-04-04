@@ -28,7 +28,7 @@
     </ul>
 
     <form id="form1" runat="server">
-        <div class="container" style="width: 50%">
+        <div class="container" style="width: 60%">
 
             <h1 style="text-align: center; color: white;">Alumnos</h1>
             <div style="text-align: center;">
@@ -66,14 +66,14 @@
 
                                 <asp:TemplateField HeaderText="Modificar">
                                     <ItemTemplate>
-                                        <asp:Button ID="btn_ModificarAlumno" runat="server" CausesValidation="false" CommandName="Modificar"
+                                        <asp:Button ID="btn_ModificarAlumno" CssClass="waves-effect waves-light btn" runat="server" CausesValidation="false" CommandName="Modificar"
                                             Text="Modificar" CommandArgument='<%# Eval("COD_ALU") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Borrar">
                                     <ItemTemplate>
-                                        <asp:Button ID="btn_BorrarAlumno" runat="server" CausesValidation="false" CommandName="Borrar"
+                                        <asp:Button ID="btn_BorrarAlumno" CssClass="waves-effect waves-light btn" runat="server" CausesValidation="false" CommandName="Borrar"
                                             Text="Borrar" CommandArgument='<%# Eval("COD_ALU") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -147,7 +147,8 @@
                 <%-- BORRAR ALUMNO --%>
                 <div id="Borrarcurso" runat="server" class="col s12">
                     <div id="containercursos">
-                        <div class="form-group input-field select">
+                        <br />
+                        <div class="form-group input-field">
                             <asp:TextBox runat="server" ID="borrar_textbox_codalu" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_codalu">Codigo alumno</label>
                         </div>
@@ -167,8 +168,12 @@
                             <asp:TextBox runat="server" ID="borrar_textbox_nombre" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_nombre">Nombre</label>
                         </div>
+                        <p>
+                            <asp:CheckBox runat="server" ID="chkbox_borrar_alumno" />
+                            <label for="chkbox_borrar_alumno">Confirmar para borrar el alumno</label>
+                        </p>
                         <div class="form-group input-field" style="text-align: center;">
-                            <asp:Button runat="server" ID="Button1" Text="Crear" OnClick="btn_nuevoalumno_Click" CssClass="waves-effect waves-light btn" />
+                            <asp:Button runat="server" ID="borrar_button" Text="Borrar" OnClick="borrar_button_Click" CssClass="waves-effect waves-light btn" />
                         </div>
                     </div>
                 </div>
