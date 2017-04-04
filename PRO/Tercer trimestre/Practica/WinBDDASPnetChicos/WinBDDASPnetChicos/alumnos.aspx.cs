@@ -47,14 +47,12 @@ namespace WinBDDASPnetChicos
                     var valumno = (from a in model.ALUMNOS
                                    where a.COD_ALU == e.CommandArgument.ToString()
                                    select a).First();
-
                     modificar_textbox_apellido.Text = valumno.APELLIDOS;
                     modificar_textbox_codalu.Text = valumno.COD_ALU;
                     modificar_textbox_nombre.Text = valumno.NOMBRE;
                     modificar_textbox_DNI.Text = valumno.DNI;
                     CambioPestañas(2);
                 }
-
             }
             if (e.CommandName == "Borrar")
             {
@@ -63,13 +61,8 @@ namespace WinBDDASPnetChicos
                     var valumno = (from a in model.ALUMNOS
                                    where a.COD_ALU == e.CommandArgument.ToString()
                                    select a).First();
-
                     model.ALUMNOS.Remove(valumno);
-
                 }
-
-
-
             }
         }
 
