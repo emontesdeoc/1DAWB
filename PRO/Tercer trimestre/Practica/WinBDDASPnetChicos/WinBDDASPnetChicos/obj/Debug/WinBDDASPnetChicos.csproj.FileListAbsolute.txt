@@ -73,3 +73,4 @@ C:\Git\1DAWB\PRO\Tercer trimestre\Practica\WinBDDASPnetChicos\WinBDDASPnetChicos
 C:\Git\1DAWB\PRO\Tercer trimestre\Practica\WinBDDASPnetChicos\WinBDDASPnetChicos\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Git\1DAWB\PRO\Tercer trimestre\Practica\WinBDDASPnetChicos\WinBDDASPnetChicos\obj\Debug\WinBDDASPnetChicos.dll
 C:\Git\1DAWB\PRO\Tercer trimestre\Practica\WinBDDASPnetChicos\WinBDDASPnetChicos\obj\Debug\WinBDDASPnetChicos.pdb
+C:\Git\1DAWB\PRO\Tercer trimestre\Practica\WinBDDASPnetChicos\WinBDDASPnetChicos\obj\Debug\WinBDDASPnetChicos.csprojResolveAssemblyReference.cache

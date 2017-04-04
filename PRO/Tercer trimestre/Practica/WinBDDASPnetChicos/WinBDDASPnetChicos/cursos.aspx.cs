@@ -21,6 +21,22 @@ namespace WinBDDASPnetChicos
 
         }
 
+        #region CONSEGUIR CURSOS
+
+        private CURSOS GetCursoByCODCUR(string CODCUR)
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var vcursos = (from c in model.CURSOS
+                               where c.COD_CUR == CODCUR
+                               select c).First();
+
+                return vcursos;
+            }
+        }
+
+        #endregion
+
         #region VER CURSOS
 
         protected void btn_primero_Click(object sender, EventArgs e)
@@ -78,31 +94,19 @@ namespace WinBDDASPnetChicos
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vcursos = (from c in model.CURSOS
-                               where c.COD_CUR == nuevo_Textbox_codcur.Text
-                               select c).ToList();
+                var vcursos = GetCursoByCODCUR(nuevo_Textbox_codcur.Text);
 
-                if (vcursos.Count == 1)
-                {
-                    //vcursos[0].DESCRIPCION = TextBoxDescripcion.Text;
-                    //vcursos[0].HORAS = Convert.ToInt32(TextBoxHoras.Text);
-                    //vcursos[0].TUTOR = TextBoxTutor.Text;
-                    CambioPestañas(2);
-                    notification_nuevo.Text = "Ese curso ya existe";
-                }
-                else
-                {
-                    CURSOS newcurso = new CURSOS();
-                    newcurso.COD_CUR = nuevo_Textbox_codcur.Text;
-                    newcurso.DESCRIPCION = nuevo_Textbox_descripcion.Text;
-                    newcurso.HORAS = Convert.ToInt32(nuevo_Textbox_Horas.Text);
-                    newcurso.TUTOR = nuevo_Textbox_Tutor.Text;
+                CURSOS newcurso = new CURSOS();
+                newcurso.COD_CUR = nuevo_Textbox_codcur.Text;
+                newcurso.DESCRIPCION = nuevo_Textbox_descripcion.Text;
+                newcurso.HORAS = Convert.ToInt32(nuevo_Textbox_Horas.Text);
+                newcurso.TUTOR = nuevo_Textbox_Tutor.Text;
 
-                    model.CURSOS.Add(newcurso);
-                    model.SaveChanges();
+                model.CURSOS.Add(newcurso);
+                model.SaveChanges();
 
-                    RestablecerValoresTextboxes();
-                }
+                RestablecerValoresTextboxes();
+
 
             }
 
@@ -129,9 +133,7 @@ namespace WinBDDASPnetChicos
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vcursos = (from a in model.CURSOS
-                               where a.COD_CUR == dropdown_cursos_guardar.SelectedValue.ToString()
-                               select a).First();
+                var vcursos = GetCursoByCODCUR(dropdown_cursos_guardar.SelectedValue.ToString());
 
                 guardar_Textbox_codcur.Enabled = false;
                 guardar_Textbox_codcur.Text = vcursos.COD_CUR;
@@ -142,19 +144,13 @@ namespace WinBDDASPnetChicos
             }
 
             CambioPestañas(3);
-
-
-
         }
 
         protected void guardar_btn_actualizar_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vcursos = (from a in model.CURSOS
-                               where a.COD_CUR == dropdown_cursos_guardar.SelectedValue.ToString()
-                               select a).First();
-
+                var vcursos = GetCursoByCODCUR(dropdown_cursos_guardar.SelectedValue.ToString());
 
                 vcursos.DESCRIPCION = guardar_Textbox_descripcion.Text;
                 vcursos.HORAS = Convert.ToInt32(guardar_Textbox_horas.Text);
@@ -174,25 +170,18 @@ namespace WinBDDASPnetChicos
 
         protected void dropdown_cursos_borrar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (ModelOcupacional model = new ModelOcupacional())
-            {
-                var vcursos = (from a in model.CURSOS
-                               where a.COD_CUR == dropdown_cursos_borrar.SelectedValue.ToString()
-                               select a).First();
+            var vcursos = GetCursoByCODCUR(dropdown_cursos_borrar.SelectedValue.ToString());
 
+            borrar_Textbox_codcur.Text = vcursos.COD_CUR;
+            borrar_Textbox_descripcion.Text = vcursos.DESCRIPCION;
+            borrar_Textbox_horas.Text = vcursos.HORAS.ToString();
+            borrar_Textbox_tutor.Text = vcursos.TUTOR;
 
-                borrar_Textbox_codcur.Text = vcursos.COD_CUR;
-                borrar_Textbox_descripcion.Text = vcursos.DESCRIPCION;
-                borrar_Textbox_horas.Text = vcursos.HORAS.ToString();
-                borrar_Textbox_tutor.Text = vcursos.TUTOR;
+            borrar_Textbox_codcur.Enabled = false;
+            borrar_Textbox_descripcion.Enabled = false;
+            borrar_Textbox_horas.Enabled = false;
+            borrar_Textbox_tutor.Enabled = false;
 
-                borrar_Textbox_codcur.Enabled = false;
-                borrar_Textbox_descripcion.Enabled = false;
-                borrar_Textbox_horas.Enabled = false;
-                borrar_Textbox_tutor.Enabled = false;
-
-
-            }
             CambioPestañas(4);
         }
 
@@ -200,9 +189,7 @@ namespace WinBDDASPnetChicos
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vcursos = (from a in model.CURSOS
-                               where a.COD_CUR == dropdown_cursos_guardar.SelectedValue.ToString()
-                               select a).First();
+                var vcursos = GetCursoByCODCUR(dropdown_cursos_guardar.SelectedValue.ToString());
 
                 if (chkbox_borrar_curso_asp.Checked)
                 {
@@ -336,7 +323,6 @@ namespace WinBDDASPnetChicos
         }
 
         #endregion
-
 
     }
 }

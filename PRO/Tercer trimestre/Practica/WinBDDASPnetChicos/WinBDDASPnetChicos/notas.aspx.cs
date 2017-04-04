@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WinBDDASPnetChicos
 {
-    public partial class alumnos : System.Web.UI.Page
+    public partial class notas : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,56 +17,62 @@ namespace WinBDDASPnetChicos
             }
         }
 
-        #region CONSEGUIR ALUMNOS
+        #region CONSEGUIR NOTAS
 
-        private List<ALUMNOS> GetAllAlumnos()
+        private List<ALUMNOS> GetAllNotas()
         {
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var valumno = (from a in model.ALUMNOS
-                               select a).ToList();
-                return valumno;
+                var vnotas = (from a in model.ALUMNOS
+                              join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
+                              select a).ToList();
+                return vnotas;
             }
 
         }
 
-        private List<ALUMNOS> GetAllAlumnosByCurso(string curso)
+        private List<ALUMNOS> GetNotasPorCurso(string CODCUR)
         {
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var valumnos = (from a in model.ALUMNOS
-                                where a.COD_CUR == curso
-                                select a).ToList();
-                return valumnos;
+                var vnotas = (from a in model.ALUMNOS
+                              join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
+                              where a.COD_CUR == CODCUR
+                              select a).ToList();
+
+                return vnotas;
             }
 
         }
 
-        private ALUMNOS GetAlumnoByCODALU(string CODALU)
+        private ALUMNOS GetNotasPorAlumnos(string CODALU)
         {
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var valumno = (from a in model.ALUMNOS
-                               where a.COD_ALU == CODALU
-                               select a).First();
-                return valumno;
+                var vnotas = (from a in model.ALUMNOS
+                              join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
+                              where a.COD_ALU == CODALU
+                              select a).First();
+
+                return vnotas;
             }
 
         }
+
 
         #endregion
 
-        #region VER ALUMNOS
+        #region VER NOTAS
 
         protected void dropdown_cursos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (dropdown_cursos.SelectedValue == "todos")
             {
                 gridview_alumnos.AutoGenerateColumns = false;
-                gridview_alumnos.DataSource = GetAllAlumnos();
+                gridview_alumnos.DataSource = GetAllNotas();
                 gridview_alumnos.DataBind();
             }
             if (dropdown_cursos.SelectedValue == "nada")
@@ -75,105 +81,60 @@ namespace WinBDDASPnetChicos
             else if (dropdown_cursos.SelectedValue != "todos" && dropdown_cursos.SelectedValue != "nada")
             {
                 gridview_alumnos.AutoGenerateColumns = false;
-                gridview_alumnos.DataSource = GetAllAlumnosByCurso(dropdown_cursos.SelectedValue);
+                gridview_alumnos.DataSource = GetNotasPorCurso(dropdown_cursos.SelectedValue);
                 gridview_alumnos.DataBind();
             }
             CambioPestañas(1);
         }
 
-
-
         protected void gridview_alumnos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Modificar")
             {
-
-                var valumno = GetAlumnoByCODALU(e.CommandArgument.ToString());
-
-                modificar_textbox_apellido.Text = valumno.APELLIDOS;
-                modificar_textbox_codalu.Text = valumno.COD_ALU;
-                modificar_textbox_nombre.Text = valumno.NOMBRE;
-                modificar_textbox_DNI.Text = valumno.DNI;
+                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
 
                 CambioPestañas(2);
             }
             if (e.CommandName == "Borrar")
             {
-                var valumno = GetAlumnoByCODALU(e.CommandArgument.ToString());
-
-                borrar_textbox_apellido.Text = valumno.APELLIDOS;
-                borrar_textbox_codalu.Text = valumno.COD_ALU;
-                borrar_textbox_codcur.Text = valumno.COD_CUR;
-                borrar_textbox_nombre.Text = valumno.NOMBRE;
-                borrar_textbox_dni.Text = valumno.DNI;
+                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
 
                 CambioPestañas(4);
             }
+            if (e.CommandName == "Ver")
+            {
+                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
+
+                CambioPestañas(1);
+            }
         }
 
 
         #endregion
 
-        #region MODIFICAR ALUMNO
+        #region NUEVA NOTA
 
-        protected void btn_modificaralumno_Click(object sender, EventArgs e)
+        protected void btn_nuevanota_Click(object sender, EventArgs e)
         {
-            using (ModelOcupacional model = new ModelOcupacional())
-            {
-                foreach (var c in model.ALUMNOS.ToList())
-                {
-                    if (c.COD_ALU == modificar_textbox_codalu.Text)
-                    {
-                        c.DNI = modificar_textbox_DNI.Text;
-                        c.APELLIDOS = modificar_textbox_apellido.Text;
-                        c.NOMBRE = modificar_textbox_nombre.Text;
-                    }
-                }
-                model.SaveChanges();
-                //contenedormodificar.Visible = false;
-            }
-            CambioPestañas(1);
+
         }
 
         #endregion
 
-        #region NUEVO ALUMNO
+        #region ACTUALIAR NOTA
 
-        protected void btn_nuevoalumno_Click(object sender, EventArgs e)
+        protected void btn_actualizar_Click(object sender, EventArgs e)
         {
-            if (chkbox_borrar_alumno.Checked)
-            {
-                using (ModelOcupacional model = new ModelOcupacional())
-                {
-                    ALUMNOS newalumno = new ALUMNOS()
-                    {
-                        APELLIDOS = nuevo_textbox_apellido.Text,
-                        NOMBRE = nuevo_textbox_nombre.Text,
-                        DNI = nuevo_textbox_dni.Text,
-                        COD_CUR = dropdown_nuevo_alumno.SelectedValue.ToString(),
-                        COD_ALU = nuevo_textbox_codalu.Text
-                    };
-                    model.ALUMNOS.Add(newalumno);
-                    model.SaveChanges();
-                }
-            }
-            CambioPestañas(1);
+
         }
 
         #endregion
 
-        #region BORRAR ALUMNO
+        #region BORRAR NOTA
 
-        protected void borrar_button_Click(object sender, EventArgs e)
+        protected void btn_borrar_Click(object sender, EventArgs e)
         {
-            using (ModelOcupacional model = new ModelOcupacional())
-            {
-                var valumno = GetAlumnoByCODALU(borrar_textbox_codalu.Text);
-                model.ALUMNOS.Remove(valumno);
-                model.SaveChanges();
 
-            }
-            CambioPestañas(1);
         }
 
         #endregion
@@ -194,7 +155,6 @@ namespace WinBDDASPnetChicos
                 {
                     ListItem newcurso = new ListItem(c.nombre, c.value);
                     dropdown_cursos.Items.Add(newcurso);
-                    dropdown_nuevo_alumno.Items.Add(newcurso);
                 }
                 ListItem todos = new ListItem("TODOS", "todos");
                 dropdown_cursos.Items.Add(todos);
@@ -259,6 +219,11 @@ namespace WinBDDASPnetChicos
 
 
         #endregion
+
+
+
+
+
 
     }
 }
