@@ -40,6 +40,7 @@
                 <div class="col s12">
                     <ul class="tabs">
                         <li class="tab col s3"><a href="#Vercursos" runat="server" id="li_vercursos">Ver alumnos</a></li>
+                        <li class="tab col s3"><a href="#Vernota" runat="server" id="li_vernota">Ver nota</a></li>
                         <li class="tab col s3"><a href="#Nuevocurso" runat="server" id="li_guardarcursos">Nueva nota</a></li>
                         <li class="tab col s3"><a href="#Guardarcurso" runat="server" id="li_nuevocursos">Modificar nota</a></li>
                         <li class="tab col s3"><a href="#Borrarcurso" runat="server" id="li_borrarcursos">Borrar nota</a></li>
@@ -87,6 +88,44 @@
                             </Columns>
                         </asp:GridView>
 
+                    </div>
+                </div>
+                <%-- VER NOTA --%>
+                <div id="Vernota" runat="server" class="col s12">
+                    <div id="containercursos">
+                        <div class="form-group input-field select">
+                            <asp:TextBox runat="server" ID="ver_textbox_codalu" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_codalu">Codigo alumno</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_dni" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_dni">DNI</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_apellido" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_apellido">Apellido</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nombre" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_nombre">Nombre</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nota1"></asp:TextBox>
+                            <label for="ver_textbox_nota1">Nota 1</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nota2"></asp:TextBox>
+                            <label for="ver_textbox_nota2">Nota 2</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nota3"></asp:TextBox>
+                            <label for="ver_textbox_nota3">Nota 3</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_media"></asp:TextBox>
+                            <label for="ver_textbox_media">Media</label>
+                        </div>
+                        
                     </div>
                 </div>
                 <%-- NUEVO ALUMNO --%>

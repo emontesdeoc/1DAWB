@@ -9,6 +9,21 @@ namespace WinBDDASPnetChicos
 {
     public partial class notas : System.Web.UI.Page
     {
+        struct alumnoStrcut
+        {
+            public string codalu { get; set; }
+            public string codcur { get; set; }
+            public string dni { get; set; }
+            public string apellido { get; set; }
+            public string nombre { get; set; }
+            public int nota1 { get; set; }
+            public int nota2 { get; set; }
+            public int nota3 { get; set; }
+            public int media { get; set; }
+
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -47,20 +62,33 @@ namespace WinBDDASPnetChicos
 
         }
 
-        private ALUMNOS GetNotasPorAlumnos(string CODALU)
+        private IQueryable GetNotasPorAlumnos(string CODALU)
         {
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vnotas = (from a in model.ALUMNOS
-                              join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
-                              where a.COD_ALU == CODALU
-                              select a).First();
+                IQueryable vnotas = (from a in model.ALUMNOS
+                                     join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
+                                     where a.COD_ALU == CODALU
+                                     select new
+                                     {
+                                         codalu = a.COD_ALU,
+                                         codcur = a.COD_CUR,
+                                         nombre = a.NOMBRE,
+                                         apellido = a.APELLIDOS,
+                                         dni = a.DNI,
+                                         nota1 = vn.NOTA1,
+                                         nota2 = vn.NOTA2,
+                                         nota3 = vn.NOTA3,
+                                         media = vn.MEDIA
+                                     }).AsQueryable();
+
 
                 return vnotas;
             }
 
         }
+
 
 
         #endregion
@@ -89,29 +117,91 @@ namespace WinBDDASPnetChicos
 
         protected void gridview_alumnos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Modificar")
-            {
-                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
-                modifcar_textbox_apellido.Text = valumno.APELLIDOS;
-                modifcar_textbox_nombre.Text = valumno.NOMBRE;
-                modifcar_textbox_codalu.Text = valumno.COD_ALU;
-                modifcar_textbox_dni.Text = valumno.DNI;
-                //TODO GET NOTAS POR ALUMNO
-                modifcar_textbox_nota1 = valumno
 
-                CambioPestañas(2);
-            }
-            if (e.CommandName == "Borrar")
+            switch (e.CommandName)
             {
-                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
+                case "Modificar":
 
-                CambioPestañas(4);
-            }
-            if (e.CommandName == "Ver")
-            {
-                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
 
-                CambioPestañas(1);
+                    using (ModelOcupacional model = new ModelOcupacional())
+                    {
+                        var vnotas = (from a in model.ALUMNOS
+                                      join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
+                                      where a.COD_ALU == e.CommandArgument.ToString()
+                                      select new { codalu = a.COD_ALU, codcur = a.COD_CUR, nombre = a.NOMBRE, apellido = a.APELLIDOS, dni = a.DNI, nota1 = vn.NOTA1, nota2 = vn.NOTA2, nota3 = vn.NOTA3, media = vn.MEDIA }).First();
+
+
+
+                        modifcar_textbox_apellido.Text = vnotas.apellido;
+                        modifcar_textbox_nombre.Text = vnotas.nombre;
+                        modifcar_textbox_codalu.Text = vnotas.codalu;
+                        modifcar_textbox_dni.Text = vnotas.dni;
+                        modifcar_textbox_nota1.Text = vnotas.nota1.ToString();
+                        modifcar_textbox_nota2.Text = vnotas.nota2.ToString();
+                        modifcar_textbox_nota3.Text = vnotas.nota3.ToString();
+                        modifcar_textbox_media.Text = vnotas.media.ToString();
+                    }
+
+
+
+                    CambioPestañas(2);
+                    break;
+
+                case "Borrar":
+
+
+
+
+                    using (ModelOcupacional model = new ModelOcupacional())
+                    {
+                        var vnotas = (from a in model.ALUMNOS
+                                      join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
+                                      where a.COD_ALU == e.CommandArgument.ToString()
+                                      select new { codalu = a.COD_ALU, codcur = a.COD_CUR, nombre = a.NOMBRE, apellido = a.APELLIDOS, dni = a.DNI, nota1 = vn.NOTA1, nota2 = vn.NOTA2, nota3 = vn.NOTA3, media = vn.MEDIA }).First();
+
+                        borrar_textbox_apellido.Text = vnotas.apellido;
+                        borrar_textbox_nombre.Text = vnotas.nombre;
+                        borrar_textbox_codalu.Text = vnotas.codalu;
+                        borrar_textbox_dni.Text = vnotas.dni;
+                        borrar_textbox_nota1.Text = vnotas.nota1.ToString();
+                        borrar_textbox_nota2.Text = vnotas.nota2.ToString();
+                        borrar_textbox_nota3.Text = vnotas.nota3.ToString();
+                        borrar_textbox_media.Text = vnotas.media.ToString();
+                    }
+
+
+                    CambioPestañas(4);
+                    break;
+
+                case "Ver":
+
+                    var vnotastest = GetNotasPorAlumnos("");
+                    IQueryable test = GetNotasPorAlumnos("");
+
+
+
+                    using (ModelOcupacional model = new ModelOcupacional())
+                    {
+                        var vnotas = (from a in model.ALUMNOS
+                                      join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
+                                      where a.COD_ALU == e.CommandArgument.ToString()
+                                      select new { codalu = a.COD_ALU, codcur = a.COD_CUR, nombre = a.NOMBRE, apellido = a.APELLIDOS, dni = a.DNI, nota1 = vn.NOTA1, nota2 = vn.NOTA2, nota3 = vn.NOTA3, media = vn.MEDIA }).First();
+
+                        ver_textbox_apellido.Text = vnotas.apellido;
+                        ver_textbox_nombre.Text = vnotas.nombre;
+                        ver_textbox_codalu.Text = vnotas.codalu;
+                        ver_textbox_dni.Text = vnotas.dni;
+                        ver_textbox_nota1.Text = vnotas.nota1.ToString();
+                        ver_textbox_nota2.Text = vnotas.nota2.ToString();
+                        ver_textbox_nota3.Text = vnotas.nota3.ToString();
+                        ver_textbox_media.Text = vnotas.media.ToString();
+                    }
+
+                    CambioPestañas(5);
+                    break;
+                default:
+
+                    break;
             }
         }
 
@@ -176,11 +266,13 @@ namespace WinBDDASPnetChicos
                     li_nuevocursos.Attributes.Remove("class");
                     li_guardarcursos.Attributes.Remove("class");
                     li_borrarcursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Vercursos.Attributes.Add("style", "display:inline");
                     Nuevocurso.Attributes.Remove("style");
                     Guardarcurso.Attributes.Remove("style");
                     Borrarcurso.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
 
                     break;
                 case 2:
@@ -188,33 +280,52 @@ namespace WinBDDASPnetChicos
                     li_vercursos.Attributes.Remove("class");
                     li_guardarcursos.Attributes.Remove("class");
                     li_borrarcursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Nuevocurso.Attributes.Add("style", "display:inline");
                     Vercursos.Attributes.Remove("style");
                     Guardarcurso.Attributes.Remove("style");
                     Borrarcurso.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
                     break;
                 case 3:
                     li_guardarcursos.Attributes.Add("class", "active");
                     li_nuevocursos.Attributes.Remove("class");
                     li_vercursos.Attributes.Remove("class");
                     li_borrarcursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Guardarcurso.Attributes.Add("style", "display:inline");
                     Vercursos.Attributes.Remove("style");
                     Nuevocurso.Attributes.Remove("style");
                     Borrarcurso.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
                     break;
                 case 4:
                     li_borrarcursos.Attributes.Add("class", "active");
                     li_nuevocursos.Attributes.Remove("class");
                     li_guardarcursos.Attributes.Remove("class");
                     li_vercursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Borrarcurso.Attributes.Add("style", "display:inline");
                     Nuevocurso.Attributes.Remove("style");
                     Guardarcurso.Attributes.Remove("style");
                     Vercursos.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
+                    break;
+                case 5:
+                    li_vernota.Attributes.Add("class", "active");
+                    li_nuevocursos.Attributes.Remove("class");
+                    li_guardarcursos.Attributes.Remove("class");
+                    li_vercursos.Attributes.Remove("class");
+                    li_borrarcursos.Attributes.Remove("class");
+
+                    Vernota.Attributes.Add("style", "display:inline");
+                    Nuevocurso.Attributes.Remove("style");
+                    Guardarcurso.Attributes.Remove("style");
+                    Vercursos.Attributes.Remove("style");
+                    Borrarcurso.Attributes.Remove("style");
                     break;
                 default:
                     break;
