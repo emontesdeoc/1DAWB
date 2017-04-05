@@ -137,8 +137,8 @@
                             <label for="modifcar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_codcur" Enabled="false"></asp:TextBox>
-                            <label for="modifcar_textbox_codcur">DNI</label>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_dni" Enabled="false"></asp:TextBox>
+                            <label for="modifcar_textbox_dni">DNI</label>
                         </div>
                         <div class="form-group input-field ">
                             <asp:TextBox runat="server" ID="modifcar_textbox_apellido" Enabled="false"></asp:TextBox>
@@ -179,8 +179,8 @@
                             <label for="borrar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_codcur" Enabled="false"></asp:TextBox>
-                            <label for="borrar_textbox_codcur">DNI</label>
+                            <asp:TextBox runat="server" ID="borrar_textbox_dni" Enabled="false"></asp:TextBox>
+                            <label for="borrar_textbox_dni">DNI</label>
                         </div>
                         <div class="form-group input-field ">
                             <asp:TextBox runat="server" ID="borrar_textbox_apellido" Enabled="false"></asp:TextBox>

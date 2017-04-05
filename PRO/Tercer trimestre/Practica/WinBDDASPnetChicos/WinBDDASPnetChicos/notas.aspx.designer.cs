@@ -193,13 +193,13 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.WebControls.TextBox modifcar_textbox_codalu;
         
         /// <summary>
-        /// Control modifcar_textbox_codcur.
+        /// Control modifcar_textbox_dni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modifcar_textbox_codcur;
+        protected global::System.Web.UI.WebControls.TextBox modifcar_textbox_dni;
         
         /// <summary>
         /// Control modifcar_textbox_apellido.
@@ -283,13 +283,13 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.WebControls.TextBox borrar_textbox_codalu;
         
         /// <summary>
-        /// Control borrar_textbox_codcur.
+        /// Control borrar_textbox_dni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox borrar_textbox_codcur;
+        protected global::System.Web.UI.WebControls.TextBox borrar_textbox_dni;
         
         /// <summary>
         /// Control borrar_textbox_apellido.

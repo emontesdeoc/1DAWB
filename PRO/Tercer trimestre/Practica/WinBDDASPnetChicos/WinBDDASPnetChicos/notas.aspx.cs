@@ -92,6 +92,12 @@ namespace WinBDDASPnetChicos
             if (e.CommandName == "Modificar")
             {
                 var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
+                modifcar_textbox_apellido.Text = valumno.APELLIDOS;
+                modifcar_textbox_nombre.Text = valumno.NOMBRE;
+                modifcar_textbox_codalu.Text = valumno.COD_ALU;
+                modifcar_textbox_dni.Text = valumno.DNI;
+                //TODO GET NOTAS POR ALUMNO
+                modifcar_textbox_nota1 = valumno
 
                 CambioPestañas(2);
             }
