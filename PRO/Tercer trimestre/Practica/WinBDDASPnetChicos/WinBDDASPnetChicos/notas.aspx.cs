@@ -62,6 +62,33 @@ namespace WinBDDASPnetChicos
 
         }
 
+        private dynamic GetNotasPorCODALU(string codalu)
+        {
+            using (ModelOcupacional contexto = new ModelOcupacional())
+            {
+
+                var nota = (from n in contexto.NOTAS
+                            join a in contexto.ALUMNOS
+                            on n.COD_ALU equals a.COD_ALU
+                            where n.COD_ALU == codalu
+                            orderby a.APELLIDOS, a.NOMBRE
+                            select new
+                            {
+                                APELLIDOS = a.APELLIDOS,
+                                NOMBRE = a.NOMBRE,
+                                DNI = a.DNI,
+                                CODALU = a.COD_ALU,
+                                CODCUR = a.COD_CUR,
+                                NOTA1 = n.NOTA1,
+                                NOTA2 = n.NOTA2,
+                                NOTA3 = n.NOTA3,
+                                MEDIA = n.MEDIA
+                            });
+
+                return (nota.First());
+            }
+        }
+
 
         #endregion
 
@@ -91,24 +118,76 @@ namespace WinBDDASPnetChicos
         {
             if (e.CommandName == "Modificar")
             {
-                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
+                List<string> alulist = GetInformacionAlumno(e.CommandArgument.ToString());
+
+                modifcar_textbox_apellido.Text = alulist[0];
+                modifcar_textbox_nombre.Text = alulist[1];
+                modifcar_textbox_codalu.Text = alulist[3];
+                modifcar_textbox_codcur.Text = alulist[4];
+                modifcar_textbox_nota1.Text = alulist[5];
+                modifcar_textbox_nota2.Text = alulist[6];
+                modifcar_textbox_nota3.Text = alulist[7];
+                modifcar_textbox_media.Text = alulist[8];
 
                 CambioPestañas(2);
             }
             if (e.CommandName == "Borrar")
             {
-                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
+                List<string> alulist = GetInformacionAlumno(e.CommandArgument.ToString());
+
+                modifcar_textbox_apellido.Text = alulist[0];
+                modifcar_textbox_nombre.Text = alulist[1];
+                modifcar_textbox_codalu.Text = alulist[3];
+                modifcar_textbox_codcur.Text = alulist[4];
+                modifcar_textbox_nota1.Text = alulist[5];
+                modifcar_textbox_nota2.Text = alulist[6];
+                modifcar_textbox_nota3.Text = alulist[7];
+                modifcar_textbox_media.Text = alulist[8];
 
                 CambioPestañas(4);
             }
             if (e.CommandName == "Ver")
             {
-                var valumno = GetNotasPorAlumnos(e.CommandArgument.ToString());
+                List<string> alulist = GetInformacionAlumno(e.CommandArgument.ToString());
+
+                .Text = alulist[0];
+                modifcar_textbox_nombre.Text = alulist[1];
+                modifcar_textbox_codalu.Text = alulist[3];
+                modifcar_textbox_codcur.Text = alulist[4];
+                modifcar_textbox_nota1.Text = alulist[5];
+                modifcar_textbox_nota2.Text = alulist[6];
+                modifcar_textbox_nota3.Text = alulist[7];
+                modifcar_textbox_media.Text = alulist[8];
 
                 CambioPestañas(1);
             }
         }
 
+        private List<string> GetInformacionAlumno(string codalu)
+        {
+            dynamic valumno = GetNotasPorCODALU(codalu);
+
+            string a = valumno.ToString();
+            List<string> alulist = new List<string>();
+            //Separa por elemtnos(apellido,nombre,etc)
+            string[] b = a.Split(',');
+
+            for (int i = 0; i < b.Length; i++)
+            {
+                //Separa cada elemento en 2 ( [0] = APELLIDO, [1] = CARLOS )
+                string[] c = b[i].Split('=');
+                //Borra el primer espacio
+                c[1] = c[1].Remove(0, 1);
+                //El ultimo tiene " }",hay que eliminarlo.
+                if (i == b.Length - 1)
+                {
+                    c[1] = c[1].Remove(c[1].Length - 2, 2);
+                }
+                //Lo añade a la lista
+                alulist.Add(c[1]);
+            }
+            return alulist;
+        }
 
         #endregion
 
