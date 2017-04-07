@@ -22,6 +22,7 @@
         <li>
             <div class="divider"></div>
         </li>
+        <li><a class="waves-effect" href="default.aspx">Inicio</a></li>
         <li><a class="waves-effect" href="cursos.aspx">Cursos</a></li>
         <li><a class="waves-effect" href="alumnos.aspx">Alumnos</a></li>
         <li><a class="waves-effect" href="notas.aspx">Notas</a></li>

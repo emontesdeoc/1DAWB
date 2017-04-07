@@ -30,9 +30,12 @@ namespace WinBDDASPnetChicos
                 var vcursos = (from c in model.CURSOS
                                where c.COD_CUR == CODCUR
                                select c).First();
-
                 return vcursos;
+
             }
+
+
+
         }
 
         #endregion
@@ -155,18 +158,20 @@ namespace WinBDDASPnetChicos
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vcursos = GetCursoByCODCUR(dropdown_cursos_guardar.SelectedValue.ToString());
-
-                vcursos.DESCRIPCION = guardar_Textbox_descripcion.Text;
-                vcursos.HORAS = Convert.ToInt32(guardar_Textbox_horas.Text);
-                vcursos.TUTOR = guardar_Textbox_tutor.Text;
+                foreach (CURSOS c in model.CURSOS)
+                {
+                    if (c.COD_CUR == guardar_Textbox_codcur.Text)
+                    {
+                        c.DESCRIPCION = guardar_Textbox_descripcion.Text;
+                        c.HORAS = Convert.ToInt32(guardar_Textbox_horas.Text);
+                        c.TUTOR = guardar_Textbox_tutor.Text;
+                    }
+                }
 
                 model.SaveChanges();
             }
-            CambioPestañas(3);
-
             CargaDropDownConCursos();
-
+            CambioPestañas(3);
         }
 
         #endregion
@@ -176,6 +181,7 @@ namespace WinBDDASPnetChicos
         protected void dropdown_cursos_borrar_SelectedIndexChanged(object sender, EventArgs e)
         {
             var vcursos = GetCursoByCODCUR(dropdown_cursos_borrar.SelectedValue.ToString());
+
 
             borrar_Textbox_codcur.Text = vcursos.COD_CUR;
             borrar_Textbox_descripcion.Text = vcursos.DESCRIPCION;
@@ -194,19 +200,27 @@ namespace WinBDDASPnetChicos
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                //var vcursos = GetCursoByCODCUR(dropdown_cursos_guardar.SelectedValue.ToString());
                 if (chkbox_borrar_curso_asp.Checked)
                 {
                     foreach (CURSOS c in model.CURSOS)
                     {
 
-                        if (c.COD_CUR == dropdown_cursos_guardar.SelectedValue.ToString())
+                        if (c.COD_CUR == dropdown_cursos_borrar.SelectedValue.ToString())
                         {
                             model.CURSOS.Remove(c);
-                            model.SaveChanges();
                             break;
                         }
                     }
+                    try
+                    {
+                        model.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+
+                        notification_label_borrar.Text = "El curso tiene alumnos!";
+                    }
+
                 }
                 else
                 {

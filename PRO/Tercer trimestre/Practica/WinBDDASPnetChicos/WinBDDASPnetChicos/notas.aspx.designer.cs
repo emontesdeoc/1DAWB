@@ -382,6 +382,15 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Borrarcurso;
         
         /// <summary>
+        /// Control notification_alumno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label notification_alumno;
+        
+        /// <summary>
         /// Control borrar_textbox_codalu.
         /// </summary>
         /// <remarks>

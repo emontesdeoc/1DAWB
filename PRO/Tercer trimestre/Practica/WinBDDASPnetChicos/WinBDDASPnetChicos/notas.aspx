@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="notas.aspx.cs" Inherits="WinBDDASPnetChicos.notas" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,6 +21,7 @@
         <li>
             <div class="divider"></div>
         </li>
+        <li><a class="waves-effect" href="default.aspx">Inicio</a></li>
         <li><a class="waves-effect" href="cursos.aspx">Cursos</a></li>
         <li><a class="waves-effect" href="alumnos.aspx">Alumnos</a></li>
         <li><a class="waves-effect" href="notas.aspx">Notas</a></li>
@@ -128,7 +128,7 @@
 
                     </div>
                 </div>
-                <%-- NUEVO ALUMNO --%>
+                <%-- NUEVA NOTA --%>
                 <div id="Nuevocurso" runat="server" class="col s12">
                     <div id="containercursos">
                         <div class="form-group input-field select">
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                 </div>
-                <%-- MODIFICAR ALUMNO --%>
+                <%-- MODIFICAR NOTA --%>
                 <div id="Guardarcurso" runat="server" class="col s12">
                     <div id="containercursos">
                         <div class="form-group input-field">
@@ -223,10 +223,13 @@
                     </div>
 
                 </div>
-                <%-- BORRAR ALUMNO --%>
+                <%-- BORRAR NOTA --%>
                 <div id="Borrarcurso" runat="server" class="col s12">
                     <div id="containercursos">
                         <div class="form-group input-field ">
+                            <div class="form-group input-field">
+                                <asp:Label runat="server" ID="notification_alumno"></asp:Label>
+                            </div>
                             <asp:TextBox runat="server" ID="borrar_textbox_codalu" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_codalu">Codigo alumno</label>
                         </div>
@@ -263,6 +266,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
     </form>
 

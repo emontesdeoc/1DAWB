@@ -141,22 +141,21 @@ namespace WinBDDASPnetChicos
 
         protected void btn_nuevoalumno_Click(object sender, EventArgs e)
         {
-            if (chkbox_borrar_alumno.Checked)
+
+            using (ModelOcupacional model = new ModelOcupacional())
             {
-                using (ModelOcupacional model = new ModelOcupacional())
+                ALUMNOS newalumno = new ALUMNOS()
                 {
-                    ALUMNOS newalumno = new ALUMNOS()
-                    {
-                        APELLIDOS = nuevo_textbox_apellido.Text,
-                        NOMBRE = nuevo_textbox_nombre.Text,
-                        DNI = nuevo_textbox_dni.Text,
-                        COD_CUR = dropdown_nuevo_alumno.SelectedValue.ToString(),
-                        COD_ALU = nuevo_textbox_codalu.Text
-                    };
-                    model.ALUMNOS.Add(newalumno);
-                    model.SaveChanges();
-                }
+                    APELLIDOS = nuevo_textbox_apellido.Text,
+                    NOMBRE = nuevo_textbox_nombre.Text,
+                    DNI = nuevo_textbox_dni.Text,
+                    COD_CUR = dropdown_nuevo_alumno.SelectedValue.ToString(),
+                    COD_ALU = nuevo_textbox_codalu.Text
+                };
+                model.ALUMNOS.Add(newalumno);
+                model.SaveChanges();
             }
+
             CambioPestañas(1);
         }
 
@@ -168,12 +167,26 @@ namespace WinBDDASPnetChicos
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var valumno = GetAlumnoByCODALU(borrar_textbox_codalu.Text);
-                model.ALUMNOS.Remove(valumno);
-                model.SaveChanges();
+                foreach (ALUMNOS a in model.ALUMNOS)
+                {
+                    if (a.COD_ALU == borrar_textbox_codalu.Text)
+                    {
+                        model.ALUMNOS.Remove(a);
+                        break;
+                    }
+                }
+                try
+                {
+                    model.SaveChanges();
+                    CambioPestañas(1);
+                }
+                catch (Exception)
+                {
 
+                    notification_nuevo.Text = "El usuario tiene notas.";
+                    CambioPestañas(4);
+                }
             }
-            CambioPestañas(1);
         }
 
         #endregion

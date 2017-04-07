@@ -22,6 +22,7 @@
         <li>
             <div class="divider"></div>
         </li>
+        <li><a class="waves-effect" href="default.aspx">Inicio</a></li>
         <li><a class="waves-effect" href="cursos.aspx">Cursos</a></li>
         <li><a class="waves-effect" href="alumnos.aspx">Alumnos</a></li>
         <li><a class="waves-effect" href="notas.aspx">Notas</a></li>
@@ -121,7 +122,7 @@
                     <div id="containercursos">
 
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="modificar_textbox_codalu" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modificar_textbox_codalu" CssClass="form-control validate" Enabled="false"></asp:TextBox>
                             <label for="modificar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field">
@@ -147,6 +148,9 @@
                 <%-- BORRAR ALUMNO --%>
                 <div id="Borrarcurso" runat="server" class="col s12">
                     <div id="containercursos">
+                        <div class="form-group input-field">
+                            <asp:Label runat="server" ID="notification_nuevo"></asp:Label>
+                        </div>
                         <br />
                         <div class="form-group input-field">
                             <asp:TextBox runat="server" ID="borrar_textbox_codalu" Enabled="false"></asp:TextBox>

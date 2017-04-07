@@ -66,8 +66,8 @@ namespace WinBDDASPnetChicos
             using (ModelOcupacional model = new ModelOcupacional())
             {
                 var valumnos = (from a in model.ALUMNOS
-                              where a.COD_ALU == CODALU
-                              select a).First();
+                                where a.COD_ALU == CODALU
+                                select a).First();
 
                 return valumnos.COD_CUR;
             }
@@ -483,7 +483,6 @@ namespace WinBDDASPnetChicos
 
 
         #endregion
-
 
     }
 }
