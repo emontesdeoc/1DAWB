@@ -47,21 +47,6 @@ namespace WinBDDASPnetChicos
 
         }
 
-        private ALUMNOS GetNotasPorAlumnos(string CODALU)
-        {
-
-            using (ModelOcupacional model = new ModelOcupacional())
-            {
-                var vnotas = (from a in model.ALUMNOS
-                              join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
-                              where a.COD_ALU == CODALU
-                              select a).First();
-
-                return vnotas;
-            }
-
-        }
-
         private dynamic GetNotasPorCODALU(string codalu)
         {
             using (ModelOcupacional contexto = new ModelOcupacional())
@@ -88,6 +73,7 @@ namespace WinBDDASPnetChicos
                 return (nota.First());
             }
         }
+
 
 
         #endregion
@@ -123,7 +109,7 @@ namespace WinBDDASPnetChicos
                 modifcar_textbox_apellido.Text = alulist[0];
                 modifcar_textbox_nombre.Text = alulist[1];
                 modifcar_textbox_codalu.Text = alulist[3];
-                modifcar_textbox_codcur.Text = alulist[4];
+                modifcar_textbox_dni.Text = alulist[2];
                 modifcar_textbox_nota1.Text = alulist[5];
                 modifcar_textbox_nota2.Text = alulist[6];
                 modifcar_textbox_nota3.Text = alulist[7];
@@ -135,14 +121,14 @@ namespace WinBDDASPnetChicos
             {
                 List<string> alulist = GetInformacionAlumno(e.CommandArgument.ToString());
 
-                modifcar_textbox_apellido.Text = alulist[0];
-                modifcar_textbox_nombre.Text = alulist[1];
-                modifcar_textbox_codalu.Text = alulist[3];
-                modifcar_textbox_codcur.Text = alulist[4];
-                modifcar_textbox_nota1.Text = alulist[5];
-                modifcar_textbox_nota2.Text = alulist[6];
-                modifcar_textbox_nota3.Text = alulist[7];
-                modifcar_textbox_media.Text = alulist[8];
+                borrar_textbox_apellido.Text = alulist[0];
+                borrar_textbox_nombre.Text = alulist[1];
+                borrar_textbox_codalu.Text = alulist[3];
+                borrar_textbox_dni.Text = alulist[2];
+                borrar_textbox_nota1.Text = alulist[5];
+                borrar_textbox_nota2.Text = alulist[6];
+                borrar_textbox_nota3.Text = alulist[7];
+                borrar_textbox_media.Text = alulist[8];
 
                 CambioPestañas(4);
             }
@@ -150,16 +136,16 @@ namespace WinBDDASPnetChicos
             {
                 List<string> alulist = GetInformacionAlumno(e.CommandArgument.ToString());
 
-                .Text = alulist[0];
-                modifcar_textbox_nombre.Text = alulist[1];
-                modifcar_textbox_codalu.Text = alulist[3];
-                modifcar_textbox_codcur.Text = alulist[4];
-                modifcar_textbox_nota1.Text = alulist[5];
-                modifcar_textbox_nota2.Text = alulist[6];
-                modifcar_textbox_nota3.Text = alulist[7];
-                modifcar_textbox_media.Text = alulist[8];
+                ver_textbox_apellido.Text = alulist[0];
+                ver_textbox_nombre.Text = alulist[1];
+                ver_textbox_codalu.Text = alulist[3];
+                ver_textbox_dni.Text = alulist[2];
+                ver_textbox_nota1.Text = alulist[5];
+                ver_textbox_nota2.Text = alulist[6];
+                ver_textbox_nota3.Text = alulist[7];
+                ver_textbox_media.Text = alulist[8];
 
-                CambioPestañas(1);
+                CambioPestañas(5);
             }
         }
 
@@ -230,13 +216,16 @@ namespace WinBDDASPnetChicos
 
                 ListItem nada = new ListItem("Seleccione un curso", "nada");
                 dropdown_cursos.Items.Add(nada);
+                dropdown_nueva_nota_selecciona_curso.Items.Add(nada);
                 foreach (var c in vcursos)
                 {
                     ListItem newcurso = new ListItem(c.nombre, c.value);
                     dropdown_cursos.Items.Add(newcurso);
+                    dropdown_nueva_nota_selecciona_curso.Items.Add(newcurso);
                 }
                 ListItem todos = new ListItem("TODOS", "todos");
                 dropdown_cursos.Items.Add(todos);
+                dropdown_nueva_nota_selecciona_curso.Items.Add(todos);
             }
         }
 
@@ -249,11 +238,13 @@ namespace WinBDDASPnetChicos
                     li_nuevocursos.Attributes.Remove("class");
                     li_guardarcursos.Attributes.Remove("class");
                     li_borrarcursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Vercursos.Attributes.Add("style", "display:inline");
                     Nuevocurso.Attributes.Remove("style");
                     Guardarcurso.Attributes.Remove("style");
                     Borrarcurso.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
 
                     break;
                 case 2:
@@ -261,33 +252,52 @@ namespace WinBDDASPnetChicos
                     li_vercursos.Attributes.Remove("class");
                     li_guardarcursos.Attributes.Remove("class");
                     li_borrarcursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Nuevocurso.Attributes.Add("style", "display:inline");
                     Vercursos.Attributes.Remove("style");
                     Guardarcurso.Attributes.Remove("style");
                     Borrarcurso.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
                     break;
                 case 3:
                     li_guardarcursos.Attributes.Add("class", "active");
                     li_nuevocursos.Attributes.Remove("class");
                     li_vercursos.Attributes.Remove("class");
                     li_borrarcursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Guardarcurso.Attributes.Add("style", "display:inline");
                     Vercursos.Attributes.Remove("style");
                     Nuevocurso.Attributes.Remove("style");
                     Borrarcurso.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
                     break;
                 case 4:
                     li_borrarcursos.Attributes.Add("class", "active");
                     li_nuevocursos.Attributes.Remove("class");
                     li_guardarcursos.Attributes.Remove("class");
                     li_vercursos.Attributes.Remove("class");
+                    li_vernota.Attributes.Remove("class");
 
                     Borrarcurso.Attributes.Add("style", "display:inline");
                     Nuevocurso.Attributes.Remove("style");
                     Guardarcurso.Attributes.Remove("style");
                     Vercursos.Attributes.Remove("style");
+                    Vernota.Attributes.Remove("style");
+                    break;
+                case 5:
+                    li_vernota.Attributes.Add("class", "active");
+                    li_nuevocursos.Attributes.Remove("class");
+                    li_guardarcursos.Attributes.Remove("class");
+                    li_vercursos.Attributes.Remove("class");
+                    li_borrarcursos.Attributes.Remove("class");
+
+                    Vernota.Attributes.Add("style", "display:inline");
+                    Nuevocurso.Attributes.Remove("style");
+                    Guardarcurso.Attributes.Remove("style");
+                    Vercursos.Attributes.Remove("style");
+                    Borrarcurso.Attributes.Remove("style");
                     break;
                 default:
                     break;
@@ -298,11 +308,6 @@ namespace WinBDDASPnetChicos
 
 
         #endregion
-
-
-
-
-
 
     }
 }

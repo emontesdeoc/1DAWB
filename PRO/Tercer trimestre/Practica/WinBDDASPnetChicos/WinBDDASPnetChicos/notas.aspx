@@ -39,10 +39,11 @@
             <div class="row">
                 <div class="col s12">
                     <ul class="tabs">
-                        <li class="tab col s3"><a href="#Vercursos" runat="server" id="li_vercursos">Ver alumnos</a></li>
-                        <li class="tab col s3"><a href="#Nuevocurso" runat="server" id="li_guardarcursos">Nueva nota</a></li>
-                        <li class="tab col s3"><a href="#Guardarcurso" runat="server" id="li_nuevocursos">Modificar nota</a></li>
-                        <li class="tab col s3"><a href="#Borrarcurso" runat="server" id="li_borrarcursos">Borrar nota</a></li>
+                        <li class="tab col s4"><a href="#Vercursos" runat="server" id="li_vercursos">Ver alumnos</a></li>
+                        <li class="tab col s2"><a href="#Vernota" runat="server" id="li_vernota">Ver nota</a></li>
+                        <li class="tab col s2"><a href="#Nuevocurso" runat="server" id="li_guardarcursos">Nueva nota</a></li>
+                        <li class="tab col s2"><a href="#Guardarcurso" runat="server" id="li_nuevocursos">Modificar nota</a></li>
+                        <li class="tab col s2"><a href="#Borrarcurso" runat="server" id="li_borrarcursos">Borrar nota</a></li>
                     </ul>
                 </div>
                 <%-- VER ALUMNOS --%>
@@ -89,9 +90,61 @@
 
                     </div>
                 </div>
+                <%-- VER NOTA --%>
+                <div id="Vernota" runat="server" class="col s12">
+                    <div id="containercursos">
+                        <div class="form-group input-field select">
+                            <asp:TextBox runat="server" ID="ver_textbox_codalu" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_codalu">Codigo alumno</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_dni" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_dni">DNI</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_apellido" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_apellido">Apellido</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nombre" Enabled="false"></asp:TextBox>
+                            <label for="ver_textbox_nombre">Nombre</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nota1"></asp:TextBox>
+                            <label for="ver_textbox_nota1">Nota 1</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nota2"></asp:TextBox>
+                            <label for="ver_textbox_nota2">Nota 2</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_nota3"></asp:TextBox>
+                            <label for="ver_textbox_nota3">Nota 3</label>
+                        </div>
+                        <div class="form-group input-field ">
+                            <asp:TextBox runat="server" ID="ver_textbox_media"></asp:TextBox>
+                            <label for="ver_textbox_media">Media</label>
+                        </div>
+
+                    </div>
+                </div>
                 <%-- NUEVO ALUMNO --%>
                 <div id="Nuevocurso" runat="server" class="col s12">
                     <div id="containercursos">
+                        <div class="form-group input-field select">
+                            <label>Seleccione el curso</label>
+                            <br />
+                            <br />
+                            <asp:DropDownList runat="server" ID="dropdown_nueva_nota_selecciona_curso" CssClass="select"></asp:DropDownList>
+                            <br />
+                        </div>
+                        <div class="form-group input-field select">
+                            <label>Seleccione el alumno</label>
+                            <br />
+                            <br />
+                            <asp:DropDownList runat="server" ID="dropdown_nueva_nota_selecciona_alumno" Enabled="false" CssClass="select"></asp:DropDownList>
+                            <br />
+                        </div>
                         <div class="form-group input-field select">
                             <asp:TextBox runat="server" ID="nuevo_textbox_codalu" Enabled="false"></asp:TextBox>
                             <label for="nuevo_textbox_codalu">Codigo alumno</label>
@@ -137,8 +190,8 @@
                             <label for="modifcar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_codcur" Enabled="false"></asp:TextBox>
-                            <label for="modifcar_textbox_codcur">DNI</label>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_dni" Enabled="false"></asp:TextBox>
+                            <label for="modifcar_textbox_dni">DNI</label>
                         </div>
                         <div class="form-group input-field ">
                             <asp:TextBox runat="server" ID="modifcar_textbox_apellido" Enabled="false"></asp:TextBox>
@@ -179,8 +232,8 @@
                             <label for="borrar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_codcur" Enabled="false"></asp:TextBox>
-                            <label for="borrar_textbox_codcur">DNI</label>
+                            <asp:TextBox runat="server" ID="borrar_textbox_dni" Enabled="false"></asp:TextBox>
+                            <label for="borrar_textbox_dni">DNI</label>
                         </div>
                         <div class="form-group input-field ">
                             <asp:TextBox runat="server" ID="borrar_textbox_apellido" Enabled="false"></asp:TextBox>
@@ -191,19 +244,19 @@
                             <label for="borrar_textbox_nombre">Nombre</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_nota1"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_nota1" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_nota1">Nota 1</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_nota2"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_nota2" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_nota2">Nota 2</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_nota3"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_nota3" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_nota3">Nota 3</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_media"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_media" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_media">Media</label>
                         </div>
                         <div class="form-group input-field" style="text-align: center;">

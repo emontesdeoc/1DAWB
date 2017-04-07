@@ -31,6 +31,15 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor li_vercursos;
         
         /// <summary>
+        /// Control li_vernota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor li_vernota;
+        
+        /// <summary>
         /// Control li_guardarcursos.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,87 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.WebControls.GridView gridview_alumnos;
         
         /// <summary>
+        /// Control Vernota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Vernota;
+        
+        /// <summary>
+        /// Control ver_textbox_codalu.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_codalu;
+        
+        /// <summary>
+        /// Control ver_textbox_dni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_dni;
+        
+        /// <summary>
+        /// Control ver_textbox_apellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_apellido;
+        
+        /// <summary>
+        /// Control ver_textbox_nombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_nombre;
+        
+        /// <summary>
+        /// Control ver_textbox_nota1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_nota1;
+        
+        /// <summary>
+        /// Control ver_textbox_nota2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_nota2;
+        
+        /// <summary>
+        /// Control ver_textbox_nota3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_nota3;
+        
+        /// <summary>
+        /// Control ver_textbox_media.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ver_textbox_media;
+        
+        /// <summary>
         /// Control Nuevocurso.
         /// </summary>
         /// <remarks>
@@ -92,6 +182,24 @@ namespace WinBDDASPnetChicos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Nuevocurso;
+        
+        /// <summary>
+        /// Control dropdown_nueva_nota_selecciona_curso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdown_nueva_nota_selecciona_curso;
+        
+        /// <summary>
+        /// Control dropdown_nueva_nota_selecciona_alumno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdown_nueva_nota_selecciona_alumno;
         
         /// <summary>
         /// Control nuevo_textbox_codalu.
@@ -193,13 +301,13 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.WebControls.TextBox modifcar_textbox_codalu;
         
         /// <summary>
-        /// Control modifcar_textbox_codcur.
+        /// Control modifcar_textbox_dni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modifcar_textbox_codcur;
+        protected global::System.Web.UI.WebControls.TextBox modifcar_textbox_dni;
         
         /// <summary>
         /// Control modifcar_textbox_apellido.
@@ -283,13 +391,13 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.WebControls.TextBox borrar_textbox_codalu;
         
         /// <summary>
-        /// Control borrar_textbox_codcur.
+        /// Control borrar_textbox_dni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox borrar_textbox_codcur;
+        protected global::System.Web.UI.WebControls.TextBox borrar_textbox_dni;
         
         /// <summary>
         /// Control borrar_textbox_apellido.
