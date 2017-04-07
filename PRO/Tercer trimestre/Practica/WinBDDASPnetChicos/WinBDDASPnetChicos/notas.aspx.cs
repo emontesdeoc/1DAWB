@@ -65,11 +65,11 @@ namespace WinBDDASPnetChicos
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vnotas = (from a in model.NOTAS
+                var valumnos = (from a in model.ALUMNOS
                               where a.COD_ALU == CODALU
                               select a).First();
 
-                return vnotas.COD_CUR;
+                return valumnos.COD_CUR;
             }
 
         }
@@ -80,14 +80,23 @@ namespace WinBDDASPnetChicos
             bool res = false;
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vnotas = (from a in model.NOTAS
-                              where a.COD_ALU == CODALU
-                              select a).First();
-
-                if (vnotas.NOTA1 >= 0 || vnotas.NOTA2 >= 0 || vnotas.NOTA3 >= 0 || vnotas.MEDIA >= 0)
+                try
                 {
-                    res = true;
+                    var vnotas = (from a in model.NOTAS
+                                  where a.COD_ALU == CODALU
+                                  select a).First();
+
+                    if (vnotas.NOTA1 >= 0 || vnotas.NOTA2 >= 0 || vnotas.NOTA3 >= 0 || vnotas.MEDIA >= 0)
+                    {
+                        res = true;
+                    }
                 }
+                catch (Exception)
+                {
+
+                    res = false;
+                }
+
             }
             return res;
 
@@ -279,6 +288,15 @@ namespace WinBDDASPnetChicos
                 {
                     ListItem newalumno = new ListItem(a.NOMBRE + " " + a.APELLIDOS, a.COD_ALU);
                     dropdown_nueva_nota_selecciona_alumno.Items.Add(newalumno);
+
+                    nuevo_textbox_apellido.Text = a.APELLIDOS;
+                    nuevo_textbox_nombre.Text = a.NOMBRE;
+                    nuevo_textbox_dni.Text = a.DNI;
+                    nuevo_textbox_codalu.Text = a.COD_ALU;
+                    nuevo_textbox_nota1.Enabled = true;
+                    nuevo_textbox_nota2.Enabled = true;
+                    nuevo_textbox_nota3.Enabled = true;
+                    nuevo_textbox_media.Enabled = true;
                 }
             }
 

@@ -41,23 +41,28 @@ namespace WinBDDASPnetChicos
 
         protected void btn_primero_Click(object sender, EventArgs e)
         {
+
             id = CambioCurso(0);
+            CambioPestañas(1);
         }
 
         protected void btn_anterior_Click(object sender, EventArgs e)
         {
             id = CambioCurso(id - 1);
+            CambioPestañas(1);
         }
 
         protected void btn_siguiente_Click(object sender, EventArgs e)
         {
             id = CambioCurso(id + 1);
 
+            CambioPestañas(1);
         }
 
         protected void btn_ultimo_Click(object sender, EventArgs e)
         {
             id = CambioCurso(int.MaxValue);
+            CambioPestañas(1);
         }
 
         private int CambioCurso(int newID)
@@ -94,7 +99,7 @@ namespace WinBDDASPnetChicos
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vcursos = GetCursoByCODCUR(nuevo_Textbox_codcur.Text);
+                //var vcursos = GetCursoByCODCUR(nuevo_Textbox_codcur.Text);
 
                 CURSOS newcurso = new CURSOS();
                 newcurso.COD_CUR = nuevo_Textbox_codcur.Text;
@@ -189,18 +194,26 @@ namespace WinBDDASPnetChicos
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var vcursos = GetCursoByCODCUR(dropdown_cursos_guardar.SelectedValue.ToString());
-
+                //var vcursos = GetCursoByCODCUR(dropdown_cursos_guardar.SelectedValue.ToString());
                 if (chkbox_borrar_curso_asp.Checked)
                 {
-                    model.CURSOS.Remove(vcursos);
-                    model.SaveChanges();
+                    foreach (CURSOS c in model.CURSOS)
+                    {
+
+                        if (c.COD_CUR == dropdown_cursos_guardar.SelectedValue.ToString())
+                        {
+                            model.CURSOS.Remove(c);
+                            model.SaveChanges();
+                            break;
+                        }
+                    }
                 }
                 else
                 {
                     notification_label_borrar.Text = "Pulsa en el checkbox para borrar";
                 }
             }
+
             CargaDropDownConCursos();
             CambioPestañas(4);
 

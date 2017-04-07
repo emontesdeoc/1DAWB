@@ -22,9 +22,9 @@
         <li>
             <div class="divider"></div>
         </li>
-        <li><a class="waves-effect" href="~/cursos.aspx">Cursos</a></li>
-        <li><a class="waves-effect" href="~/alumnos.aspx">Alumnos</a></li>
-        <li><a class="waves-effect" href="#">Notas</a></li>
+        <li><a class="waves-effect" href="cursos.aspx">Cursos</a></li>
+        <li><a class="waves-effect" href="alumnos.aspx">Alumnos</a></li>
+        <li><a class="waves-effect" href="notas.aspx">Notas</a></li>
     </ul>
 
     <form id="form1" runat="server">
