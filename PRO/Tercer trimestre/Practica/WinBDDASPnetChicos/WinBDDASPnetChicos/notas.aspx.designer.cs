@@ -184,6 +184,24 @@ namespace WinBDDASPnetChicos {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Nuevocurso;
         
         /// <summary>
+        /// Control dropdown_nueva_nota_selecciona_curso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdown_nueva_nota_selecciona_curso;
+        
+        /// <summary>
+        /// Control dropdown_nueva_nota_selecciona_alumno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdown_nueva_nota_selecciona_alumno;
+        
+        /// <summary>
         /// Control nuevo_textbox_codalu.
         /// </summary>
         /// <remarks>

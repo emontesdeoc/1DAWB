@@ -9,21 +9,6 @@ namespace WinBDDASPnetChicos
 {
     public partial class notas : System.Web.UI.Page
     {
-        struct alumnoStrcut
-        {
-            public string codalu { get; set; }
-            public string codcur { get; set; }
-            public string dni { get; set; }
-            public string apellido { get; set; }
-            public string nombre { get; set; }
-            public int nota1 { get; set; }
-            public int nota2 { get; set; }
-            public int nota3 { get; set; }
-            public int media { get; set; }
-
-        }
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -47,6 +32,8 @@ namespace WinBDDASPnetChicos
 
         }
 
+
+
         private List<ALUMNOS> GetNotasPorCurso(string CODCUR)
         {
 
@@ -61,30 +48,86 @@ namespace WinBDDASPnetChicos
             }
 
         }
+        private NOTAS GetNotasPorAlumno(string CODALU)
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var vnotas = (from a in model.NOTAS
+                              where a.COD_ALU == CODALU
+                              select a).First();
 
-        private IQueryable GetNotasPorAlumnos(string CODALU)
+                return vnotas;
+            }
+
+        }
+
+        private string GetCursoDeAlumno(string CODALU)
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var vnotas = (from a in model.NOTAS
+                              where a.COD_ALU == CODALU
+                              select a).First();
+
+                return vnotas.COD_CUR;
+            }
+
+        }
+
+
+        private bool TieneNotaAlumno(string CODALU)
+        {
+            bool res = false;
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var vnotas = (from a in model.NOTAS
+                              where a.COD_ALU == CODALU
+                              select a).First();
+
+                if (vnotas.NOTA1 >= 0 || vnotas.NOTA2 >= 0 || vnotas.NOTA3 >= 0 || vnotas.MEDIA >= 0)
+                {
+                    res = true;
+                }
+            }
+            return res;
+
+        }
+        private dynamic GetNotasPorCODALU(string codalu)
+        {
+            using (ModelOcupacional contexto = new ModelOcupacional())
+            {
+
+                var nota = (from n in contexto.NOTAS
+                            join a in contexto.ALUMNOS
+                            on n.COD_ALU equals a.COD_ALU
+                            where n.COD_ALU == codalu
+                            orderby a.APELLIDOS, a.NOMBRE
+                            select new
+                            {
+                                APELLIDOS = a.APELLIDOS,
+                                NOMBRE = a.NOMBRE,
+                                DNI = a.DNI,
+                                CODALU = a.COD_ALU,
+                                CODCUR = a.COD_CUR,
+                                NOTA1 = n.NOTA1,
+                                NOTA2 = n.NOTA2,
+                                NOTA3 = n.NOTA3,
+                                MEDIA = n.MEDIA
+                            });
+
+                return (nota.First());
+            }
+        }
+
+        private List<ALUMNOS> GetAllAlumnosByCurso(string curso)
         {
 
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                IQueryable vnotas = (from a in model.ALUMNOS
-                                     join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
-                                     where a.COD_ALU == CODALU
-                                     select new
-                                     {
-                                         codalu = a.COD_ALU,
-                                         codcur = a.COD_CUR,
-                                         nombre = a.NOMBRE,
-                                         apellido = a.APELLIDOS,
-                                         dni = a.DNI,
-                                         nota1 = vn.NOTA1,
-                                         nota2 = vn.NOTA2,
-                                         nota3 = vn.NOTA3,
-                                         media = vn.MEDIA
-                                     }).AsQueryable();
-
-
-                return vnotas;
+                var valumnos = (from a in model.ALUMNOS
+                                where a.COD_CUR == curso
+                                select a).ToList();
+                return valumnos;
             }
 
         }
@@ -118,93 +161,83 @@ namespace WinBDDASPnetChicos
         protected void gridview_alumnos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            switch (e.CommandName)
+            List<string> alulist = GetInformacionAlumno(e.CommandArgument.ToString());
+
+            if (e.CommandName == "Modificar")
             {
-                case "Modificar":
 
+                modifcar_textbox_apellido.Text = alulist[0];
+                modifcar_textbox_nombre.Text = alulist[1];
+                modifcar_textbox_codalu.Text = alulist[3];
+                modifcar_textbox_dni.Text = alulist[2];
+                modifcar_textbox_nota1.Text = alulist[5];
+                modifcar_textbox_nota1.Enabled = true;
+                modifcar_textbox_nota2.Text = alulist[6];
+                modifcar_textbox_nota2.Enabled = true;
+                modifcar_textbox_nota3.Text = alulist[7];
+                modifcar_textbox_nota3.Enabled = true;
+                modifcar_textbox_media.Text = alulist[8];
+                modifcar_textbox_media.Enabled = true;
 
-                    using (ModelOcupacional model = new ModelOcupacional())
-                    {
-                        var vnotas = (from a in model.ALUMNOS
-                                      join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
-                                      where a.COD_ALU == e.CommandArgument.ToString()
-                                      select new { codalu = a.COD_ALU, codcur = a.COD_CUR, nombre = a.NOMBRE, apellido = a.APELLIDOS, dni = a.DNI, nota1 = vn.NOTA1, nota2 = vn.NOTA2, nota3 = vn.NOTA3, media = vn.MEDIA }).First();
+                CambioPestañas(2);
+            }
+            if (e.CommandName == "Borrar")
+            {
 
+                borrar_textbox_apellido.Text = alulist[0];
+                borrar_textbox_nombre.Text = alulist[1];
+                borrar_textbox_codalu.Text = alulist[3];
+                borrar_textbox_dni.Text = alulist[2];
+                borrar_textbox_nota1.Text = alulist[5];
+                borrar_textbox_nota2.Text = alulist[6];
+                borrar_textbox_nota3.Text = alulist[7];
+                borrar_textbox_media.Text = alulist[8];
 
+                CambioPestañas(4);
+            }
+            if (e.CommandName == "Ver")
+            {
 
-                        modifcar_textbox_apellido.Text = vnotas.apellido;
-                        modifcar_textbox_nombre.Text = vnotas.nombre;
-                        modifcar_textbox_codalu.Text = vnotas.codalu;
-                        modifcar_textbox_dni.Text = vnotas.dni;
-                        modifcar_textbox_nota1.Text = vnotas.nota1.ToString();
-                        modifcar_textbox_nota2.Text = vnotas.nota2.ToString();
-                        modifcar_textbox_nota3.Text = vnotas.nota3.ToString();
-                        modifcar_textbox_media.Text = vnotas.media.ToString();
-                    }
+                ver_textbox_apellido.Text = alulist[0];
+                ver_textbox_nombre.Text = alulist[1];
+                ver_textbox_codalu.Text = alulist[3];
+                ver_textbox_dni.Text = alulist[2];
+                ver_textbox_nota1.Text = alulist[5];
+                ver_textbox_nota2.Text = alulist[6];
+                ver_textbox_nota3.Text = alulist[7];
+                ver_textbox_media.Text = alulist[8];
 
-
-
-                    CambioPestañas(2);
-                    break;
-
-                case "Borrar":
-
-
-
-
-                    using (ModelOcupacional model = new ModelOcupacional())
-                    {
-                        var vnotas = (from a in model.ALUMNOS
-                                      join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
-                                      where a.COD_ALU == e.CommandArgument.ToString()
-                                      select new { codalu = a.COD_ALU, codcur = a.COD_CUR, nombre = a.NOMBRE, apellido = a.APELLIDOS, dni = a.DNI, nota1 = vn.NOTA1, nota2 = vn.NOTA2, nota3 = vn.NOTA3, media = vn.MEDIA }).First();
-
-                        borrar_textbox_apellido.Text = vnotas.apellido;
-                        borrar_textbox_nombre.Text = vnotas.nombre;
-                        borrar_textbox_codalu.Text = vnotas.codalu;
-                        borrar_textbox_dni.Text = vnotas.dni;
-                        borrar_textbox_nota1.Text = vnotas.nota1.ToString();
-                        borrar_textbox_nota2.Text = vnotas.nota2.ToString();
-                        borrar_textbox_nota3.Text = vnotas.nota3.ToString();
-                        borrar_textbox_media.Text = vnotas.media.ToString();
-                    }
-
-
-                    CambioPestañas(4);
-                    break;
-
-                case "Ver":
-
-                    var vnotastest = GetNotasPorAlumnos("");
-                    IQueryable test = GetNotasPorAlumnos("");
-
-
-
-                    using (ModelOcupacional model = new ModelOcupacional())
-                    {
-                        var vnotas = (from a in model.ALUMNOS
-                                      join vn in model.NOTAS on a.COD_ALU equals vn.COD_ALU
-                                      where a.COD_ALU == e.CommandArgument.ToString()
-                                      select new { codalu = a.COD_ALU, codcur = a.COD_CUR, nombre = a.NOMBRE, apellido = a.APELLIDOS, dni = a.DNI, nota1 = vn.NOTA1, nota2 = vn.NOTA2, nota3 = vn.NOTA3, media = vn.MEDIA }).First();
-
-                        ver_textbox_apellido.Text = vnotas.apellido;
-                        ver_textbox_nombre.Text = vnotas.nombre;
-                        ver_textbox_codalu.Text = vnotas.codalu;
-                        ver_textbox_dni.Text = vnotas.dni;
-                        ver_textbox_nota1.Text = vnotas.nota1.ToString();
-                        ver_textbox_nota2.Text = vnotas.nota2.ToString();
-                        ver_textbox_nota3.Text = vnotas.nota3.ToString();
-                        ver_textbox_media.Text = vnotas.media.ToString();
-                    }
-
-                    CambioPestañas(5);
-                    break;
-                default:
-
-                    break;
+                CambioPestañas(5);
             }
         }
 
+        private List<string> GetInformacionAlumno(string codalu)
+        {
+            dynamic valumno = GetNotasPorCODALU(codalu);
+
+            Response.Write(valumno.APELLIDOS);
+
+            string a = valumno.ToString();
+            List<string> alulist = new List<string>();
+            //Separa por elemtnos(apellido,nombre,etc)
+            string[] b = a.Split(',');
+
+            for (int i = 0; i < b.Length; i++)
+            {
+                //Separa cada elemento en 2 ( [0] = APELLIDO, [1] = CARLOS )
+                string[] c = b[i].Split('=');
+                //Borra el primer espacio
+                c[1] = c[1].Remove(0, 1);
+                //El ultimo tiene " }",hay que eliminarlo.
+                if (i == b.Length - 1)
+                {
+                    c[1] = c[1].Remove(c[1].Length - 2, 2);
+                }
+                //Lo añade a la lista
+                alulist.Add(c[1]);
+            }
+            return alulist;
+        }
 
         #endregion
 
@@ -212,6 +245,70 @@ namespace WinBDDASPnetChicos
 
         protected void btn_nuevanota_Click(object sender, EventArgs e)
         {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                NOTAS newnota = new NOTAS()
+                {
+                    COD_ALU = nuevo_textbox_codalu.Text,
+                    COD_CUR = GetCursoDeAlumno(nuevo_textbox_codalu.Text),
+                    NOTA1 = Convert.ToInt32(nuevo_textbox_nota1.Text),
+                    NOTA2 = Convert.ToInt32(nuevo_textbox_nota2.Text),
+                    NOTA3 = Convert.ToInt32(nuevo_textbox_nota3.Text),
+                    MEDIA = Convert.ToInt32(nuevo_textbox_media.Text),
+                };
+                model.NOTAS.Add(newnota);
+                model.SaveChanges();
+            }
+            CambioPestañas(1);
+
+        }
+
+        protected void dropdown_nueva_nota_selecciona_curso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<ALUMNOS> alumnos = GetAllAlumnosByCurso(dropdown_nueva_nota_selecciona_curso.SelectedValue);
+
+            dropdown_nueva_nota_selecciona_alumno.Items.Clear();
+
+            foreach (ALUMNOS a in alumnos)
+            {
+                if (TieneNotaAlumno(a.COD_ALU))
+                {
+
+                }
+                else
+                {
+                    ListItem newalumno = new ListItem(a.NOMBRE + " " + a.APELLIDOS, a.COD_ALU);
+                    dropdown_nueva_nota_selecciona_alumno.Items.Add(newalumno);
+                }
+            }
+
+            dropdown_nueva_nota_selecciona_alumno.Enabled = true;
+            CambioPestañas(3);
+        }
+
+        protected void dropdown_nueva_nota_selecciona_alumno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> alulist = GetInformacionAlumno(dropdown_nueva_nota_selecciona_alumno.SelectedValue);
+            nuevo_textbox_apellido.Text = alulist[0];
+            nuevo_textbox_apellido.Text = alulist[0];
+
+            nuevo_textbox_nombre.Text = alulist[1];
+
+            nuevo_textbox_codalu.Text = alulist[3];
+
+            nuevo_textbox_dni.Text = alulist[2];
+
+            nuevo_textbox_nota1.Text = alulist[5];
+            nuevo_textbox_nota1.Enabled = true;
+
+            nuevo_textbox_nota2.Text = alulist[6];
+            nuevo_textbox_nota2.Enabled = true;
+
+            nuevo_textbox_nota3.Text = alulist[7];
+            nuevo_textbox_nota3.Enabled = true;
+
+            nuevo_textbox_media.Text = alulist[8];
+            nuevo_textbox_media.Enabled = true;
 
         }
 
@@ -221,6 +318,22 @@ namespace WinBDDASPnetChicos
 
         protected void btn_actualizar_Click(object sender, EventArgs e)
         {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                foreach (NOTAS n in model.NOTAS)
+                {
+                    if (n.COD_ALU == modifcar_textbox_codalu.Text)
+                    {
+                        n.NOTA1 = Convert.ToInt32(modifcar_textbox_nota1.Text);
+                        n.NOTA2 = Convert.ToInt32(modifcar_textbox_nota2.Text);
+                        n.NOTA3 = Convert.ToInt32(modifcar_textbox_nota3.Text);
+                        n.MEDIA = Convert.ToInt32(modifcar_textbox_media.Text);
+                        break;
+                    }
+                }
+                model.SaveChanges();
+            }
+            CambioPestañas(1);
 
         }
 
@@ -230,6 +343,19 @@ namespace WinBDDASPnetChicos
 
         protected void btn_borrar_Click(object sender, EventArgs e)
         {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                foreach (NOTAS n in model.NOTAS)
+                {
+                    if (n.COD_ALU == borrar_textbox_codalu.Text)
+                    {
+                        model.NOTAS.Remove(n);
+                        break;
+                    }
+                }
+                model.SaveChanges();
+            }
+            CambioPestañas(1);
 
         }
 
@@ -247,10 +373,12 @@ namespace WinBDDASPnetChicos
 
                 ListItem nada = new ListItem("Seleccione un curso", "nada");
                 dropdown_cursos.Items.Add(nada);
+                dropdown_nueva_nota_selecciona_curso.Items.Add(nada);
                 foreach (var c in vcursos)
                 {
                     ListItem newcurso = new ListItem(c.nombre, c.value);
                     dropdown_cursos.Items.Add(newcurso);
+                    dropdown_nueva_nota_selecciona_curso.Items.Add(newcurso);
                 }
                 ListItem todos = new ListItem("TODOS", "todos");
                 dropdown_cursos.Items.Add(todos);
@@ -335,11 +463,8 @@ namespace WinBDDASPnetChicos
         }
 
 
+
         #endregion
-
-
-
-
 
 
     }
