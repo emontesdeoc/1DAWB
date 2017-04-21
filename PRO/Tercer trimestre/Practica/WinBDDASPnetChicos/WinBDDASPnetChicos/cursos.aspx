@@ -78,19 +78,19 @@
                             <asp:Label runat="server" ID="notification_nuevo"></asp:Label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_Textbox_codcur" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_Textbox_codcur" CssClass="form-control validate" MaxLength="10"></asp:TextBox>
                             <label for="nuevo_Textbox_codcur">Codigo curso</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_Textbox_descripcion" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_Textbox_descripcion" CssClass="form-control validate" MaxLength="30"></asp:TextBox>
                             <label for="nuevo_Textbox_descripcion">Descripcion</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_Textbox_Horas" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_Textbox_Horas" CssClass="form-control validate" MaxLength="5"></asp:TextBox>
                             <label for="nuevo_Textbox_Horas">Horas</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_Textbox_Tutor" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_Textbox_Tutor" CssClass="form-control validate" MaxLength="30"></asp:TextBox>
                             <label for="nuevo_Textbox_Tutor">Tutor</label>
                         </div>
                         <div class="form-group input-field" style="text-align: center;">
@@ -110,19 +110,19 @@
                             <br />
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="guardar_Textbox_codcur" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="guardar_Textbox_codcur" CssClass="form-control validate" MaxLength="10"></asp:TextBox>
                             <label for="guardar_Textbox_codcur">Codigo curso</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="guardar_Textbox_descripcion" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="guardar_Textbox_descripcion" CssClass="form-control validate" MaxLength="30"></asp:TextBox>
                             <label for="guardar_Textbox_descripcion">Descripcion</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="guardar_Textbox_horas" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="guardar_Textbox_horas" CssClass="form-control validate" MaxLength="4"></asp:TextBox>
                             <label for="guardar_Textbox_horas">Horas</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="guardar_Textbox_tutor" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="guardar_Textbox_tutor" CssClass="form-control validate" MaxLength="30"></asp:TextBox>
                             <label for="guardar_Textbox_tutor">Tutor</label>
                         </div>
                         <div class="form-group" style="text-align: center;">
@@ -143,19 +143,19 @@
                             <br />
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="borrar_Textbox_codcur" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_Textbox_codcur" CssClass="form-control validate" MaxLength="10"></asp:TextBox>
                             <label for="txtboxCodCur">Codigo curso</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="borrar_Textbox_descripcion" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_Textbox_descripcion" CssClass="form-control validate" MaxLength="30"></asp:TextBox>
                             <label for="TextBoxDescripcion">Descripcion</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="borrar_Textbox_horas" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_Textbox_horas" CssClass="form-control validate" MaxLength="4"></asp:TextBox>
                             <label for="TextBoxHoras">Horas</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="borrar_Textbox_tutor" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_Textbox_tutor" CssClass="form-control validate" MaxLength="30"></asp:TextBox>
                             <label for="TextBoxTutor">Tutor</label>
                         </div>
                         <p>

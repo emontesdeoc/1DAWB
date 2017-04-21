@@ -146,35 +146,35 @@
                             <br />
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_codalu" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_codalu" Enabled="false"  MaxLength="10"></asp:TextBox>
                             <label for="nuevo_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_dni" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_dni" Enabled="false"  MaxLength="10"></asp:TextBox>
                             <label for="nuevo_textbox_dni">DNI</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_apellido" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_apellido" Enabled="false"  MaxLength="30"></asp:TextBox>
                             <label for="nuevo_textbox_apellido">Apellido</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_nombre" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_nombre" Enabled="false"  MaxLength="30"></asp:TextBox>
                             <label for="nuevo_textbox_nombre">Nombre</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_nota1" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_nota1" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="nuevo_textbox_nota1">Nota 1</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_nota2" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_nota2" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="nuevo_textbox_nota2">Nota 2</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_nota3" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_nota3" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="nuevo_textbox_nota3">Nota 3</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="nuevo_textbox_media" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="nuevo_textbox_media" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="nuevo_textbox_media">Media</label>
                         </div>
                         <div class="form-group input-field" style="text-align: center;">
@@ -186,35 +186,35 @@
                 <div id="Guardarcurso" runat="server" class="col s12">
                     <div id="containercursos">
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_codalu" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_codalu" Enabled="false"  MaxLength="10"></asp:TextBox>
                             <label for="modifcar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_dni" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_dni" Enabled="false"  MaxLength="10"></asp:TextBox>
                             <label for="modifcar_textbox_dni">DNI</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_apellido" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_apellido" Enabled="false"  MaxLength="30"></asp:TextBox>
                             <label for="modifcar_textbox_apellido">Apellido</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_nombre" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_nombre" Enabled="false"  MaxLength="30"></asp:TextBox>
                             <label for="modifcar_textbox_nombre">Nombre</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_nota1" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_nota1" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="modifcar_textbox_nota1">Nota 1</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_nota2" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_nota2" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="modifcar_textbox_nota2">Nota 2</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_nota3" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_nota3" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="modifcar_textbox_nota3">Nota 3</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="modifcar_textbox_media" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modifcar_textbox_media" Enabled="false"  MaxLength="2"></asp:TextBox>
                             <label for="modifcar_textbox_media">Media</label>
                         </div>
                         <div class="form-group input-field" style="text-align: center;">

@@ -96,19 +96,19 @@
                                 <br />
                             </div>
                             <div class="form-group input-field select">
-                                <asp:TextBox runat="server" ID="nuevo_textbox_codalu" MaxLength="19"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="nuevo_textbox_codalu" MaxLength="10"></asp:TextBox>
                                 <label for="nuevo_textbox_codalu">Codigo alumno</label>
                             </div>
                             <div class="form-group input-field ">
-                                <asp:TextBox runat="server" ID="nuevo_textbox_dni"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="nuevo_textbox_dni" MaxLength="10"></asp:TextBox>
                                 <label for="nuevo_textbox_dni">DNI</label>
                             </div>
                             <div class="form-group input-field ">
-                                <asp:TextBox runat="server" ID="nuevo_textbox_apellido"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="nuevo_textbox_apellido" MaxLength="30"></asp:TextBox>
                                 <label for="nuevo_textbox_apellido">Apellido</label>
                             </div>
                             <div class="form-group input-field ">
-                                <asp:TextBox runat="server" ID="nuevo_textbox_nombre"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="nuevo_textbox_nombre" MaxLength="30"></asp:TextBox>
                                 <label for="nuevo_textbox_nombre">Nombre</label>
                             </div>
                             <div class="form-group input-field" style="text-align: center;">
@@ -122,19 +122,19 @@
                     <div id="containercursos">
 
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="modificar_textbox_codalu" MaxLength="19" CssClass="form-control validate" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modificar_textbox_codalu" MaxLength="10" CssClass="form-control validate" Enabled="false"></asp:TextBox>
                             <label for="modificar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="modificar_textbox_nombre" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modificar_textbox_nombre" MaxLength="30" CssClass="form-control validate"></asp:TextBox>
                             <label for="modificar_textbox_nombre">Nombre</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="modificar_textbox_apellido" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modificar_textbox_apellido" MaxLength="30" CssClass="form-control validate"></asp:TextBox>
                             <label for="modificar_textbox_apellido">Apellido</label>
                         </div>
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="modificar_textbox_DNI" CssClass="form-control validate"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modificar_textbox_DNI" MaxLength="10" CssClass="form-control validate"></asp:TextBox>
                             <label for="modificar_textbox_DNI">DNI</label>
                         </div>
                         <div class="form-group" style="text-align: center;">
@@ -153,23 +153,23 @@
                         </div>
                         <br />
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="borrar_textbox_codalu" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_codalu" Enabled="false" MaxLength="10"></asp:TextBox>
                             <label for="borrar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field select">
-                            <asp:TextBox runat="server" ID="borrar_textbox_codcur" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_codcur" Enabled="false" MaxLength="10"></asp:TextBox>
                             <label for="borrar_textbox_codcur">Codigo curso</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_dni" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_dni" Enabled="false" MaxLength="10"></asp:TextBox>
                             <label for="borrar_textbox_dni">DNI</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_apellido" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_apellido" Enabled="false" MaxLength="30"></asp:TextBox>
                             <label for="borrar_textbox_apellido">Apellido</label>
                         </div>
                         <div class="form-group input-field ">
-                            <asp:TextBox runat="server" ID="borrar_textbox_nombre" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="borrar_textbox_nombre" MaxLength="30" Enabled="false"></asp:TextBox>
                             <label for="borrar_textbox_nombre">Nombre</label>
                         </div>
                         <p>
