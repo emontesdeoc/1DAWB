@@ -19,6 +19,10 @@ namespace WinBDDASPnetChicos
 
         #region CONSEGUIR NOTAS
 
+        /// <summary>
+        /// Metodo que devuelve todas las notas
+        /// </summary>
+        /// <returns></returns>
         private List<ALUMNOS> GetAllNotas()
         {
 
@@ -33,7 +37,11 @@ namespace WinBDDASPnetChicos
         }
 
 
-
+        /// <summary>
+        /// Metodo que devuelve todas las notas pasandole un curso
+        /// </summary>
+        /// <param name="CODCUR">odigo de curso</param>
+        /// <returns></returns>
         private List<ALUMNOS> GetNotasPorCurso(string CODCUR)
         {
 
@@ -48,6 +56,12 @@ namespace WinBDDASPnetChicos
             }
 
         }
+
+        /// <summary>
+        /// Metodo que devuelve las notas por alumno
+        /// </summary>
+        /// <param name="CODALU">Codigo de alumno</param>
+        /// <returns></returns>
         private NOTAS GetNotasPorAlumno(string CODALU)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -61,6 +75,11 @@ namespace WinBDDASPnetChicos
 
         }
 
+        /// <summary>
+        /// Mtodo que devuelve el curso de un alumno
+        /// </summary>
+        /// <param name="CODALU">Codigo de alumno</param>
+        /// <returns></returns>
         private string GetCursoDeAlumno(string CODALU)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -74,7 +93,11 @@ namespace WinBDDASPnetChicos
 
         }
 
-
+        /// <summary>
+        /// Metodo que devuelve si el alumno tiene nota
+        /// </summary>
+        /// <param name="CODALU">Codigo de alumno</param>
+        /// <returns></returns>
         private bool TieneNotaAlumno(string CODALU)
         {
             bool res = false;
@@ -96,11 +119,15 @@ namespace WinBDDASPnetChicos
 
                     res = false;
                 }
-
             }
             return res;
-
         }
+
+        /// <summary>
+        /// Funcion dinamica que devuelve el alumno y sus notas
+        /// </summary>
+        /// <param name="codalu">Codigo de alumno</param>
+        /// <returns></returns>
         private dynamic GetNotasPorCODALU(string codalu)
         {
             using (ModelOcupacional contexto = new ModelOcupacional())
@@ -128,6 +155,11 @@ namespace WinBDDASPnetChicos
             }
         }
 
+        /// <summary>
+        /// Metodo que devuelve todos los alumnos por curso
+        /// </summary>
+        /// <param name="curso">Codigo de curso</param>
+        /// <returns></returns>
         private List<ALUMNOS> GetAllAlumnosByCurso(string curso)
         {
 
@@ -138,15 +170,17 @@ namespace WinBDDASPnetChicos
                                 select a).ToList();
                 return valumnos;
             }
-
         }
-
-
 
         #endregion
 
         #region VER NOTAS
 
+        /// <summary>
+        /// Evento que carga todas las notas del curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void dropdown_cursos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (dropdown_cursos.SelectedValue == "todos")
@@ -167,6 +201,11 @@ namespace WinBDDASPnetChicos
             CambioPestañas(1);
         }
 
+        /// <summary>
+        /// Evento que mira que boton le da el cliente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gridview_alumnos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
@@ -174,7 +213,6 @@ namespace WinBDDASPnetChicos
 
             if (e.CommandName == "Modificar")
             {
-
                 modifcar_textbox_apellido.Text = alulist[0];
                 modifcar_textbox_nombre.Text = alulist[1];
                 modifcar_textbox_codalu.Text = alulist[3];
@@ -192,7 +230,6 @@ namespace WinBDDASPnetChicos
             }
             if (e.CommandName == "Borrar")
             {
-
                 borrar_textbox_apellido.Text = alulist[0];
                 borrar_textbox_nombre.Text = alulist[1];
                 borrar_textbox_codalu.Text = alulist[3];
@@ -206,7 +243,6 @@ namespace WinBDDASPnetChicos
             }
             if (e.CommandName == "Ver")
             {
-
                 ver_textbox_apellido.Text = alulist[0];
                 ver_textbox_nombre.Text = alulist[1];
                 ver_textbox_codalu.Text = alulist[3];
@@ -220,6 +256,11 @@ namespace WinBDDASPnetChicos
             }
         }
 
+        /// <summary>
+        /// Metodo que devuelve informacion del alumno
+        /// </summary>
+        /// <param name="codalu">Codigo de alumno</param>
+        /// <returns></returns>
         private List<string> GetInformacionAlumno(string codalu)
         {
             dynamic valumno = GetNotasPorCODALU(codalu);
@@ -252,6 +293,11 @@ namespace WinBDDASPnetChicos
 
         #region NUEVA NOTA
 
+        /// <summary>
+        /// Evento que crea una nueva nota
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_nuevanota_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -269,9 +315,13 @@ namespace WinBDDASPnetChicos
                 model.SaveChanges();
             }
             CambioPestañas(1);
-
         }
 
+        /// <summary>
+        /// Evento que selecciona el curso y carga los alumnos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void dropdown_nueva_nota_selecciona_curso_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<ALUMNOS> alumnos = GetAllAlumnosByCurso(dropdown_nueva_nota_selecciona_curso.SelectedValue);
@@ -282,7 +332,6 @@ namespace WinBDDASPnetChicos
             {
                 if (TieneNotaAlumno(a.COD_ALU))
                 {
-
                 }
                 else
                 {
@@ -304,6 +353,11 @@ namespace WinBDDASPnetChicos
             CambioPestañas(3);
         }
 
+        /// <summary>
+        /// Evento que carga los alumnos cuando crea una nota nueva
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void dropdown_nueva_nota_selecciona_alumno_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<string> alulist = GetInformacionAlumno(dropdown_nueva_nota_selecciona_alumno.SelectedValue);
@@ -334,6 +388,11 @@ namespace WinBDDASPnetChicos
 
         #region ACTUALIAR NOTA
 
+        /// <summary>
+        /// Boton que actualiza la nota
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_actualizar_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -352,13 +411,17 @@ namespace WinBDDASPnetChicos
                 model.SaveChanges();
             }
             CambioPestañas(1);
-
         }
 
         #endregion
 
         #region BORRAR NOTA
 
+        /// <summary>
+        /// Boon que borra la nota
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_borrar_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -374,13 +437,15 @@ namespace WinBDDASPnetChicos
                 model.SaveChanges();
             }
             CambioPestañas(1);
-
         }
 
         #endregion
 
         #region CONTROL DE VISTA
 
+        /// <summary>
+        /// Metodo que carga los cursos en los dropdowns
+        /// </summary>
         private void CargarCursosDropdown()
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -403,6 +468,10 @@ namespace WinBDDASPnetChicos
             }
         }
 
+        /// <summary>
+        /// Metodo que cambia de pestaña
+        /// </summary>
+        /// <param name="i">Numero de pestaña</param>
         private void CambioPestañas(int i)
         {
             switch (i)
@@ -479,8 +548,6 @@ namespace WinBDDASPnetChicos
             gridview_alumnos.DataBind();
             dropdown_cursos.SelectedIndex = 0;
         }
-
-
 
         #endregion
 

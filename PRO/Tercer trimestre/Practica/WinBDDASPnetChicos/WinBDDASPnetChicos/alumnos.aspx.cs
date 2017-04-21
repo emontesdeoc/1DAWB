@@ -19,6 +19,10 @@ namespace WinBDDASPnetChicos
 
         #region CONSEGUIR ALUMNOS
 
+        /// <summary>
+        /// Metodo que devuelve todos los alumnos
+        /// </summary>
+        /// <returns></returns>
         private List<ALUMNOS> GetAllAlumnos()
         {
 
@@ -31,6 +35,11 @@ namespace WinBDDASPnetChicos
 
         }
 
+        /// <summary>
+        /// Metodo que devuelve todos los alumnos pasandole un curso
+        /// </summary>
+        /// <param name="curso">COD_CUR</param>
+        /// <returns></returns>
         private List<ALUMNOS> GetAllAlumnosByCurso(string curso)
         {
 
@@ -44,6 +53,11 @@ namespace WinBDDASPnetChicos
 
         }
 
+        /// <summary>
+        /// Metodo que devuelve un alumno pasandole un codalu
+        /// </summary>
+        /// <param name="CODALU">Codigo de alumno</param>
+        /// <returns></returns>
         private ALUMNOS GetAlumnoByCODALU(string CODALU)
         {
 
@@ -61,6 +75,11 @@ namespace WinBDDASPnetChicos
 
         #region VER ALUMNOS
 
+        /// <summary>
+        /// Evento enfcargado de mostrar los alumnos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void dropdown_cursos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (dropdown_cursos.SelectedValue == "todos")
@@ -82,7 +101,11 @@ namespace WinBDDASPnetChicos
         }
 
 
-
+        /// <summary>
+        /// Evento encargado de llamar las pestañas dependiendo del boton que pulses
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gridview_alumnos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Modificar")
@@ -116,6 +139,11 @@ namespace WinBDDASPnetChicos
 
         #region MODIFICAR ALUMNO
 
+        /// <summary>
+        /// Boton que modifica el alumno
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_modificaralumno_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -139,6 +167,11 @@ namespace WinBDDASPnetChicos
 
         #region NUEVO ALUMNO
 
+        /// <summary>
+        /// Boton que genera un nuevo alumno
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_nuevoalumno_Click(object sender, EventArgs e)
         {
 
@@ -163,6 +196,11 @@ namespace WinBDDASPnetChicos
 
         #region BORRAR ALUMNO
 
+        /// <summary>
+        /// Boton que borra un alumno
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void borrar_button_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -193,6 +231,9 @@ namespace WinBDDASPnetChicos
 
         #region CONTROL DE VISTA
 
+        /// <summary>
+        /// Metodo que carga los dropdown, sirve para limpiar cada vez que se hace un submit
+        /// </summary>
         private void CargarCursosDropdown()
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -214,6 +255,10 @@ namespace WinBDDASPnetChicos
             }
         }
 
+        /// <summary>
+        /// Metodo que cambia de pestaña, traba con clases css
+        /// </summary>
+        /// <param name="i">numero de pestaña</param>
         private void CambioPestañas(int i)
         {
             switch (i)

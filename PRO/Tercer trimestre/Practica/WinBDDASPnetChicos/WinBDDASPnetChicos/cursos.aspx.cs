@@ -18,11 +18,15 @@ namespace WinBDDASPnetChicos
                 CargaDropDownConCursos();
                 RestablecerValoresTextboxes();
             }
-
         }
 
         #region CONSEGUIR CURSOS
 
+        /// <summary>
+        /// Metdo que me devuelve un curso pasando un codcur
+        /// </summary>
+        /// <param name="CODCUR">Codigo de curso</param>
+        /// <returns></returns>
         private CURSOS GetCursoByCODCUR(string CODCUR)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -42,6 +46,11 @@ namespace WinBDDASPnetChicos
 
         #region VER CURSOS
 
+        /// <summary>
+        /// Evento que muestra el primer curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_primero_Click(object sender, EventArgs e)
         {
 
@@ -49,12 +58,22 @@ namespace WinBDDASPnetChicos
             CambioPestañas(1);
         }
 
+        /// <summary>
+        /// Metodo que devuelve el anterior curso 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_anterior_Click(object sender, EventArgs e)
         {
             id = CambioCurso(id - 1);
             CambioPestañas(1);
         }
 
+        /// <summary>
+        /// Metodo que muestra el siguiente curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_siguiente_Click(object sender, EventArgs e)
         {
             id = CambioCurso(id + 1);
@@ -62,12 +81,22 @@ namespace WinBDDASPnetChicos
             CambioPestañas(1);
         }
 
+        /// <summary>
+        /// Metodo que devuelve el ultimo curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_ultimo_Click(object sender, EventArgs e)
         {
             id = CambioCurso(int.MaxValue);
             CambioPestañas(1);
         }
 
+        /// <summary>
+        /// Metodo encargado de hacer el cambio de curso pasandole un id
+        /// </summary>
+        /// <param name="newID">siguiente ID</param>
+        /// <returns></returns>
         private int CambioCurso(int newID)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -97,6 +126,11 @@ namespace WinBDDASPnetChicos
 
         #region NUEVO CURSO
 
+        /// <summary>
+        /// Evento que guarda un curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Guardar_Click(object sender, EventArgs e)
         {
 
@@ -123,6 +157,11 @@ namespace WinBDDASPnetChicos
             CargaDropDownConCursos();
         }
 
+        /// <summary>
+        /// Boton que cancela la insercion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Cancelar_Click(object sender, EventArgs e)
         {
             nuevo_Textbox_codcur.Text = "";
@@ -136,6 +175,11 @@ namespace WinBDDASPnetChicos
 
         #region MODIFICAR CURSO
 
+        /// <summary>
+        /// Evento que genera los datos del curso seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void dropdown_cursos_guardar_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -154,6 +198,11 @@ namespace WinBDDASPnetChicos
             CambioPestañas(3);
         }
 
+        /// <summary>
+        /// Bton que actualiza el curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void guardar_btn_actualizar_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -178,6 +227,11 @@ namespace WinBDDASPnetChicos
 
         #region BORRAR CURSO
 
+        /// <summary>
+        /// Evento que muestra los datos del curso a borrar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void dropdown_cursos_borrar_SelectedIndexChanged(object sender, EventArgs e)
         {
             var vcursos = GetCursoByCODCUR(dropdown_cursos_borrar.SelectedValue.ToString());
@@ -196,6 +250,11 @@ namespace WinBDDASPnetChicos
             CambioPestañas(4);
         }
 
+        /// <summary>
+        /// Boton que borra el curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void borrar_btn_curso_Click(object sender, EventArgs e)
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -246,6 +305,9 @@ namespace WinBDDASPnetChicos
 
         #region METODOS DE CONTROL DE VISTA
 
+        /// <summary>
+        /// Metodo encargao de carga los dropdown de cursos
+        /// </summary>
         private void CargaDropDownConCursos()
         {
             dropdown_cursos_borrar.Items.Clear();
@@ -268,6 +330,10 @@ namespace WinBDDASPnetChicos
 
         }
 
+        /// <summary>
+        /// Metodo encargado de cambiar las pestañas
+        /// </summary>
+        /// <param name="i">Numero de pestaña</param>
         private void CambioPestañas(int i)
         {
 
@@ -324,6 +390,9 @@ namespace WinBDDASPnetChicos
             }
         }
 
+        /// <summary>
+        /// Metodo que restablece los valores de los textboxes
+        /// </summary>
         private void RestablecerValoresTextboxes()
         {
             nuevo_Textbox_descripcion.Text = "";

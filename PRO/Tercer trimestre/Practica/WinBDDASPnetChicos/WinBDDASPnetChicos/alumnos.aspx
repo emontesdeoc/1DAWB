@@ -43,7 +43,7 @@
                         <li class="tab col s3"><a href="#Vercursos" runat="server" id="li_vercursos">Ver alumnos</a></li>
                         <li class="tab col s3"><a href="#Nuevocurso" runat="server" id="li_guardarcursos">Nuevo alumno</a></li>
                         <li class="tab col s3"><a href="#Guardarcurso" runat="server" id="li_nuevocursos">Modificar alumno</a></li>
-                        <li class="tab col s3"><a href="#Borrarcurso" runat="server" id="li_borrarcursos">Borrar curso</a></li>
+                        <li class="tab col s3"><a href="#Borrarcurso" runat="server" id="li_borrarcursos">Borrar alumno</a></li>
                     </ul>
                 </div>
                 <%-- VER ALUMNOS --%>
@@ -96,7 +96,7 @@
                                 <br />
                             </div>
                             <div class="form-group input-field select">
-                                <asp:TextBox runat="server" ID="nuevo_textbox_codalu"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="nuevo_textbox_codalu" MaxLength="19"></asp:TextBox>
                                 <label for="nuevo_textbox_codalu">Codigo alumno</label>
                             </div>
                             <div class="form-group input-field ">
@@ -122,7 +122,7 @@
                     <div id="containercursos">
 
                         <div class="form-group input-field">
-                            <asp:TextBox runat="server" ID="modificar_textbox_codalu" CssClass="form-control validate" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="modificar_textbox_codalu" MaxLength="19" CssClass="form-control validate" Enabled="false"></asp:TextBox>
                             <label for="modificar_textbox_codalu">Codigo alumno</label>
                         </div>
                         <div class="form-group input-field">
