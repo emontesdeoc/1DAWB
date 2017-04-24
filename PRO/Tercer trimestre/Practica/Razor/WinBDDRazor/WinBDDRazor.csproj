@@ -97,6 +97,8 @@
     <Content Include="views\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="views\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="views\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="views\alumnos.cshtml" />
+    <Content Include="views\notas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,10 +118,13 @@
   <ItemGroup>
     <Compile Include="bd\ALUMNO.cs" />
     <Compile Include="bd\CURSO.cs" />
+    <Compile Include="logic\alumnonotas.cs" />
+    <Compile Include="logic\alumnos.cs" />
     <Compile Include="logic\cursos.cs" />
     <Compile Include="bd\C__MigrationHistory.cs" />
     <Compile Include="bd\ModelOcupacional.cs" />
     <Compile Include="bd\NOTA.cs" />
+    <Compile Include="logic\notas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>

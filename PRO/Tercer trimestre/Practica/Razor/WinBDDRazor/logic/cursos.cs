@@ -3,29 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WinBDDRazor
+namespace WinBDDRazor.logic
 {
     public class cursos
     {
-
-        public cursos()
-        {
-        }
-
-        public cursos(int i)
-        {
-
-            CURSO c = GetCursoByPOSI();
-
-
-            Codcur = c.COD_CUR;
-            Descripcion = c.DESCRIPCION;
-            Horas = Convert.ToInt32(c.HORAS);
-            Tutor = c.TUTOR;
-        }
-
-       
-
+        // ( ͡° ͜ʖ ͡°) Do it yourself ಠ_ಠ
 
         public static int posi { get; set; }
         public static string Codcur { get; set; }
@@ -34,7 +16,28 @@ namespace WinBDDRazor
         public static string Tutor { get; set; }
 
         /// <summary>
-        /// Metdo que me devuelve un curso pasando un codcur
+        /// Constructor vacio
+        /// </summary>
+        public cursos()
+        {
+        }
+
+        /// <summary>
+        /// Constructor, pide valor pero no se utiliza.
+        /// </summary>
+        /// <param name="i">Cualquier numero</param>
+        public cursos(int i)
+        {
+            CURSO c = GetCursoByPOSI();
+
+            Codcur = c.COD_CUR;
+            Descripcion = c.DESCRIPCION;
+            Horas = Convert.ToInt32(c.HORAS);
+            Tutor = c.TUTOR;
+        }
+
+        /// <summary>
+        /// Metodo que me devuelve un curso pasando un codcur
         /// </summary>
         /// <param name="CODCUR">Codigo de curso</param>
         /// <returns></returns>
@@ -59,6 +62,9 @@ namespace WinBDDRazor
             }
         }
 
+        /// <summary>
+        /// Metodo que crea un curso
+        /// </summary>
         public void NuevoCurso()
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -76,11 +82,14 @@ namespace WinBDDRazor
             }
         }
 
-        public void ActualizarCurso(string codcur)
+        /// <summary>
+        /// Metodo que actualiza un curso
+        /// </summary>
+        public void ActualizarCurso()
         {
             using (ModelOcupacional model = new ModelOcupacional())
             {
-                var c = model.CURSOS.SingleOrDefault(x => x.COD_CUR == codcur);
+                var c = model.CURSOS.SingleOrDefault(x => x.COD_CUR == Codcur);
 
                 c.DESCRIPCION = Descripcion;
                 c.HORAS = Horas;
@@ -91,7 +100,28 @@ namespace WinBDDRazor
 
         }
 
+        /// <summary>
+        /// Metodo que borra un curso
+        /// </summary>
+        public void BorrarCurso()
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var c = model.CURSOS.SingleOrDefault(x => x.COD_CUR == Codcur);
+                model.CURSOS.Remove(c);
+                model.SaveChanges();
+            }
 
+        }
 
+        public List<CURSO> GetAllCursos()
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var vcurso = (from c in model.CURSOS
+                              select c).ToList();
+                return vcurso;
+            }
+        }
     }
 }

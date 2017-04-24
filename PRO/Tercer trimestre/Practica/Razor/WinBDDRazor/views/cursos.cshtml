@@ -11,68 +11,93 @@
     @{
         if (!IsPost)
         {
-            WinBDDRazor.cursos.posi = 0;
+            /// Carga de curso inicial, siempre en 0.
+            WinBDDRazor.logic.cursos.posi = 0;
         }
         else
         {
+            /// Cambio cursos - 100%
             try
             {
-
+                if (Request["cambiocur"].ToString() != null)
+                {
+                    switch (Request["cambiocur"].ToString())
+                    {
+                        case "0":
+                            WinBDDRazor.logic.cursos.posi = 0;
+                            break;
+                        case "1":
+                            WinBDDRazor.logic.cursos.posi -= 1;
+                            break;
+                        case "2":
+                            WinBDDRazor.logic.cursos.posi += 1;
+                            break;
+                        case "3":
+                            WinBDDRazor.logic.cursos.posi = int.MaxValue;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
             catch (Exception)
             {
-
-                throw;
             }
 
-            if (Request["cambiocur"].ToString() != null)
+            /// Nuevo curso - 100%
+            try
             {
-                switch (Request["cambiocur"].ToString())
+                if (Request["nuevo_confirmar"] != null)
                 {
-                    case "0":
-                        WinBDDRazor.cursos.posi = 0;
-                        break;
-                    case "1":
-                        WinBDDRazor.cursos.posi -= 1;
-                        break;
-                    case "2":
-                        WinBDDRazor.cursos.posi += 1;
-                        break;
-                    case "3":
-                        WinBDDRazor.cursos.posi = int.MaxValue;
-                        break;
-                    default:
-                        break;
+                    WinBDDRazor.logic.cursos.Codcur = Request["nuevo_codcur"];
+                    WinBDDRazor.logic.cursos.Descripcion = Request["nuevo_descripcion"];
+                    WinBDDRazor.logic.cursos.Horas = Convert.ToInt32(Request["nuevo_horas"]);
+                    WinBDDRazor.logic.cursos.Tutor = Request["nuevo_tutor"];
+
+                    new WinBDDRazor.logic.cursos().NuevoCurso();
                 }
             }
-            /// Nuevo curso
-            if (Request["nuevo_confirmar"] != null)
+            catch (Exception)
             {
-                WinBDDRazor.cursos.Codcur = Request["nuevo_codcur"];
-                WinBDDRazor.cursos.Descripcion = Request["nuevo_descripcion"];
-                WinBDDRazor.cursos.Horas = Convert.ToInt32(Request["nuevo_horas"]);
-                WinBDDRazor.cursos.Tutor = Request["nuevo_tutor"];
-
-                new WinBDDRazor.cursos().NuevoCurso();
             }
 
-            /// Modificar curso
-            if (Request["modificar_curso"] != null)
+            /// Modificar curso - 100%
+            try
             {
-                WinBDDRazor.cursos.Codcur = Request["modificar_nuevo_codcur"];
-                WinBDDRazor.cursos.Descripcion = Request["modificar_nuevo_descripcion"];
-                WinBDDRazor.cursos.Horas = Convert.ToInt32(Request["modificar_nuevo_horas"]);
-                WinBDDRazor.cursos.Tutor = Request["modificar_nuevo_tutor"];
+                if (Request["modificar_curso"] != null)
+                {
+                    WinBDDRazor.logic.cursos.Codcur = Request["modificar_cod_cur"];
+                    WinBDDRazor.logic.cursos.Descripcion = Request["modificar_descripcion"];
+                    WinBDDRazor.logic.cursos.Horas = Convert.ToInt32(Request["modificar_horas"]);
+                    WinBDDRazor.logic.cursos.Tutor = Request["modificar_tutor"];
 
-                new WinBDDRazor.cursos().ActualizarCurso(Request["modificar_nuevo_codcur"]);
+                    new WinBDDRazor.logic.cursos().ActualizarCurso();
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            /// Eliminar curso - 100%
+            try
+            {
+                if (Request["eliminar_curso"] != null && Request["eliminar_checkbox"] != null)
+                {
+                    WinBDDRazor.logic.cursos.Codcur = Request["eliminar_cod_cur"];
+                    new WinBDDRazor.logic.cursos().BorrarCurso();
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
-        new WinBDDRazor.cursos(0).GetCursoByPOSI();
-        var codcur = WinBDDRazor.cursos.Codcur;
-        var descricpion = WinBDDRazor.cursos.Descripcion;
-        var horas = WinBDDRazor.cursos.Horas;
-        var tutor = WinBDDRazor.cursos.Tutor;
+        /// Sea postback o no, carga el curso - 100%
+        new WinBDDRazor.logic.cursos(0).GetCursoByPOSI();
+        var codcur = WinBDDRazor.logic.cursos.Codcur;
+        var descricpion = WinBDDRazor.logic.cursos.Descripcion;
+        var horas = WinBDDRazor.logic.cursos.Horas;
+        var tutor = WinBDDRazor.logic.cursos.Tutor;
 
     }
     <div class="container">
@@ -174,19 +199,19 @@
                         <form method="post" action="">
                             <div class="form-group">
                                 <label for="cod_cur">Codigo de curso</label>
-                                <input type="text" class="form-control" id="modificar_cod_cur" placeholder="Codigo de curso" value="@codcur" readonly>
+                                <input type="text" class="form-control" name="modificar_cod_cur" placeholder="Codigo de curso" value="@codcur" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="descripcion">Descripcion</label>
-                                <input type="text" class="form-control" id="modificar_descripcion" placeholder="Descripcion" value="@descricpion">
+                                <input type="text" class="form-control" name="modificar_descripcion" placeholder="Descripcion" value="@descricpion">
                             </div>
                             <div class="form-group">
                                 <label for="horas">Horas</label>
-                                <input type="text" class="form-control" id="modificar_horas" placeholder="Horas" value="@horas">
+                                <input type="text" class="form-control" name="modificar_horas" placeholder="Horas" value="@horas">
                             </div>
                             <div class="form-group">
                                 <label for="tutor">Tutor</label>
-                                <input type="text" class="form-control" id="modificar_tutor" placeholder="Tutor" value="@tutor">
+                                <input type="text" class="form-control" name="modificar_tutor" placeholder="Tutor" value="@tutor">
                             </div>
                             <div class="text-center">
                                 <div class="form-group btn-group" style="margin-bottom: -15px;">
@@ -208,36 +233,33 @@
                     </div>
                     <div id="modal-form-container">
                         <form method="post" action="">
-                            <fieldset disabled>
-                                <div class="form-group">
-                                    <label for="cod_cur">Codigo de curso</label>
-                                    <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso" value="@codcur">
-                                </div>
-                                <div class="form-group">
-                                    <label for="descripcion">Descripcion</label>
-                                    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" value="@descricpion">
-                                </div>
-                                <div class="form-group">
-                                    <label for="horas">Horas</label>
-                                    <input type="text" class="form-control" id="horas" placeholder="Horas" value="@horas">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tutor">Tutor</label>
-                                    <input type="text" class="form-control" id="tutor" placeholder="Tutor" value="@tutor">
-                                </div>
-
-                            </fieldset>
+                            <div class="form-group">
+                                <label for="cod_cur">Codigo de curso</label>
+                                <input type="text" class="form-control" name="eliminar_cod_cur" placeholder="Codigo de curso" value="@codcur" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripcion</label>
+                                <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" value="@descricpion" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="horas">Horas</label>
+                                <input type="text" class="form-control" id="horas" placeholder="Horas" value="@horas" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="tutor">Tutor</label>
+                                <input type="text" class="form-control" id="tutor" placeholder="Tutor" value="@tutor" readonly>
+                            </div>
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                        <input type="checkbox" name="eliminar_checkbox" value="option1" aria-label="...">
                                         Confirmar para borrar curso
                                     </label>
                                 </div>
                             </div>
                             <div class="text-center">
                                 <div class="form-group btn-group" style="margin-bottom: -15px;">
-                                    <button type="submit" class="btn btn-danger">Confirmar</button>
+                                    <button type="submit" name="eliminar_curso" class="btn btn-danger">Confirmar</button>
                                 </div>
                             </div>
                         </form>
