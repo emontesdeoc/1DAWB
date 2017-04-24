@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WinBDD - Cursos</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="cursos.cshtml">Cursos</a></li>
+                    <li role="presentation"><a href="alumnos.cshtml">Alumnos</a></li>
+                    <li role="presentation"><a href="notas.cshtml">Notas</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">WinBDD Razor</h3>
+        </div>
+        @* Cursos contenedor *@
+        <div id="form-container">
+            <form>
+                <fieldset disabled>
+                    <div class="form-group">
+                        <label for="cod_cur">Codigo de curso</label>
+                        <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="horas">Horas</label>
+                        <input type="text" class="form-control" id="horas" placeholder="Horas">
+                    </div>
+                    <div class="form-group">
+                        <label for="tutor">Tutor</label>
+                        <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                    </div>
+                </fieldset>
+            </form>
+            <div class="text-center">
+                <div class="form-group btn-group ">
+                    <button type="submit" class="btn btn-default">Primero</button>
+                    <button type="submit" class="btn btn-default">Anterior</button>
+                    <button type="submit" class="btn btn-default">Siguiente</button>
+                    <button type="submit" class="btn btn-default">Ultimo</button>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="btn-group" style="text-align:center;">
+                    <!-- Small modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-nuevo-modal-sm">Nuevo</button>
+                    <button type="submit" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm">Modificar</button>
+                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm">Borrar</button>
+
+                </div>
+            </div>
+
+        </div>
+
+        @* Modal nuevo curso *@
+        <div class="modal fade bs-nuevo-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="text-center">
+                        <h2>Nuevo curso</h2>
+                    </div>
+                    <div id="modal-form-container">
+                        <form>
+                            <div class="form-group">
+                                <label for="cod_cur">Codigo de curso</label>
+                                <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso">
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripcion</label>
+                                <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                            </div>
+                            <div class="form-group">
+                                <label for="horas">Horas</label>
+                                <input type="text" class="form-control" id="horas" placeholder="Horas">
+                            </div>
+                            <div class="form-group">
+                                <label for="tutor">Tutor</label>
+                                <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                            </div>
+                        </form>
+                        <div class="text-center">
+                            <div class="form-group btn-group">
+                                <button type="submit" class="btn btn-success">Confirmar</button>
+                                <button type="submit" class="btn btn-danger">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* Modal modificar curso *@
+        <div class="modal fade bs-modificar-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="text-center">
+                        <h2>Modificar curso</h2>
+                    </div>
+                    <div id="modal-form-container">
+                        <form>
+                            <div class="form-group">
+                                <label for="cod_cur">Codigo de curso</label>
+                                <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripcion</label>
+                                <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                            </div>
+                            <div class="form-group">
+                                <label for="horas">Horas</label>
+                                <input type="text" class="form-control" id="horas" placeholder="Horas">
+                            </div>
+                            <div class="form-group">
+                                <label for="tutor">Tutor</label>
+                                <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                            </div>
+
+                        </form>
+                        <div class="text-center">
+                            <div class="form-group btn-group">
+                                <button type="submit" class="btn btn-success">Confirmar</button>
+                                <button type="submit" class="btn btn-danger">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* Modal borrar curso *@
+        <div class="modal fade bs-borrar-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="text-center">
+                        <h2>Borrar curso</h2>
+                    </div>
+                    <div id="modal-form-container">
+                        <form>
+                            <fieldset disabled>
+                                <div class="form-group">
+                                    <label for="cod_cur">Codigo de curso</label>
+                                    <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso">
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion">Descripcion</label>
+                                    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                                </div>
+                                <div class="form-group">
+                                    <label for="horas">Horas</label>
+                                    <input type="text" class="form-control" id="horas" placeholder="Horas">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tutor">Tutor</label>
+                                    <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                                </div>
+
+                            </fieldset>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                        Confirmar para borrar curso
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="text-center">
+                            <div class="form-group btn-group">
+                                <button type="submit" class="btn btn-success">Confirmar</button>
+                                <button type="submit" class="btn btn-danger">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p style="text-align:center">&copy; Emiliano Montesdeoca del Puerto - 1DAWB - PRO.</p>
+        </footer>
+    </div> <!-- /container -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.js"></script>
+</body>
+</html>

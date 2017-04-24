@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<Libro 
+   xmlns="http://www.w3schools.com"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.w3schools.com  simple2.xsd">
+
+ <Titulo>Genetic Programming</Titulo> 
+ <Autor>John Koza</Autor> 
+ <Fecha>1994</Fecha> 
+ <ISBN>0-202-111170-5</ISBN> 
+ <Editorial>The MIT Press</Editorial> 
+</Libro>
