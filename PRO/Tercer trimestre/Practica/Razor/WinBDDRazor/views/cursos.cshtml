@@ -8,6 +8,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    @{
+        if (!IsPost)
+        {
+            WinBDDRazor.cursos.posi = 0;
+        }
+        else
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            if (Request["cambiocur"].ToString() != null)
+            {
+                switch (Request["cambiocur"].ToString())
+                {
+                    case "0":
+                        WinBDDRazor.cursos.posi = 0;
+                        break;
+                    case "1":
+                        WinBDDRazor.cursos.posi -= 1;
+                        break;
+                    case "2":
+                        WinBDDRazor.cursos.posi += 1;
+                        break;
+                    case "3":
+                        WinBDDRazor.cursos.posi = int.MaxValue;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            /// Nuevo curso
+            if (Request["nuevo_confirmar"] != null)
+            {
+                WinBDDRazor.cursos.Codcur = Request["nuevo_codcur"];
+                WinBDDRazor.cursos.Descripcion = Request["nuevo_descripcion"];
+                WinBDDRazor.cursos.Horas = Convert.ToInt32(Request["nuevo_horas"]);
+                WinBDDRazor.cursos.Tutor = Request["nuevo_tutor"];
+
+                new WinBDDRazor.cursos().NuevoCurso();
+            }
+
+            /// Modificar curso
+            if (Request["modificar_curso"] != null)
+            {
+                WinBDDRazor.cursos.Codcur = Request["modificar_nuevo_codcur"];
+                WinBDDRazor.cursos.Descripcion = Request["modificar_nuevo_descripcion"];
+                WinBDDRazor.cursos.Horas = Convert.ToInt32(Request["modificar_nuevo_horas"]);
+                WinBDDRazor.cursos.Tutor = Request["modificar_nuevo_tutor"];
+
+                new WinBDDRazor.cursos().ActualizarCurso(Request["modificar_nuevo_codcur"]);
+            }
+        }
+
+        new WinBDDRazor.cursos(0).GetCursoByPOSI();
+        var codcur = WinBDDRazor.cursos.Codcur;
+        var descricpion = WinBDDRazor.cursos.Descripcion;
+        var horas = WinBDDRazor.cursos.Horas;
+        var tutor = WinBDDRazor.cursos.Tutor;
+
+    }
     <div class="container">
         <div class="header clearfix">
             <nav>
@@ -19,46 +86,45 @@
             </nav>
             <h3 class="text-muted">WinBDD Razor</h3>
         </div>
+
         @* Cursos contenedor *@
         <div id="form-container">
-            <form>
+            <form method="post" action="">
                 <fieldset disabled>
                     <div class="form-group">
                         <label for="cod_cur">Codigo de curso</label>
-                        <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso">
+                        <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso" value="@codcur">
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Descripcion</label>
-                        <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                        <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" value="@descricpion">
                     </div>
                     <div class="form-group">
                         <label for="horas">Horas</label>
-                        <input type="text" class="form-control" id="horas" placeholder="Horas">
+                        <input type="text" class="form-control" id="horas" placeholder="Horas" value="@horas">
                     </div>
                     <div class="form-group">
                         <label for="tutor">Tutor</label>
-                        <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                        <input type="text" class="form-control" id="tutor" placeholder="Tutor" value="@tutor">
                     </div>
                 </fieldset>
-            </form>
-            <div class="text-center">
-                <div class="form-group btn-group ">
-                    <button type="submit" class="btn btn-default">Primero</button>
-                    <button type="submit" class="btn btn-default">Anterior</button>
-                    <button type="submit" class="btn btn-default">Siguiente</button>
-                    <button type="submit" class="btn btn-default">Ultimo</button>
+                <div class="text-center">
+                    <div class="form-group btn-group ">
+                        <button type="submit" class="btn btn-default" name="cambiocur" id="primero" value="0">Primero</button>
+                        <button type="submit" class="btn btn-default" name="cambiocur" id="anterior" value="1">Anterior</button>
+                        <button type="submit" class="btn btn-default" name="cambiocur" id="siguiente" value="2">Siguiente</button>
+                        <button type="submit" class="btn btn-default" name="cambiocur" id="ultimo" value="3">Ultimo</button>
+                    </div>
                 </div>
-            </div>
+            </form>
             <div class="text-center">
                 <div class="btn-group" style="text-align:center;">
                     <!-- Small modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-nuevo-modal-sm">Nuevo</button>
                     <button type="submit" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm">Modificar</button>
                     <button type="submit" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm">Borrar</button>
-
                 </div>
             </div>
-
         </div>
 
         @* Modal nuevo curso *@
@@ -69,30 +135,29 @@
                         <h2>Nuevo curso</h2>
                     </div>
                     <div id="modal-form-container">
-                        <form>
+                        <form method="post" action="">
                             <div class="form-group">
                                 <label for="cod_cur">Codigo de curso</label>
-                                <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso">
+                                <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso" name="nuevo_codcur">
                             </div>
                             <div class="form-group">
                                 <label for="descripcion">Descripcion</label>
-                                <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                                <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" name="nuevo_descripcion">
                             </div>
                             <div class="form-group">
                                 <label for="horas">Horas</label>
-                                <input type="text" class="form-control" id="horas" placeholder="Horas">
+                                <input type="text" class="form-control" id="horas" placeholder="Horas" name="nuevo_horas">
                             </div>
                             <div class="form-group">
                                 <label for="tutor">Tutor</label>
-                                <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                                <input type="text" class="form-control" id="tutor" placeholder="Tutor" name="nuevo_tutor">
+                            </div>
+                            <div class="text-center">
+                                <div class="form-group btn-group" style="margin-bottom: -15px;">
+                                    <button type="submit" class="btn btn-success" name="nuevo_confirmar">Confirmar</button>
+                                </div>
                             </div>
                         </form>
-                        <div class="text-center">
-                            <div class="form-group btn-group">
-                                <button type="submit" class="btn btn-success">Confirmar</button>
-                                <button type="submit" class="btn btn-danger">Cancelar</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -106,31 +171,29 @@
                         <h2>Modificar curso</h2>
                     </div>
                     <div id="modal-form-container">
-                        <form>
+                        <form method="post" action="">
                             <div class="form-group">
                                 <label for="cod_cur">Codigo de curso</label>
-                                <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso" readonly>
+                                <input type="text" class="form-control" id="modificar_cod_cur" placeholder="Codigo de curso" value="@codcur" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="descripcion">Descripcion</label>
-                                <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                                <input type="text" class="form-control" id="modificar_descripcion" placeholder="Descripcion" value="@descricpion">
                             </div>
                             <div class="form-group">
                                 <label for="horas">Horas</label>
-                                <input type="text" class="form-control" id="horas" placeholder="Horas">
+                                <input type="text" class="form-control" id="modificar_horas" placeholder="Horas" value="@horas">
                             </div>
                             <div class="form-group">
                                 <label for="tutor">Tutor</label>
-                                <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                                <input type="text" class="form-control" id="modificar_tutor" placeholder="Tutor" value="@tutor">
                             </div>
-
+                            <div class="text-center">
+                                <div class="form-group btn-group" style="margin-bottom: -15px;">
+                                    <button type="submit" class="btn btn-success" name="modificar_curso">Confirmar</button>
+                                </div>
+                            </div>
                         </form>
-                        <div class="text-center">
-                            <div class="form-group btn-group">
-                                <button type="submit" class="btn btn-success">Confirmar</button>
-                                <button type="submit" class="btn btn-danger">Cancelar</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -144,23 +207,23 @@
                         <h2>Borrar curso</h2>
                     </div>
                     <div id="modal-form-container">
-                        <form>
+                        <form method="post" action="">
                             <fieldset disabled>
                                 <div class="form-group">
                                     <label for="cod_cur">Codigo de curso</label>
-                                    <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso">
+                                    <input type="text" class="form-control" id="cod_cur" placeholder="Codigo de curso" value="@codcur">
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripcion</label>
-                                    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                                    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" value="@descricpion">
                                 </div>
                                 <div class="form-group">
                                     <label for="horas">Horas</label>
-                                    <input type="text" class="form-control" id="horas" placeholder="Horas">
+                                    <input type="text" class="form-control" id="horas" placeholder="Horas" value="@horas">
                                 </div>
                                 <div class="form-group">
                                     <label for="tutor">Tutor</label>
-                                    <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                                    <input type="text" class="form-control" id="tutor" placeholder="Tutor" value="@tutor">
                                 </div>
 
                             </fieldset>
@@ -172,13 +235,13 @@
                                     </label>
                                 </div>
                             </div>
-                        </form>
-                        <div class="text-center">
-                            <div class="form-group btn-group">
-                                <button type="submit" class="btn btn-success">Confirmar</button>
-                                <button type="submit" class="btn btn-danger">Cancelar</button>
+                            <div class="text-center">
+                                <div class="form-group btn-group" style="margin-bottom: -15px;">
+                                    <button type="submit" class="btn btn-danger">Confirmar</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
