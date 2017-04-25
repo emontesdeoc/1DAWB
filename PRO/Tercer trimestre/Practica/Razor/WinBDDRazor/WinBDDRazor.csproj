@@ -99,6 +99,7 @@
     <Content Include="views\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="views\alumnos.cshtml" />
     <Content Include="views\notas.cshtml" />
+    <Content Include="index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

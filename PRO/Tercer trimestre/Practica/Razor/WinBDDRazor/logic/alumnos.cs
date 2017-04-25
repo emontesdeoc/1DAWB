@@ -7,8 +7,6 @@ namespace WinBDDRazor.logic
 {
     public class alumnos
     {
-        // ( ͡° ͜ʖ ͡°) Do it yourself ಠ_ಠ
-
         public static string Codalu { get; set; }
         public static string Codcur { get; set; }
         public static string Dni { get; set; }

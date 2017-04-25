@@ -114,6 +114,10 @@ namespace WinBDDRazor.logic
 
         }
 
+        /// <summary>
+        /// Metodo que devuelve todos lso cursos
+        /// </summary>
+        /// <returns></returns>
         public List<CURSO> GetAllCursos()
         {
             using (ModelOcupacional model = new ModelOcupacional())

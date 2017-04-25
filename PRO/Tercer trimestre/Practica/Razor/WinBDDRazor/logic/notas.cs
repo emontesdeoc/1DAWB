@@ -7,14 +7,17 @@ namespace WinBDDRazor.logic
 {
     public class notas
     {
-        // ( ͡° ͜ʖ ͡°) Do it yourself ಠ_ಠ
-
         public string Codalu { get; set; }
         public string Codcur { get; set; }
         public int Nota1 { get; set; }
         public int Nota2 { get; set; }
         public int Nota3 { get; set; }
         public int Media { get; set; }
+
+        /// <summary>
+        /// Variables estaticas
+        /// </summary>
+        /// 
         public static string _Codalu { get; set; }
         public static int _Nota1 { get; set; }
         public static int _Nota2 { get; set; }
@@ -23,6 +26,11 @@ namespace WinBDDRazor.logic
 
         public notas() { }
 
+        /// <summary>
+        /// Metodo que devuelve notas pasando codigo de alumno
+        /// </summary>
+        /// <param name="codalu">Codalu</param>
+        /// <returns></returns>
         public dynamic GetNotasPorCODALU(string codalu)
         {
             using (ModelOcupacional contexto = new ModelOcupacional())
@@ -50,6 +58,9 @@ namespace WinBDDRazor.logic
             }
         }
 
+        /// <summary>
+        /// Metodo que crea notas
+        /// </summary>
         public void CrearNotas()
         {
             using (ModelOcupacional model = new ModelOcupacional())
@@ -70,12 +81,7 @@ namespace WinBDDRazor.logic
                 model.NOTAS.Add(nn);
 
                 model.SaveChanges();
-
-
             }
-
         }
-
-
     }
 }

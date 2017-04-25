@@ -7,8 +7,6 @@ namespace WinBDDRazor.logic
 {
     public class alumnonotas
     {
-        // ( ͡° ͜ʖ ͡°) Do it yourself ಠ_ಠ
-
         public static string _Codalu { get; set; }
         public string Codalu { get; set; }
         public string Codcur { get; set; }
