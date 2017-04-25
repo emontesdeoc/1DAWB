@@ -15,6 +15,11 @@ namespace WinBDDRazor.logic
         public int Nota2 { get; set; }
         public int Nota3 { get; set; }
         public int Media { get; set; }
+        public static string _Codalu { get; set; }
+        public static int _Nota1 { get; set; }
+        public static int _Nota2 { get; set; }
+        public static int _Nota3 { get; set; }
+        public static int _Media { get; set; }
 
         public notas() { }
 
@@ -43,6 +48,32 @@ namespace WinBDDRazor.logic
 
                 return (nota.First());
             }
+        }
+
+        public void CrearNotas()
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+
+                WinBDDRazor.NOTA nn = new WinBDDRazor.NOTA();
+
+                nn.COD_ALU = _Codalu;
+                var x = model.ALUMNOS.SingleOrDefault(a => a.COD_ALU == _Codalu);
+
+                nn.ALUMNO = x;
+                nn.COD_CUR = x.COD_CUR;
+                nn.NOTA1 = _Nota1;
+                nn.NOTA2 = _Nota2;
+                nn.NOTA3 = _Nota3;
+                nn.MEDIA = _Media;
+
+                model.NOTAS.Add(nn);
+
+                model.SaveChanges();
+
+
+            }
+
         }
 
 

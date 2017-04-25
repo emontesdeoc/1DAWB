@@ -87,5 +87,20 @@ namespace WinBDDRazor.logic
             }
 
         }
+
+        /// <summary>
+        /// Metodo que devuelve todos los alumnos sin notas
+        /// </summary>
+        /// <returns></returns>
+        public List<ALUMNO> GetAllAlumnosSinNota()
+        {
+            using (ModelOcupacional model = new ModelOcupacional())
+            {
+                var valumnos = (from a in model.ALUMNOS
+                                where a.NOTAS.Count() == 0
+                                select a).ToList();
+                return valumnos;
+            }
+        }
     }
 }

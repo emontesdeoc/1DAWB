@@ -31,7 +31,6 @@
             catch (Exception)
             {
             }
-
             /// Borrar nota
             try
             {
@@ -44,6 +43,24 @@
             }
             catch (Exception)
             {
+            }
+            /// Nueva nota
+            try
+            {
+                if (Request["nueva_confirmar"] != null)
+                {
+                    WinBDDRazor.logic.notas._Codalu = Request["nuevo_alumno"];
+                    WinBDDRazor.logic.notas._Nota1 = Convert.ToInt32(Request["nueva_nota1"]);
+                    WinBDDRazor.logic.notas._Nota2 = Convert.ToInt32(Request["nueva_nota2"]);
+                    WinBDDRazor.logic.notas._Nota3 = Convert.ToInt32(Request["nueva_nota3"]);
+                    WinBDDRazor.logic.notas._Media = Convert.ToInt32(Request["nueva_media"]);
+
+                    new WinBDDRazor.logic.notas().CrearNotas();
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }
@@ -160,50 +177,38 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="text-center">
-                        <h2>Nuev nota</h2>
+                        <h2>Nueva nota</h2>
                     </div>
                     <div id="modal-form-container">
                         <form method="post" action="">
                             <div class="form-group">
-                                <label for="cod_alu">Codigo de alumno</label>
-                                <input type="text" class="form-control" id="nuevo_codalu" placeholder="Codigo de alumno" name="nuevo_codalu" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="cod_cur">Codigo de curso</label>
-                                <input type="text" class="form-control" id="nuevo_codalu" placeholder="Codigo de curso" name="nuevo_codalu" readonly>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="dni">DNI</label>
-                                <input type="text" class="form-control" id="nuevo_dni" placeholder="DNI" name="nuevo_dni" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="apellidos">Apellidos</label>
-                                <input type="text" class="form-control" id="nuevo_apellido" placeholder="Apellidos" name="nuevo_apellido" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control" id="nuevo_nombre" placeholder="Nombre" name="nuevo_nombre" readonly>
+                                <label for="alumno">Alumno</label>
+                                <select class="form-control" name="nuevo_alumno" id="nuevo_alumno">
+                                    @foreach (WinBDDRazor.ALUMNO a in new WinBDDRazor.logic.alumnos().GetAllAlumnosSinNota())
+                                    {
+                                    <option value="@a.COD_ALU">@a.NOMBRE @a.APELLIDOS</option>
+                                    }
+                                </select>
                             </div>
                             <div class="form-group" style="width:20%;float:left;">
                                 <label for="nombre">Nota 1</label>
-                                <input type="text" class="form-control" id="nuevo_nota1" name="nuevo_nota1">
+                                <input type="text" class="form-control" id="nueva_nota1" name="nueva_nota1">
                             </div>
                             <div class="form-group" style="width:20%; float:left; margin-left:15px;">
                                 <label for="nombre">Nota 2</label>
-                                <input type="text" class="form-control" id="nuevo_nota2" name="nuevo_nota2">
+                                <input type="text" class="form-control" id="nueva_nota2" name="nueva_nota2">
                             </div>
                             <div class="form-group" style="width:20%;float:left; margin-left:15px;">
                                 <label for="nombre">Nota 3</label>
-                                <input type="text" class="form-control" id="nuevo_nota3" name="nuevo_nota3">
+                                <input type="text" class="form-control" id="nueva_nota3" name="nueva_nota3">
                             </div>
                             <div class="form-group" style="width:20%;float:left; margin-left:15px;">
                                 <label for="nombre">Media</label>
-                                <input type="text" class="form-control" id="nuevo_media" name="nuevo_media">
+                                <input type="text" class="form-control" id="nueva_media" name="nueva_media">
                             </div>
                             <div class="text-center">
                                 <div class="form-group btn-group" style="margin-bottom: -15px;">
-                                    <button type="submit" class="btn btn-success" name="nuevo_confirmar">Confirmar</button>
+                                    <button type="submit" class="btn btn-success" name="nueva_confirmar">Crear</button>
                                 </div>
                             </div>
                         </form>
