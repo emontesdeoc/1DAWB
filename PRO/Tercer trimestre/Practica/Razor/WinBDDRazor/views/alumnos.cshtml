@@ -9,11 +9,20 @@
 </head>
 <body>
     @{
+
+        var type = "";
+        var message = "";
+        var display = "";
+
         if (!IsPost)
         {
+            Session["Pagination"] = 0;
+            display = "none";
+
         }
         else
         {
+            display = "none";
             /// Nuevo alumno - 100%
             try
             {
@@ -26,10 +35,18 @@
                     WinBDDRazor.logic.alumnos.Nombre = Request["nuevo_nombre"];
 
                     new WinBDDRazor.logic.alumnos().CrearAlumno();
+
+                    type = "success";
+                    message = "Alumno agregado correctamente";
+                    display = "inline";
+
                 }
             }
             catch (Exception)
             {
+                type = "danger";
+                message = "Error agregando alumno";
+                display = "inline";
             }
 
             /// Modificar alumno - 100%
@@ -62,6 +79,18 @@
             catch (Exception)
             {
             }
+
+            /// Eliminar alumno - 100%
+            try
+            {
+                if (Request["CargaPaginaAlumnos"] != null)
+                {
+                    Session["Pagination"] = Convert.ToInt32(Request["CargaPaginaAlumnos"]) - 1;
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
     }
     <div class="container">
@@ -75,11 +104,14 @@
             </nav>
             <h3 class="text-muted"><a href="~/index.cshtml"> WinBDD Razor </a></h3>
         </div>
+        <div name="test" style="display:@display">
+            <div class="alert alert-@type" role="alert">@message</div>
+        </div>
 
         @* Cursos contenedor *@
         <div id="form-container" style="width:100%;">
             <form method="post" action="">
-                <table class="table table-hover">
+                <table class="table table-hover" style="margin-bottom: 0px;">
                     <tr>
                         <td>Codigo alumno</td>
                         <td>Codigo curso</td>
@@ -90,29 +122,63 @@
                         <td>Borrar</td>
                     </tr>
 
-                    @foreach (WinBDDRazor.ALUMNO a in new WinBDDRazor.logic.alumnos().GetAllAlumnos())
+                    @foreach (WinBDDRazor.ALUMNO a in new WinBDDRazor.logic.alumnos().GetAllAlumnos().OrderBy(x => x.COD_ALU).Skip(Convert.ToInt32(Session["Pagination"]) * 5).Take(5).ToList())
                     {
-                    <tr>
-                        <td>@a.COD_ALU</td>
-                        <td>@a.COD_CUR</td>
-                        <td>@a.DNI</td>
-                        <td>@a.APELLIDOS</td>
-                        <td>@a.NOMBRE</td>
-                        <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm" onclick="CargarModificar('@a.COD_ALU', '@a.COD_CUR', '@a.DNI', '@a.APELLIDOS', '@a.NOMBRE');">Modificar</button></td>
-                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm" onclick="CargarBorrar('@a.COD_ALU', '@a.COD_CUR', '@a.DNI', '@a.APELLIDOS', '@a.NOMBRE');">Borrar</button></td>
-                    </tr>
+                        <tr>
+                            <td>@a.COD_ALU</td>
+                            <td>@a.COD_CUR</td>
+                            <td>@a.DNI</td>
+                            <td>@a.NOMBRE</td>
+                            <td>@a.APELLIDOS</td>
+                            <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm" onclick="CargarModificar('@a.COD_ALU', '@a.COD_CUR', '@a.DNI', '@a.APELLIDOS', '@a.NOMBRE');">Modificar</button></td>
+                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm" onclick="CargarBorrar('@a.COD_ALU', '@a.COD_CUR', '@a.DNI', '@a.APELLIDOS', '@a.NOMBRE');">Borrar</button></td>
+                        </tr>
                     }
                 </table>
+                <div class="text-center">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+
+                            @for (int i = 1; i <= new WinBDDRazor.logic.alumnos().GetAllAlumnos().Count / 5 + 1; i++)
+                            {
+
+                                if (i < (new WinBDDRazor.logic.alumnos().GetAllAlumnos().Count / 5) - 1)
+                                {
+                                    @*<button type="submit" class="btn btn-default" name="CargaPaginaAlumnos" value="@i">@i</button>*@
+                                    <li><button type="submit" name="CargaPaginaAlumnos" value="@i">@i</button></li>
+                                }
+
+                                if (i >= new WinBDDRazor.logic.alumnos().GetAllAlumnos().Count / 5)
+                                {
+                                    string a = Convert.ToDouble(new WinBDDRazor.logic.alumnos().GetAllAlumnos().Count / 5.00).ToString();
+                                    string[] ar = a.Split(',');
+                                    try
+                                    {
+                                        if (Convert.ToInt32(ar[1]) > 0)
+                                        {
+                                            @*<button type="submit" class="btn btn-default" name="CargaPaginaAlumnos" value="@i">@i</button>*@
+                                            <li><button type="submit" name="CargaPaginaAlumnos" value="@i">@i</button></li>
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+
+                                    }
+                                }
+                            }
+                        </ul>
+                    </nav>
+                </div>
             </form>
             <div class="text-center">
-
-
                 <div class="btn-group" style="text-align:center;">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-nuevo-modal-sm">Nuevo</button>
                     @*<button type="submit" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm">Modificar</button>*@
                     @*<button type="submit" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm">Borrar</button>*@
                 </div>
             </div>
+
+
         </div>
 
         @* Modal nuevo curso *@
@@ -133,7 +199,7 @@
                                 <select class="form-control" name="nuevo_codcur" id="cod_cur">
                                     @foreach (WinBDDRazor.CURSO c in new WinBDDRazor.logic.cursos().GetAllCursos())
                                     {
-                                    <option value="@c.COD_CUR">@c.DESCRIPCION</option>
+                                        <option value="@c.COD_CUR">@c.DESCRIPCION</option>
                                     }
                                 </select>
                             </div>
@@ -179,7 +245,7 @@
                                 <select class="form-control" name="modificar_codcur" id="modificar_cod_cur">
                                     @foreach (WinBDDRazor.CURSO c in new WinBDDRazor.logic.cursos().GetAllCursos())
                                     {
-                                    <option value="@c.COD_CUR">@c.DESCRIPCION</option>
+                                        <option value="@c.COD_CUR">@c.DESCRIPCION</option>
                                     }
                                 </select>
                             </div>
