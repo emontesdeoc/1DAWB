@@ -28,7 +28,7 @@ namespace WinBDDRazor.logic
         /// <param name="i">Cualquier numero</param>
         public cursos(int i)
         {
-            CURSO c = GetCursoByPOSI();
+            bd.CURSO c = GetCursoByPOSI();
 
             Codcur = c.COD_CUR;
             Descripcion = c.DESCRIPCION;
@@ -41,9 +41,9 @@ namespace WinBDDRazor.logic
         /// </summary>
         /// <param name="CODCUR">Codigo de curso</param>
         /// <returns></returns>
-        public WinBDDRazor.CURSO GetCursoByPOSI()
+        public WinBDDRazor.bd.CURSO GetCursoByPOSI()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
 
                 if (posi > model.CURSOS.Count() - 1)
@@ -67,9 +67,9 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void NuevoCurso()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
-                CURSO c = new CURSO();
+                bd.CURSO c = new bd.CURSO();
 
                 c.COD_CUR = Codcur;
                 c.DESCRIPCION = Descripcion;
@@ -87,7 +87,7 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void ActualizarCurso()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var c = model.CURSOS.SingleOrDefault(x => x.COD_CUR == Codcur);
 
@@ -105,7 +105,7 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void BorrarCurso()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var c = model.CURSOS.SingleOrDefault(x => x.COD_CUR == Codcur);
                 model.CURSOS.Remove(c);
@@ -118,9 +118,9 @@ namespace WinBDDRazor.logic
         /// Metodo que devuelve todos lso cursos
         /// </summary>
         /// <returns></returns>
-        public List<CURSO> GetAllCursos()
+        public List<bd.CURSO> GetAllCursos()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var vcurso = (from c in model.CURSOS
                               select c).ToList();

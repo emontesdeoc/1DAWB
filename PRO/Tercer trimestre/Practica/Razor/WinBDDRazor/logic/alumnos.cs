@@ -22,9 +22,9 @@ namespace WinBDDRazor.logic
         /// Metodo que devuelve todos los alumnos
         /// </summary>
         /// <returns></returns>
-        public List<ALUMNO> GetAllAlumnos()
+        public List<bd.ALUMNO> GetAllAlumnos()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var valumnos = (from a in model.ALUMNOS
                                 select a).ToList();
@@ -37,9 +37,9 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void CrearAlumno()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
-                ALUMNO a = new ALUMNO();
+                bd.ALUMNO a = new bd.ALUMNO();
 
                 a.COD_ALU = Codalu;
                 a.COD_CUR = Codcur;
@@ -58,7 +58,7 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void ActualizaAlumno()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var a = model.ALUMNOS.SingleOrDefault(x => x.COD_ALU == Codalu);
 
@@ -77,7 +77,7 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void BorrarAlumno()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var a = model.ALUMNOS.SingleOrDefault(x => x.COD_ALU == Codalu);
                 model.ALUMNOS.Remove(a);
@@ -90,9 +90,9 @@ namespace WinBDDRazor.logic
         /// Metodo que devuelve todos los alumnos sin notas
         /// </summary>
         /// <returns></returns>
-        public List<ALUMNO> GetAllAlumnosSinNota()
+        public List<bd.ALUMNO> GetAllAlumnosSinNota()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var valumnos = (from a in model.ALUMNOS
                                 where a.NOTAS.Count() == 0

@@ -9,11 +9,23 @@
 </head>
 <body>
     @{
+        var type = "";
+        var message = "";
+        var display = "";
+        var tabledisplay = "";
+
+
         if (!IsPost)
         {
+            Session["filtroCodcud"] = "";
+            display = "none";
+            tabledisplay = "none";
         }
         else
         {
+            display = "none";
+            tabledisplay = "none";
+
             /// Modificar nota
             try
             {
@@ -26,6 +38,10 @@
                     WinBDDRazor.logic.alumnonotas._Media = Convert.ToInt32(Request["modificar_media"]);
 
                     new WinBDDRazor.logic.alumnonotas().ActualizaNota();
+
+                    type = "warning";
+                    message = "Nota modificada correctamente.";
+                    display = "inline";
                 }
             }
             catch (Exception)
@@ -39,6 +55,10 @@
                     WinBDDRazor.logic.alumnonotas._Codalu = Request["borrar_codalu"];
 
                     new WinBDDRazor.logic.alumnonotas().BorarNota();
+
+                    type = "danger";
+                    message = "Nota eliminada correctamente.";
+                    display = "inline";
                 }
             }
             catch (Exception)
@@ -56,6 +76,26 @@
                     WinBDDRazor.logic.notas._Media = Convert.ToInt32(Request["nueva_media"]);
 
                     new WinBDDRazor.logic.notas().CrearNotas();
+
+                    type = "success";
+                    message = "Nota agregada correctamente.";
+                    display = "inline";
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            /// Filtrar por curso
+            try
+            {
+                if (Request["filtro_codcur"] != null)
+                {
+                    string test = Request["filtro_codcur"];
+                    Session["filtroCodcud"] = Request["filtro_codcur"];
+                    tabledisplay = "inline-table";
+
                 }
             }
             catch (Exception)
@@ -76,10 +116,28 @@
             <h3 class="text-muted"><a href="~/index.cshtml"> WinBDD Razor </a></h3>
         </div>
 
+        <div name="test" style="display:@display">
+            <div class="alert alert-@type" role="alert">@message</div>
+        </div>
+
         @* Cursos contenedor *@
         <div id="form-container" style="width:100%;">
             <form method="post" action="">
-                <table class="table table-hover">
+                <div class="form-group" style="width:50%; margin: 0 auto; margin-bottom:20px;">
+                    <div class="text-center">
+                        <label for="cod_cur">Elegir curso</label>
+                        <select onchange="this.form.submit()" class="form-control" name="filtro_codcur" id="cod_cur">
+                            <option value="">Seleccione un curso</option>
+                            @foreach (WinBDDRazor.bd.CURSO c in new WinBDDRazor.logic.cursos().GetAllCursos())
+                            {
+                            <option value="@c.COD_CUR">@c.DESCRIPCION</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <form method="post" action="">
+                <table class="table table-hover" style="display:@tabledisplay; margin-bottom: 10px;">
                     <tr>
                         <td>Codigo alumno</td>
                         <td>Codigo curso</td>
@@ -90,17 +148,17 @@
                         <td>Borrar</td>
                     </tr>
 
-                    @foreach (WinBDDRazor.logic.alumnonotas a in new WinBDDRazor.logic.alumnonotas().GetListaAlumnosNotas())
+                    @foreach (WinBDDRazor.logic.alumnonotas a in new WinBDDRazor.logic.alumnonotas().GetListaAlumnosNotas().FindAll(x => x.Codcur == Session["filtroCodcud"].ToString()))
                     {
-                        <tr>
-                            <td>@a.Codalu</td>
-                            <td>@a.Codcur</td>
-                            <td>@a.Apellidos</td>
-                            <td>@a.Nombre</td>
-                            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-ver-modal-sm" onclick="CargarVer('@a.Codalu', '@a.Codcur', '@a.Dni', '@a.Apellidos', '@a.Nombre', @a.Nota1, @a.Nota2, @a.Nota3, @a.Media);">Ver</button></td>
-                            <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm" onclick="CargarModificar('@a.Codalu', '@a.Codcur', '@a.Dni', '@a.Apellidos', '@a.Nombre', @a.Nota1, @a.Nota2, @a.Nota3, @a.Media);">Modificar</button></td>
-                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm" onclick="CargarBorrar('@a.Codalu', '@a.Codcur', '@a.Dni', '@a.Apellidos', '@a.Nombre', @a.Nota1, @a.Nota2, @a.Nota3, @a.Media);">Borrar</button></td>
-                        </tr>
+                    <tr>
+                        <td>@a.Codalu</td>
+                        <td>@a.Codcur</td>
+                        <td>@a.Apellidos</td>
+                        <td>@a.Nombre</td>
+                        <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-ver-modal-sm" onclick="CargarVer('@a.Codalu', '@a.Codcur', '@a.Dni', '@a.Apellidos', '@a.Nombre', @a.Nota1, @a.Nota2, @a.Nota3, @a.Media);"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Ver</button></td>
+                        <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm" onclick="CargarModificar('@a.Codalu', '@a.Codcur', '@a.Dni', '@a.Apellidos', '@a.Nombre', @a.Nota1, @a.Nota2, @a.Nota3, @a.Media);"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Modificar</button></td>
+                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm" onclick="CargarBorrar('@a.Codalu', '@a.Codcur', '@a.Dni', '@a.Apellidos', '@a.Nombre', @a.Nota1, @a.Nota2, @a.Nota3, @a.Media);"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Borrar</button></td>
+                    </tr>
                     }
                 </table>
             </form>
@@ -108,7 +166,7 @@
 
 
                 <div class="btn-group" style="text-align:center;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-nuevo-modal-sm">Nuevo</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-nuevo-modal-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nueva nota</button>
                     @*<button type="submit" class="btn btn-warning" data-toggle="modal" data-target=".bs-modificar-modal-sm">Modificar</button>*@
                     @*<button type="submit" class="btn btn-danger" data-toggle="modal" data-target=".bs-borrar-modal-sm">Borrar</button>*@
                 </div>
@@ -163,7 +221,7 @@
                             </div>
                             <div class="text-center">
                                 <div class="form-group btn-group" style="margin-bottom: -15px;">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal" data-target=".bs-ver-modal-sm" name="ver_confirmar">Cerrar</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" data-target=".bs-ver-modal-sm" name="ver_confirmar"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Cerrar</button>
                                 </div>
                             </div>
                         </form>
@@ -184,7 +242,7 @@
                             <div class="form-group">
                                 <label for="alumno">Alumno</label>
                                 <select class="form-control" name="nuevo_alumno" id="nuevo_alumno">
-                                    @foreach (WinBDDRazor.ALUMNO a in new WinBDDRazor.logic.alumnos().GetAllAlumnosSinNota())
+                                    @foreach (WinBDDRazor.bd.ALUMNO a in new WinBDDRazor.logic.alumnos().GetAllAlumnosSinNota())
                                     {
                                     <option value="@a.COD_ALU">@a.NOMBRE @a.APELLIDOS</option>
                                     }
@@ -208,7 +266,7 @@
                             </div>
                             <div class="text-center">
                                 <div class="form-group btn-group" style="margin-bottom: -15px;">
-                                    <button type="submit" class="btn btn-success" name="nueva_confirmar">Crear</button>
+                                    <button type="submit" class="btn btn-success" name="nueva_confirmar"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Crear</button>
                                 </div>
                             </div>
                         </form>
@@ -265,7 +323,7 @@
                             </div>
                             <div class="text-center">
                                 <div class="form-group btn-group" style="margin-bottom: -15px;">
-                                    <button type="submit" class="btn btn-success" name="modificar_confirmar">Confirmar</button>
+                                    <button type="submit" class="btn btn-success" name="modificar_confirmar"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Confirmar</button>
                                 </div>
                             </div>
                         </form>
@@ -330,7 +388,7 @@
                             </div>
                             <div class="text-center">
                                 <div class="form-group btn-group" style="margin-bottom: -15px;">
-                                    <button type="submit" class="btn btn-danger" name="borrar_confirmar">Confirmar</button>
+                                    <button type="submit" class="btn btn-danger" name="borrar_confirmar"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Confirmar</button>
                                 </div>
                             </div>
                         </form>

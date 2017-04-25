@@ -1,4 +1,4 @@
-namespace WinBDDRazor
+namespace WinBDDRazor.bd
 {
     using System;
     using System.Data.Entity;

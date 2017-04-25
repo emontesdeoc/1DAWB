@@ -33,7 +33,7 @@ namespace WinBDDRazor.logic
         /// <returns></returns>
         public dynamic GetNotasPorCODALU(string codalu)
         {
-            using (ModelOcupacional contexto = new ModelOcupacional())
+            using (bd.ModelOcupacional contexto = new bd.ModelOcupacional())
             {
 
                 var nota = (from n in contexto.NOTAS
@@ -63,10 +63,10 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void CrearNotas()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
 
-                WinBDDRazor.NOTA nn = new WinBDDRazor.NOTA();
+                WinBDDRazor.bd.NOTA nn = new WinBDDRazor.bd.NOTA();
 
                 nn.COD_ALU = _Codalu;
                 var x = model.ALUMNOS.SingleOrDefault(a => a.COD_ALU == _Codalu);

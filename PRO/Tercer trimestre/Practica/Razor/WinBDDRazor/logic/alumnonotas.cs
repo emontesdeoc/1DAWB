@@ -58,7 +58,7 @@ namespace WinBDDRazor.logic
         /// <returns></returns>
         public dynamic GetNotasTodos()
         {
-            using (ModelOcupacional contexto = new ModelOcupacional())
+            using (bd.ModelOcupacional contexto = new bd.ModelOcupacional())
             {
 
                 var nota = (from n in contexto.NOTAS
@@ -87,7 +87,7 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void ActualizaNota()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var n = model.NOTAS.SingleOrDefault(x => x.COD_ALU == _Codalu);
 
@@ -106,7 +106,7 @@ namespace WinBDDRazor.logic
         /// </summary>
         public void BorarNota()
         {
-            using (ModelOcupacional model = new ModelOcupacional())
+            using (bd.ModelOcupacional model = new bd.ModelOcupacional())
             {
                 var n = model.NOTAS.SingleOrDefault(x => x.COD_ALU == _Codalu);
                 model.NOTAS.Remove(n);
