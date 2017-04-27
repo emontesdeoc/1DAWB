@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="alumnos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="alumno" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" type="xs:string"/>
+              <xs:element name="direccion" type="tipoDireccion"/>
+              <xs:element name="telefono" type="tipoTelefono"/>
+            </xs:sequence>
+            <xs:attribute name="dni" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    
+  </xs:element>
+  <xs:complexType name="tipoDireccion">
+      <xs:sequence>
+        <xs:element name="calle" type="xs:string"/>
+        <xs:element name="numero" type="xs:string"/>
+        <xs:element name="ciudad" type="xs:string"/>
+        <xs:element name="provincia" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  <xs:complexType name="tipoTelefono">
+    <xs:choice>
+      <xs:element name="Fijo" type="tipoTelefonoLargo"/>
+      <xs:element name="Movil" type="tipoTelefonoLargo"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="tipoTelefonoLargo">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="9"/>
+      <xs:maxLength value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
