@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<alumnos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ejercicio2.xsd">
+  <alumno dni="42289654X">
+    <nombre>Emiliano</nombre>
+    <apellidos>Montesdeoca</apellidos>
+    <nota>5.62</nota>
+    <comentario>Hola</comentario>
+  </alumno>
+  <alumno dni="63969852X">
+    <nombre>Yaco</nombre>
+    <apellidos>Aymediacoan</apellidos>
+    <edad>16</edad>
+    <nota>6.66</nota>
+    <direccion>
+      <calle>Calle Fuente</calle>
+      <numero>4.66</numero>
+      <ciudad>Jabugo</ciudad>
+      <provincia>Huelva</provincia>
+    </direccion>
+  </alumno>
+  <alumno dni="255165615X">
+    <nombre>Saulo</nombre>
+    <apellidos>Saulini</apellidos>
+    <edad>16</edad>
+    <nota>No presentado</nota>
+    <comentario>Hola</comentario>
+    <direccion>
+      <calle>Calle Fuente</calle>
+      <numero>4</numero>
+      <ciudad>Jabugo</ciudad>
+      <provincia>Huelva</provincia>
+    </direccion>
+  </alumno>
+</alumnos>

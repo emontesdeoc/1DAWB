@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="alumnos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="alumno" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alumno">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nombre" type="xs:string"/>
+        <xs:element name="apellidos" type="xs:string"/>
+        <xs:element name="edad" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="15"/>
+              <xs:maxInclusive value="75"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="nota">
+          <xs:simpleType>
+            <xs:union memberTypes="nopresentado nota_values"/>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="comentario" type="xs:string" minOccurs="0"/>
+        <xs:element ref="direccion" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="dni" type="DNI" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="direccion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="calle" type="calle"/>
+        <xs:element name="numero" type="xs:string"/>
+        <xs:element name="ciudad" type="xs:string"/>
+        <xs:element name="codigopostal" type="cp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="nopresentado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="No presentado"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="cp">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{5}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="calle">
+    <xs:restriction base="xs:string">
+       <xs:maxLength value="18"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="nota_values">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="10"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DNI">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{7,8}[A-Z]"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

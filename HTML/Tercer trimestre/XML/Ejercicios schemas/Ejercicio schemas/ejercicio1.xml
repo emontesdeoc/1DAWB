@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<alumnos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ejercicio1.xsd">
+  <alumno dni="42289654X" >
+    <nombre>Emiliano</nombre>
+    <apellidos>Montesdeoca</apellidos>
+    <nota>5.62</nota>
+  </alumno>
+    <alumno dni="63969852X" >
+    <nombre>Yaco</nombre>
+    <apellidos>Aymediacoan</apellidos>
+    <nota>6.66</nota>
+  </alumno>
+    <alumno dni="255165615X" >
+    <nombre>Saulo</nombre>
+    <apellidos>Saulini</apellidos>
+    <nota>1.25</nota>
+    </alumno>
+</alumnos>
