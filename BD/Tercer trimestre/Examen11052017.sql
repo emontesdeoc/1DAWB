@@ -2,7 +2,6 @@
 --1.- Procedimiento almacenado al que le pasemos como parámetro el nombre de un Distrito y devuelva en un parámetro de salida la suma 
 --del Area de los barrios de ese distrito o un -1 si el distrito no existe. 
 USE datossctfe 
-
 go 
 
 ALTER PROCEDURE Sp_areadistrito @ndistrito NVARCHAR(max), 
@@ -58,33 +57,69 @@ go
 --un select válido dividido en dos campos (uno con el select y los campos y otro desde el from) y una tabla de destino. 
 --Se trata de que el programa borre la tabla de destino si existe y mediante la sentencia select la cree y cargue de datos. 
 
+--if OBJECT_ID('tablauxiliar') is not null  drop table TablaIndices; 
+--go 
+--create table tablaauxiliar (tabladestino VARCHAR(100), seleccion1 VARCHAR(max), seleccion2 VARCHAR(max)) 
+--go 
+
+IF object_id('tablaaxuiliar') IS NOT NULL DROP table tablaaxuiliar
+create table tablaaxuiliar ( tabladestino varchar(100),  seleccion1 varchar(max),  seleccion2 varchar(max))
+go 
+
 CREATE PROCEDURE sp_ejer3
 as
 
-CREATE TABLE tablaauxiliar (tabladestino VARCHAR(100), seleccion1 VARCHAR(max), seleccion2 VARCHAR(max);
-go
+DECLARE @tablaorigen TABLE
+(
+  tabladestino varchar(100),  seleccion1 varchar(max),  seleccion2 varchar(max)
+)
 
-declare @sentencia nvarchar(max)
-declare @nombrebarrio nvarchar(max)
-declare @numParadas nvarchar(max)
+INSERT INTO @tablaorigen (tabladestino,seleccion1,seleccion2)
+  SELECT tabladestino, seleccion1,seleccion2
+    FROM tablaaxuiliar
 
-declare CUR cursor for select  Barrio from  Barrio; 
+declare @sentencia1 nvarchar(max);
+declare @sentencia2 nvarchar(max);
+declare @tabladestino nvarchar(max);
+declare @seleccion1 nvarchar(max);
+declare @seleccion2 nvarchar(max);
+
+declare CUR cursor for select  tabladestino, seleccion1,seleccion2 from  @tablaorigen; 
 open CUR 
-fetch next from CUR into  @nombrebarrio
+fetch next from CUR into  @tabladestino, @seleccion1, @seleccion2
 
-INSERT INTO tablaauxiliar VALUES
-            ( 
-                        'NombreBarrio', 
-                        'select barrio', 
-                        ' from barrio;' 
-            ) 
-            , 
-            ( 
-                        'NumParadas', 
-                        'select Barrio,count(*) as Nparadas', 
-                        'from barrio inner join paradas_taxi on barrio.cod_barrio=paradas_taxi.cod_barrio group by barrio;'
-            );
-go
+-- por cada campo en tablaauxiliar
+while @@FETCH_STATUS=0
+begin	
+
+-- pillar el nombre de la tabla
+declare @test nvarchar(max) =  @seleccion2;
+declare @test2 nvarchar(max);
+set @test2 = (SELECT SUBSTRING(@test,6,100) as Value);
+set @test2 = SUBSTRING(@test2,0,CHARINDEX(' ', @test2));
+print @test2;
+
+-- buscar los nombres de los campos y su tipo
+
+declare CUR2 cursor for select  COLUMN_NAME,DATA_TYPE from  information_schema.columns  where table_name = @test2; 
+open CUR2 
+fetch next from CUR2 into  
+
+while @@FETCH_STATUS=0
+begin	
+set @sentencia1 = 'select COLUMN_NAME,DATA_TPYE '+@seleccion2
+set @sentencia2 = 'Create table ' + @tabladestino + '( barrio,)';
+
+
+end
+
+
+set @sentencia2 = 'Create table ' + @tabladestino + '( barrio,)';
+
+
+end
+ 
+select * from information_schema.columns where table_name = 'tablaaxuiliar'
 
 --4. Función de tabla en línea que nos muestre la suma del valor de datospadron por barrio para grupos de edad que contengan una 
 --edad pasada como parámetro. Hacer un ejemplo de uso. 
