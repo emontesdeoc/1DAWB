@@ -7,7 +7,7 @@
 USE datossctfe 
 go 
 
-ALTER PROCEDURE Sp_areadistrito @ndistrito NVARCHAR(max), 
+CREATE PROCEDURE Sp_areadistrito @ndistrito NVARCHAR(max), 
                                 @salida    FLOAT output 
 AS 
     IF @ndistrito = (SELECT distrito 
@@ -41,7 +41,7 @@ go
 
 -- Procedimiento almacenado que le pasemos como dato de entrada una cantidad de paradas (mayor que 0) y nos muestre los 
 -- nombres de los barrios que tengan esa cantidad de paradas.  
-ALTER PROCEDURE Sp_taxidistrito @ndistrito INTEGER 
+CREATE PROCEDURE Sp_taxidistrito @ndistrito INTEGER 
 AS 
     SELECT barrio AS BarrioParadas 
     FROM   barrio 
@@ -148,6 +148,7 @@ CREATE VIEW v_veredades AS SELECT DISTINCT(grupoedad.edadinicial), grupoedad.eda
 --  Funciones de usuario  
 --  Procedimientos almacenados de usuario  
 
+-- SOLUCION --
 -- Tiene 3 tablas
 --		Familia -> tiene 6 registros || Tiene 3 indices
 --		paso -> no tiene registros || Tiene 1 indice
@@ -160,8 +161,7 @@ CREATE VIEW v_veredades AS SELECT DISTINCT(grupoedad.edadinicial), grupoedad.eda
 --  fechahora datetime  
 --  coddistrito int  
 --  usuario varchar(200)  
---Añadir un trigger a la tabla distrito que cuando hagamos un alta de distrito añada un registro a la tabla logdistrito 
---con el coddistrito añadido, el usuario obtenido de SYSTEM_USER y la fechahora de getdate().  
+
 
 CREATE TABLE paso 
   ( 
@@ -178,6 +178,9 @@ CREATE TABLE logdistrito
   ) 
 
 go 
+
+--Añadir un trigger a la tabla distrito que cuando hagamos un alta de distrito añada un registro a la tabla logdistrito 
+--con el coddistrito añadido, el usuario obtenido de SYSTEM_USER y la fechahora de getdate().  
 
 CREATE TRIGGER t_paso 
 ON paso 
